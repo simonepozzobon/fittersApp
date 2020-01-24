@@ -40,6 +40,40 @@
 			<key>uniqueIdentifier</key>
 			<string>3661ADFA-F001-4C04-9CD9-5B2A14381278</string>
 		</dict>
+		<key>44C6F1CB-E020-4EBA-AFB8-0B67688CC0ED</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>44C6F1CB-E020-4EBA-AFB8-0B67688CC0ED.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fittersApp project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fittersApp</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building workspace fittersApp with scheme fittersApp and configuration Debug</string>
+			<key>timeStartedRecording</key>
+			<real>601584750.89713395</real>
+			<key>timeStoppedRecording</key>
+			<real>601584754.80128396</real>
+			<key>title</key>
+			<string>Building workspace fittersApp with scheme fittersApp and configuration Debug</string>
+			<key>uniqueIdentifier</key>
+			<string>44C6F1CB-E020-4EBA-AFB8-0B67688CC0ED</string>
+		</dict>
 	</dict>
 </dict>
 </plist>
