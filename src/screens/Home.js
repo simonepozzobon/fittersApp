@@ -16,6 +16,8 @@ import {
 from 'react-native'
 
 import MainTemplate from '../presentation/MainTemplate'
+import Header from '../presentation/Header'
+import MapTopBar from '../components/MapTopBar'
 const logo = require('../../assets/brand/logo.png');
 const Pin = require('../../assets/Pin.png');
 import MarkerData from '../dummies/Marker'
@@ -156,7 +158,9 @@ class Home extends Component {
         // Component
         return (
             <MainTemplate>
+                <Header></Header>
                 <View style={{flex: 1}}>
+                    <MapTopBar/>
                     <MapView
                         style={styles.map}
                         region={this.state.region}
