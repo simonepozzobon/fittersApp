@@ -9,15 +9,16 @@ import {
     View,
     Dimensions,
     TextInput,
-    SafeAreaView,
     TouchableOpacity,
     Image,
 }
 from 'react-native'
 
-const logo = require('../assets/brand/logo.png');
+import MainTemplate from '../presentation/MainTemplate'
 
-class Main extends Component {
+const logo = require('../../assets/brand/logo.png');
+
+class Login extends Component {
     constructor() {
         super()
         this.state = {
@@ -28,7 +29,7 @@ class Main extends Component {
     }
 
     // Component State Management
-    componentWillMount() {}
+
     componentDidMount() {
         this.setState({
             screenWidth: Dimensions.get('window').width
@@ -36,6 +37,9 @@ class Main extends Component {
     }
 
     // Methods
+    goTo(route) {
+        this.props.navigation.navigate(route)
+    }
 
     // Render
     render() {
@@ -53,76 +57,78 @@ class Main extends Component {
 
         // Component
         return (
-            <View style={{ flex: 1, justifyContent: 'center',  alignItems: 'center' }}>
-                <View style={{ marginTop: 20 }}>
-                    <TextInput
-                          autoCorrect={false}
-                          value={this.state.email}
-                          placeholder="your email"
-                          placeholderTextColor="white"
-                          returnKeyType="next"
-                          keyboardType="email-address"
-                          onChangeText={this.emailSet}
-                          onSubmitEditing={this.focusToPassword}
-                          style={[compStyles.formInput, styles.input, compStyles.formInput]}
-                        />
-                </View>
-                <View style={{ marginTop: 20 }}>
-                    <TextInput
-                          autoCorrect={false}
-                          value={this.state.email}
-                          placeholder="password"
-                          placeholderTextColor="white"
-                          returnKeyType="next"
-                          keyboardType="email-address"
-                          onChangeText={this.emailSet}
-                          onSubmitEditing={this.focusToPassword}
-                          style={[compStyles.formInput, styles.input, compStyles.formInput]}
-                        />
-                </View>
-                <View style={{ marginTop: 20 }}>
-                    <TouchableOpacity 
-                        style={[styles.btnWhite, compStyles.btnWhite]}
-                        onPress={() => {this.goTo('register')}}>
-                        <Text style={styles.btnWhiteText}>
-                            Login
+            <MainTemplate>
+                <View style={{ flex: 1, justifyContent: 'center',  alignItems: 'center' }}>
+                    <View style={{ marginTop: 20 }}>
+                        <TextInput
+                              autoCorrect={false}
+                              value={this.state.email}
+                              placeholder="your email"
+                              placeholderTextColor="white"
+                              returnKeyType="next"
+                              keyboardType="email-address"
+                              onChangeText={this.emailSet}
+                              onSubmitEditing={this.focusToPassword}
+                              style={[compStyles.formInput, styles.input, compStyles.formInput]}
+                            />
+                    </View>
+                    <View style={{ marginTop: 20 }}>
+                        <TextInput
+                              autoCorrect={false}
+                              value={this.state.email}
+                              placeholder="password"
+                              placeholderTextColor="white"
+                              returnKeyType="next"
+                              keyboardType="email-address"
+                              onChangeText={this.emailSet}
+                              onSubmitEditing={this.focusToPassword}
+                              style={[compStyles.formInput, styles.input, compStyles.formInput]}
+                            />
+                    </View>
+                    <View style={{ marginTop: 20 }}>
+                        <TouchableOpacity 
+                            style={[styles.btnWhite, compStyles.btnWhite]}
+                            onPress={() => {this.goTo('home')}}>
+                            <Text style={styles.btnWhiteText}>
+                                Login
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{marginTop: 40}}>
+                        <Text style={{ color: 'white' }}>
+                            Forgot Password?
                         </Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={{marginTop: 40}}>
-                    <Text style={{ color: 'white' }}>
-                        Forgot Password?
-                    </Text>
-                </View>
-                <View style={{flexDirection: 'row', marginTop: 40}}>
-                    <TouchableOpacity 
-                        style={[styles.btnWhite]}
-                        onPress={() => {this.goTo('register')}}>
-                        <Text style={styles.btnWhiteText}>
-                            Sign In
+                    </View>
+                    <View style={{flexDirection: 'row', marginTop: 40}}>
+                        <TouchableOpacity 
+                            style={[styles.btnWhite]}
+                            onPress={() => {this.goTo('register')}}>
+                            <Text style={styles.btnWhiteText}>
+                                Sign In
+                            </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity 
+                            style={[styles.btnWhite, { marginLeft: 20 }]}
+                            onPress={() => {this.goTo('register')}}>
+                            <Text style={styles.btnWhiteText}>
+                                Sign In
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{marginTop: 40, flexDirection: 'row'}}>
+                        <Text style={{ color: 'white' }}>
+                            Don't have an account?
                         </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                        style={[styles.btnWhite, { marginLeft: 20 }]}
-                        onPress={() => {this.goTo('register')}}>
-                        <Text style={styles.btnWhiteText}>
-                            Sign In
-                        </Text>
-                    </TouchableOpacity>
+                        <TouchableOpacity
+                            style={{ paddingLeft:10 }}
+                            onPress={() => { this.goTo('register')}}>
+                            <Text style={{ color: 'white', fontWeight: 'bold' }}>
+                                Sign Up
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-                <View style={{marginTop: 40, flexDirection: 'row'}}>
-                    <Text style={{ color: 'white' }}>
-                        Don't have an account?
-                    </Text>
-                    <TouchableOpacity
-                        style={{ paddingLeft:10 }}
-                        onPress={() => { this.goTo('register')}}>
-                        <Text style={{ color: 'white', fontWeight: 'bold' }}>
-                            Sign Up
-                        </Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
+            </MainTemplate>
         );
     }
 }
@@ -159,4 +165,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Main;
+export default Login;

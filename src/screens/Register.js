@@ -9,15 +9,15 @@ import {
     View,
     Dimensions,
     TextInput,
-    SafeAreaView,
     TouchableOpacity,
     Image,
 }
 from 'react-native'
+import MainTemplate from '../presentation/MainTemplate'
 
-const logo = require('../assets/brand/logo.png');
+const logo = require('../../assets/brand/logo.png');
 
-class Main extends Component {
+class Register extends Component {
     constructor() {
         super()
         this.state = {
@@ -28,7 +28,7 @@ class Main extends Component {
     }
 
     // Component State Management
-    componentWillMount() {}
+
     componentDidMount() {
         this.setState({
             screenWidth: Dimensions.get('window').width
@@ -36,6 +36,9 @@ class Main extends Component {
     }
 
     // Methods
+    goTo(route) {
+        this.props.navigation.navigate(route)
+    }
 
     // Render
     render() {
@@ -53,12 +56,13 @@ class Main extends Component {
 
         // Component
         return (
+            <MainTemplate>
             <View style={{ flex: 1, justifyContent: 'center',  alignItems: 'center' }}>
-                <View style={{ marginTop: 20 }}>
+                <View style={{ marginTop: 12 }}>
                     <TextInput
                           autoCorrect={false}
                           value={this.state.email}
-                          placeholder="your email"
+                          placeholder="Name"
                           placeholderTextColor="white"
                           returnKeyType="next"
                           keyboardType="email-address"
@@ -67,7 +71,72 @@ class Main extends Component {
                           style={[compStyles.formInput, styles.input, compStyles.formInput]}
                         />
                 </View>
-                <View style={{ marginTop: 20 }}>
+                <View style={{ marginTop: 12 }}>
+                    <TextInput
+                          autoCorrect={false}
+                          value={this.state.email}
+                          placeholder="Surname"
+                          placeholderTextColor="white"
+                          returnKeyType="next"
+                          keyboardType="email-address"
+                          onChangeText={this.emailSet}
+                          onSubmitEditing={this.focusToPassword}
+                          style={[compStyles.formInput, styles.input, compStyles.formInput]}
+                        />
+                </View>
+                <View style={{ marginTop: 12 }}>
+                    <TextInput
+                          autoCorrect={false}
+                          value={this.state.email}
+                          placeholder="Age"
+                          placeholderTextColor="white"
+                          returnKeyType="next"
+                          keyboardType="email-address"
+                          onChangeText={this.emailSet}
+                          onSubmitEditing={this.focusToPassword}
+                          style={[compStyles.formInput, styles.input, compStyles.formInput]}
+                        />
+                </View>
+                <View style={{ marginTop: 12 }}>
+                    <TextInput
+                          autoCorrect={false}
+                          value={this.state.email}
+                          placeholder="Indirizzo"
+                          placeholderTextColor="white"
+                          returnKeyType="next"
+                          keyboardType="email-address"
+                          onChangeText={this.emailSet}
+                          onSubmitEditing={this.focusToPassword}
+                          style={[compStyles.formInput, styles.input, compStyles.formInput]}
+                        />
+                </View>
+                <View style={{ marginTop: 12 }}>
+                    <TextInput
+                          autoCorrect={false}
+                          value={this.state.email}
+                          placeholder="Città"
+                          placeholderTextColor="white"
+                          returnKeyType="next"
+                          keyboardType="email-address"
+                          onChangeText={this.emailSet}
+                          onSubmitEditing={this.focusToPassword}
+                          style={[compStyles.formInput, styles.input, compStyles.formInput]}
+                        />
+                </View>
+                <View style={{ marginTop: 40 }}>
+                    <TextInput
+                          autoCorrect={false}
+                          value={this.state.email}
+                          placeholder="email"
+                          placeholderTextColor="white"
+                          returnKeyType="next"
+                          keyboardType="email-address"
+                          onChangeText={this.emailSet}
+                          onSubmitEditing={this.focusToPassword}
+                          style={[compStyles.formInput, styles.input, compStyles.formInput]}
+                        />
+                </View>
+                <View style={{ marginTop: 12 }}>
                     <TextInput
                           autoCorrect={false}
                           value={this.state.email}
@@ -80,49 +149,17 @@ class Main extends Component {
                           style={[compStyles.formInput, styles.input, compStyles.formInput]}
                         />
                 </View>
-                <View style={{ marginTop: 20 }}>
+                <View style={{ marginTop: 12 }}>
                     <TouchableOpacity 
                         style={[styles.btnWhite, compStyles.btnWhite]}
                         onPress={() => {this.goTo('register')}}>
                         <Text style={styles.btnWhiteText}>
-                            Login
-                        </Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={{marginTop: 40}}>
-                    <Text style={{ color: 'white' }}>
-                        Forgot Password?
-                    </Text>
-                </View>
-                <View style={{flexDirection: 'row', marginTop: 40}}>
-                    <TouchableOpacity 
-                        style={[styles.btnWhite]}
-                        onPress={() => {this.goTo('register')}}>
-                        <Text style={styles.btnWhiteText}>
-                            Register
-                        </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                        style={[styles.btnWhite, { marginLeft: 20 }]}
-                        onPress={() => {this.goTo('register')}}>
-                        <Text style={styles.btnWhiteText}>
-                            Register
-                        </Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={{marginTop: 40, flexDirection: 'row'}}>
-                    <Text style={{ color: 'white' }}>
-                        Don't have an account?
-                    </Text>
-                    <TouchableOpacity
-                        style={{ paddingLeft:10 }}
-                        onPress={() => { this.goTo('register')}}>
-                        <Text style={{ color: 'white', fontWeight: 'bold' }}>
-                            Sign Up
+                            Create Account
                         </Text>
                     </TouchableOpacity>
                 </View>
             </View>
+          </MainTemplate>
         );
     }
 }
@@ -159,4 +196,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Main;
+export default Register;

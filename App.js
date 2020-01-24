@@ -10,7 +10,6 @@ import React from 'react';
 import {
     Dimensions,
     Image,
-    SafeAreaView,
     StyleSheet,
     ScrollView,
     View,
@@ -31,29 +30,16 @@ from 'react-native/Libraries/NewAppScreen';
 import LinearGradient from 'react-native-linear-gradient'
 
 import {
-    createAppContainer
+    createAppContainer,
+    createSwitchNavigator
+
 }
 from 'react-navigation';
-import {
-    createStackNavigator
-}
-from 'react-navigation-stack';
 
 import Login from './src/screens/Login'
 import Register from './src/screens/Register'
-
-const App: () => React$Node = () => {
-    return (
-        <LinearGradient
-            colors={['#ff5900', '#ff2a00']}
-            start={{ x: 0.0, y: 0.25 }}
-            end={{ x: 0.5, y: 1.0 }}
-            style={styles.backgroundGradient}>
-                <StatusBar barStyle="dark-content" />
-                <Login />
-            </LinearGradient>
-    );
-};
+import Home from './src/screens/Home'
+import 'react-native-gesture-handler'
 
 const styles = StyleSheet.create({
     backgroundGradient: {
@@ -77,13 +63,12 @@ const styles = StyleSheet.create({
 
 const logo = require('./assets/brand/logo.png');
 
-const AppNavigator = createStackNavigator({
-    login: {
-        screen: Login,
-    },
-    register: {
-        screen: Register,
-    }
-})
+const AppNavigator = createSwitchNavigator({
+    login: Login,
+    register: Register,
+    home: Home,
+}, {
+    initialRouteName: 'home',
+});
 
 export default createAppContainer(AppNavigator);

@@ -9,11 +9,11 @@ import {
     View,
     Dimensions,
     TextInput,
-    SafeAreaView,
     TouchableOpacity,
     Image,
 }
 from 'react-native'
+import SafeAreaView from 'react-native-safe-area-view';
 
 const logo = require('../assets/brand/logo.png');
 
@@ -28,7 +28,7 @@ class Main extends Component {
     }
 
     // Component State Management
-    componentWillMount() {}
+
     componentDidMount() {
         this.setState({
             screenWidth: Dimensions.get('window').width
@@ -36,7 +36,9 @@ class Main extends Component {
     }
 
     // Methods
-
+    goTo(route) {
+        this.props.navigation.navigate(route)
+    }
     // Render
     render() {
         // Dynamic styles
