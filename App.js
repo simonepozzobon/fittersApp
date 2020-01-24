@@ -30,6 +30,18 @@ from 'react-native/Libraries/NewAppScreen';
 
 import LinearGradient from 'react-native-linear-gradient'
 
+import {
+    createAppContainer
+}
+from 'react-navigation';
+import {
+    createStackNavigator
+}
+from 'react-navigation-stack';
+
+import Login from './src/screens/Login'
+import Register from './src/screens/Register'
+
 const App: () => React$Node = () => {
     return (
         <LinearGradient
@@ -38,20 +50,9 @@ const App: () => React$Node = () => {
             end={{ x: 0.5, y: 1.0 }}
             style={styles.backgroundGradient}>
                 <StatusBar barStyle="dark-content" />
-                <SafeAreaView style={styles.container}>
-                        <View style={styles.topBar}>
-                            <Image
-                                style={styles.logo}
-                                source={logo}
-                                resizeMode="contain">
-                            </Image>
-                        </View>
-                        <View>
-                            <Text>Container</Text>
-                        </View>
-                </SafeAreaView>
+                <Login />
             </LinearGradient>
-        );
+    );
 };
 
 const styles = StyleSheet.create({
@@ -76,4 +77,13 @@ const styles = StyleSheet.create({
 
 const logo = require('./assets/brand/logo.png');
 
-export default App;
+const AppNavigator = createStackNavigator({
+    login: {
+        screen: Login,
+    },
+    register: {
+        screen: Register,
+    }
+})
+
+export default createAppContainer(AppNavigator);

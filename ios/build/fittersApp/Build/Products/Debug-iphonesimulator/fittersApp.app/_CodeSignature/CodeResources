@@ -6,11 +6,11 @@
 	<dict>
 		<key>Base.lproj/LaunchScreen.nib/objects-13.0+.nib</key>
 		<data>
-		3Qfxn3n8504Hq///X9WZP2TAozQ=
+		Uq/cIK7FAG01KOXKhFQ9jy0HTW8=
 		</data>
 		<key>Base.lproj/LaunchScreen.nib/runtime.nib</key>
 		<data>
-		NnFGonNpmxiylXvFZFYg5HRrJks=
+		ZjNDWwxyHPf4PWwNw2yP54T770E=
 		</data>
 		<key>Frameworks/XCTAutomationSupport.framework/Info.plist</key>
 		<data>
@@ -63,7 +63,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		bQBsrgNZhHCHoq7COklK4t24i0s=
+		ECegEt06zwavu6bG+RmfwOPd7wY=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -75,7 +75,7 @@
 		</data>
 		<key>PlugIns/fittersAppTests.xctest.dSYM/Contents/Resources/DWARF/fittersAppTests</key>
 		<data>
-		LIs7z+cTGcCsWqMH2nB9zikKLXI=
+		0AaI9scLXQcwid/I1F6Sf28VKIg=
 		</data>
 		<key>PlugIns/fittersAppTests.xctest/Info.plist</key>
 		<data>
@@ -87,7 +87,7 @@
 		</data>
 		<key>PlugIns/fittersAppTests.xctest/fittersAppTests</key>
 		<data>
-		Nt1lUCESkBAGbnzg9sQCJ3oEA78=
+		lve7qdHvYzfAj+awxYnLxExptCo=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -96,22 +96,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			3Qfxn3n8504Hq///X9WZP2TAozQ=
+			Uq/cIK7FAG01KOXKhFQ9jy0HTW8=
 			</data>
 			<key>hash2</key>
 			<data>
-			Qn4hU2vzIffxMbas1tP71WevMa1GeMe9Y6m9hUo57gc=
+			gUtMusK2eYn8xSldaMXnGqJo19gz80Z9HceYtIJJzd8=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			NnFGonNpmxiylXvFZFYg5HRrJks=
+			ZjNDWwxyHPf4PWwNw2yP54T770E=
 			</data>
 			<key>hash2</key>
 			<data>
-			MCi3i/2xdHWHNVqREGwXXlV1NBjzOcoq7/q5CWcq9vg=
+			W1Lp4FD4TpzeJ92fZCvE1EZLNpptD5lIxI4T16RRf9E=
 			</data>
 		</dict>
 		<key>Frameworks/XCTAutomationSupport.framework/Info.plist</key>
@@ -252,11 +252,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			LIs7z+cTGcCsWqMH2nB9zikKLXI=
+			0AaI9scLXQcwid/I1F6Sf28VKIg=
 			</data>
 			<key>hash2</key>
 			<data>
-			nhxmu/NSB36CHj3Lg7FzBa6NRK+wnOWO61hY+yI0ANI=
+			OLXFmEitIhO91R4JD1HRhAe0728lgljhca7cpXd7E1Y=
 			</data>
 		</dict>
 		<key>PlugIns/fittersAppTests.xctest/Info.plist</key>
@@ -285,11 +285,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Nt1lUCESkBAGbnzg9sQCJ3oEA78=
+			lve7qdHvYzfAj+awxYnLxExptCo=
 			</data>
 			<key>hash2</key>
 			<data>
-			L1cZu8MgnZQIRqLnA7+jepaOfNYfbldvo56/+bAdgEU=
+			w8gcxxPU+Hr24ydC0ZsvKgshALF219UHPEKr9MnTNzE=
 			</data>
 		</dict>
 	</dict>
