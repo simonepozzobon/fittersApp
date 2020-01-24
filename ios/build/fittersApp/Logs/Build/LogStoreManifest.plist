@@ -6,6 +6,40 @@
 	<integer>10</integer>
 	<key>logs</key>
 	<dict>
+		<key>3661ADFA-F001-4C04-9CD9-5B2A14381278</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>3661ADFA-F001-4C04-9CD9-5B2A14381278.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fittersApp project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fittersApp</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building workspace fittersApp with scheme fittersApp and configuration Debug</string>
+			<key>timeStartedRecording</key>
+			<real>601575673.02205706</real>
+			<key>timeStoppedRecording</key>
+			<real>601575686.043185</real>
+			<key>title</key>
+			<string>Building workspace fittersApp with scheme fittersApp and configuration Debug</string>
+			<key>uniqueIdentifier</key>
+			<string>3661ADFA-F001-4C04-9CD9-5B2A14381278</string>
+		</dict>
 		<key>F9CFD84B-E55B-4E58-95CD-7A2B6E972B74</key>
 		<dict>
 			<key>className</key>
