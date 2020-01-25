@@ -39,7 +39,9 @@ class MapTopBar extends Component {
             timeArrow: arrowDown,
             cityArrow: arrowDown,
             bounceValue: new Animated.Value(panelHeight),
-            arrowValue: new Animated.Value(0)
+            arrowDate: new Animated.Value(0),
+            arrowTime: new Animated.Value(0),
+            arrowCity: new Animated.Value(0),
         }
     }
 
@@ -79,24 +81,68 @@ class MapTopBar extends Component {
 
     _togglePicker() {
         return new Promise((resolve, reject) => {
-            let toValue = panelHeight;
-            let duration = 400
-            let timeout = 150
+            let toValue = panelHeight,
+                duration = 400,
+                timeout = 150,
+                toDeg = 0
+
             if (isHidden) {
                 toValue = 0;
                 duration = 600
                 timeout = 10
+                toDeg = 1
             }
 
-            Animated.spring(
-                this.state.bounceValue, {
-                    toValue: toValue,
-                    duration: duration,
-                    velocity: 3,
-                    tension: 2,
-                    friction: 6,
-                }
-            ).start();
+            if (this.state.mode == 'date') {
+                Animated.parallel([
+                    Animated.spring(
+                        this.state.arrowDate, {
+                            toValue: toDeg,
+                            duration: duration,
+                            tension: 15,
+                            friction: 5,
+                            useNativeDriver: true,
+                        }
+                    ),
+
+                    Animated.spring(
+                        this.state.bounceValue, {
+                            toValue: toValue,
+                            duration: duration,
+                            velocity: 3,
+                            tension: 2,
+                            friction: 6,
+                            useNativeDriver: true,
+                        }
+                    )
+                ]).start();
+            }
+            else if (this.state.mode == 'time') {
+                Animated.parallel([
+                    Animated.spring(
+                        this.state.arrowTime, {
+                            toValue: toDeg,
+                            duration: duration,
+                            tension: 15,
+                            friction: 5,
+                            useNativeDriver: true,
+                        }
+                    ),
+
+                    Animated.spring(
+                        this.state.bounceValue, {
+                            toValue: toValue,
+                            duration: duration,
+                            velocity: 3,
+                            tension: 2,
+                            friction: 6,
+                            useNativeDriver: true,
+                        }
+                    )
+                ]).start();
+            }
+
+
 
             isHidden = !isHidden;
             setTimeout(() => {
@@ -106,21 +152,14 @@ class MapTopBar extends Component {
     }
 
     show(mode) {
-        if (mode == 'date') {
-            let toDeg = isHidden ? 1 : 0
-            Animated.spring(this.state.arrowValue, {
-                toValue: toDeg,
-                tension: 150,
-                friction: 5,
-                useNativeDriver: true,
-            }).start()
-        }
+        this.setState({
+            mode
+        })
 
         if (this.state.mode != mode && isHidden == false) {
             this._togglePicker().then(() => {
                 this.setState({
                     show: true,
-                    mode,
                 });
                 this._togglePicker()
             })
@@ -128,17 +167,9 @@ class MapTopBar extends Component {
         else {
             this.setState({
                 show: true,
-                mode,
             });
             this._togglePicker()
         }
-    }
-
-    hide() {
-        // this.setState({
-        //     show: false,
-        // });
-        this._togglePicker()
     }
 
     // Render
@@ -152,7 +183,15 @@ class MapTopBar extends Component {
         }
         let animationArrowDate = {
             transform: [{
-                rotate: this.state.arrowValue.interpolate({
+                rotate: this.state.arrowDate.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [`0deg`, `180deg`],
+                })
+            }]
+        }
+        let animationArrowTime = {
+            transform: [{
+                rotate: this.state.arrowTime.interpolate({
                     inputRange: [0, 1],
                     outputRange: [`0deg`, `180deg`],
                 })
@@ -184,10 +223,10 @@ class MapTopBar extends Component {
                         <Text style={styles.btnTxt}>
                             {this.state.timeTxt}
                         </Text>
-                        <Image
+                        <Animated.Image
                             source={this.state.timeArrow}
                             resizeMode="contain"
-                            style={styles.arrows}
+                            style={[styles.arrows, animationArrowTime]}
                         />
                     </TouchableOpacity>
                     <TouchableOpacity
@@ -222,7 +261,7 @@ class MapTopBar extends Component {
                             />
                             <TouchableOpacity
                                 style={styles.btnConfirm}
-                                onPress={() => {this.hide()}}
+                                onPress={() => {this._togglePicker()}}
                             >
                                 <Text style={styles.btnConfirmTxt}>Conferma</Text>
                             </TouchableOpacity>
