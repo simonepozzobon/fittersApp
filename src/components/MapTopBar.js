@@ -200,7 +200,7 @@ class MapTopBar extends Component {
         // Component
         return (
             <View style={styles.wrapper}>
-                <View style={[styles.container]}>
+                <View style={styles.container}>
                     <TouchableOpacity
                         activeOpacity={0.7}
                         onPress={() => {this.show('date')}}
@@ -216,7 +216,7 @@ class MapTopBar extends Component {
                         />
                     </TouchableOpacity>
                     <TouchableOpacity
-                        activeOpacity={0.7}
+                            activeOpacity={0.7}
                             onPress={() => {this.show('time')}}
                             style={styles.btn}
                         >
@@ -248,7 +248,7 @@ class MapTopBar extends Component {
                     { Platform.OS === 'ios' && (
                         <Animated.View
                             style={[styles.datetimepicker, animationPanel]}
-                            >
+                        >
                             <DateTimePicker
                                 value={this.state.date}
                                 mode={this.state.mode}
@@ -278,7 +278,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignSelf: 'stretch',
         zIndex: 1,
-        height: Dimensions.get('window').height,
+        height: 0,
+        // height: Dimensions.get('window').height,
+        backgroundColor: 'blue',
     },
     container: {
         position: 'absolute',
@@ -312,6 +314,7 @@ const styles = StyleSheet.create({
     datetimepicker: {
         zIndex: 2,
         width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
         top: '100%',
         backgroundColor: '#f7f7f7',
         flexDirection: 'column',
