@@ -8,17 +8,6 @@
 
 import React from 'react';
 import {
-    Dimensions,
-    Image,
-    StyleSheet,
-    ScrollView,
-    View,
-    Text,
-    StatusBar,
-}
-from 'react-native';
-
-import {
     Header,
     LearnMoreLinks,
     Colors,
@@ -26,8 +15,6 @@ import {
     ReloadInstructions,
 }
 from 'react-native/Libraries/NewAppScreen';
-
-import LinearGradient from 'react-native-linear-gradient'
 
 import {
     createAppContainer,
@@ -38,37 +25,25 @@ from 'react-navigation';
 
 import Login from './src/screens/Login'
 import Register from './src/screens/Register'
-import Home from './src/screens/Home'
+import CompraIngresso from './src/screens/CompraIngresso'
+import Selection from './src/screens/Selection'
+import SaleSettings from './src/screens/sale/Settings'
+import SalesCompleted from './src/screens/sale/Completed'
 import 'react-native-gesture-handler'
-
-const styles = StyleSheet.create({
-    backgroundGradient: {
-        flex: 1,
-        resizeMode: 'cover',
-    },
-    topBar: {
-        height: 20,
-    },
-    container: {
-        flex: 1,
-        margin: 4,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    logo: {
-        alignSelf: 'center',
-        width: Dimensions.get('window').width / 3,
-    }
-});
-
-const logo = require('./assets/brand/logo.png');
 
 const AppNavigator = createSwitchNavigator({
     login: Login,
     register: Register,
-    home: Home,
+
+    userSelection: Selection,
+
+    compraingresso: CompraIngresso,
+
+    saleSettings: SaleSettings,
+    saleCompleted: SalesCompleted,
+
 }, {
-    initialRouteName: 'home',
+    initialRouteName: 'saleSettings',
 });
 
 export default createAppContainer(AppNavigator);

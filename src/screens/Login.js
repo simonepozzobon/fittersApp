@@ -86,7 +86,7 @@ class Login extends Component {
                             />
                     </View>
                     <View style={{ marginTop: 20 }}>
-                        <TouchableOpacity 
+                        <TouchableOpacity
                             style={[styles.btnWhite, compStyles.btnWhite]}
                             onPress={() => {this.goTo('home')}}>
                             <Text style={styles.btnWhiteText}>
@@ -100,14 +100,14 @@ class Login extends Component {
                         </Text>
                     </View>
                     <View style={{flexDirection: 'row', marginTop: 40}}>
-                        <TouchableOpacity 
+                        <TouchableOpacity
                             style={[styles.btnWhite]}
                             onPress={() => {this.goTo('register')}}>
                             <Text style={styles.btnWhiteText}>
                                 Sign In
                             </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity 
+                        <TouchableOpacity
                             style={[styles.btnWhite, { marginLeft: 20 }]}
                             onPress={() => {this.goTo('register')}}>
                             <Text style={styles.btnWhiteText}>

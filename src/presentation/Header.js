@@ -20,8 +20,8 @@ const logoSimple = require('../../assets/brand/logo_simple.png');
 
 
 class Header extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {}
     }
 
@@ -53,7 +53,9 @@ class Header extends Component {
                     resizeMode="contain"
                     source={logoSimple}
                 />
-                <TouchableOpacity>
+                <TouchableOpacity
+                  onPress={this.props.onPressTimes}
+                >
                     <Image style={{width: 18, height: 18}} source={times}/>
                 </TouchableOpacity>
             </View>

@@ -1,5 +1,11 @@
 import SimplexNoise from './Noise'
 
+const logos = [
+    require('../../assets/palestre/logo_1.jpg'),
+    require('../../assets/palestre/logo_2.jpg'),
+    require('../../assets/palestre/logo_3.jpg'),
+    require('../../assets/palestre/logo_4.jpg'),
+]
 
 
 
@@ -18,6 +24,7 @@ function singlePoint(i = 0) {
     return {
         id: i,
         title: 'Marker ' + i,
+        logo: '',
         latlng: {
             latitude: latE,
             longitude: lngE,
@@ -27,7 +34,7 @@ function singlePoint(i = 0) {
 }
 
 let Marker = []
-const QUANTITY = 2
+const QUANTITY = 50
 
 for (let i = 0; i < QUANTITY; i++) {
     Marker.push(singlePoint(i))

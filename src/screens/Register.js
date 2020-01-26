@@ -13,9 +13,14 @@ import {
     Image,
 }
 from 'react-native'
+
+import CheckBox from '@react-native-community/checkbox'
+
 import MainTemplate from '../presentation/MainTemplate'
 
 const logo = require('../../assets/brand/logo.png');
+const facebook = require('../../assets/facebook_social.png');
+const google = require('../../assets/google_social.png');
 
 class Register extends Component {
     constructor() {
@@ -57,8 +62,41 @@ class Register extends Component {
         // Component
         return (
             <MainTemplate>
-            <View style={{ flex: 1, justifyContent: 'center',  alignItems: 'center' }}>
-                <View style={{ marginTop: 12 }}>
+            <View style={{ height: 80, marginTop: 100}}>
+              <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+                <TouchableOpacity
+                    style={[styles.btnSocial]}
+                    onPress={() => {this.goTo('register')}}>
+                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                      <Image
+                        source={facebook}
+                        resizeMode="contain"
+                        style={{ width: 24, height: 24}}
+                      />
+                      <Text style={[styles.btnFacebook, {marginLeft: 8}]}>
+                          Sign Up
+                      </Text>
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={[styles.btnSocial, { marginLeft: 20 }]}
+                    onPress={() => {this.goTo('register')}}>
+                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                      <Image
+                        source={google}
+                        resizeMode="contain"
+                        style={{ width: 24, height: 24}}
+                      />
+                      <Text style={[styles.btnGoogle, {marginLeft: 8}]}>
+                          Sign Up
+                      </Text>
+                    </View>
+                </TouchableOpacity>
+              </View>
+            </View>
+
+            <View style={{ flex: 1, marginTop: 32 }}>
+                <View>
                     <TextInput
                           autoCorrect={false}
                           value={this.state.email}
@@ -127,7 +165,7 @@ class Register extends Component {
                     <TextInput
                           autoCorrect={false}
                           value={this.state.email}
-                          placeholder="email"
+                          placeholder="Email"
                           placeholderTextColor="white"
                           returnKeyType="next"
                           keyboardType="email-address"
@@ -140,7 +178,7 @@ class Register extends Component {
                     <TextInput
                           autoCorrect={false}
                           value={this.state.email}
-                          placeholder="password"
+                          placeholder="Password"
                           placeholderTextColor="white"
                           returnKeyType="next"
                           keyboardType="email-address"
@@ -149,8 +187,41 @@ class Register extends Component {
                           style={[compStyles.formInput, styles.input, compStyles.formInput]}
                         />
                 </View>
+                <View style={styles.checkboxes}>
+                    <View style={{flexDirection: 'row'}}>
+                      <CheckBox
+                        value={false}
+                        disabled={true}
+                        style={styles.checkbox}
+                      ></CheckBox>
+                      <View style={{flexDirection: 'row', alignItems: 'center', marginLeft: 8}}>
+                        <Text style={[styles.checkboxText]}>
+                          Accetta il
+                        </Text>
+                        <Text style={[styles.boldText]}>
+                          Regolamento
+                        </Text>
+                      </View>
+                    </View>
+                    <View style={{marginTop: 10, flexDirection: 'row', alignItems: 'center'}}>
+                      <CheckBox
+                        value={true}
+                        disabled={false}
+                        style={styles.checkbox}
+                      ></CheckBox>
+                      <View style={{flexDirection: 'row', alignItems: 'center', marginLeft: 8 }}>
+                        <Text style={[styles.checkboxText]}>
+                          Scarico di
+                        </Text>
+                        <Text style={[styles.boldText]}>
+                          Responsabilità
+                        </Text>
+                      </View>
+                    </View>
+
+                </View>
                 <View style={{ marginTop: 12 }}>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                         style={[styles.btnWhite, compStyles.btnWhite]}
                         onPress={() => {this.goTo('register')}}>
                         <Text style={styles.btnWhiteText}>
@@ -174,22 +245,70 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
     input: {
-        height: 44,
+        height: 38,
         borderRadius: 12,
         borderColor: 'white',
-        borderWidth: 2,
-        paddingHorizontal: 10,
-        width: '70%',
-        color: 'white'
+        borderWidth: 0.5,
+        paddingHorizontal: 14,
+        width: Dimensions.get('window').width * 0.7,
+        color: 'white',
+        fontSize: 12,
+        fontStyle: 'italic',
+        fontWeight: '400',
     },
     btnWhite: {
+        marginTop: 30,
         backgroundColor: 'white',
-        padding: 8,
+        paddingVertical: 10,
+        paddingHorizontal: 8,
         borderRadius: 12,
     },
     btnWhiteText: {
         textAlign: 'center',
         color: '#ff5900',
+        fontWeight: '800',
+    },
+    btnSocial: {
+        marginTop: 30,
+        backgroundColor: 'white',
+        paddingVertical: 8,
+        paddingHorizontal: 14,
+        borderRadius: 12,
+    },
+    btnFacebook: {
+        color: '#3C5388',
+        fontStyle: 'italic',
+        fontSize: 14,
+        fontWeight: '300',
+    },
+    btnGoogle: {
+        color: '#C45348',
+        fontStyle: 'italic',
+        fontSize: 14,
+        fontWeight: '300',
+    },
+    checkboxes: {
+        marginTop: 32,
+        width: Dimensions.get('window').width * 0.66,
+    },
+    checkbox: {
+        width: 14,
+        height: 14,
+        borderColor: 'white',
+        borderRadius: 4,
+        borderWidth: 0.5
+    },
+    checkboxText: {
+        color: 'white',
+        fontWeight: '300',
+        fontSize: 13,
+        fontStyle: 'italic',
+    },
+    boldText: {
+        color: 'white',
+        fontWeight: '400',
+        fontSize: 13,
+        marginLeft: 4,
     },
     logo: {
         width: Dimensions.get('window').width / 4,
