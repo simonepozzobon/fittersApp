@@ -24,7 +24,7 @@ function singlePoint(i = 0) {
     return {
         id: i,
         title: 'Marker ' + i,
-        logo: '',
+        logo: logos[0],
         latlng: {
             latitude: latE,
             longitude: lngE,

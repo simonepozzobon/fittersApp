@@ -49,6 +49,11 @@ const DummySubs = [{
         label: 'Abbonamento GetFit',
         value: 'AX 234',
     },
+    {
+        id: 3,
+        label: 'Abbonamento Pure Fitness',
+        value: 'AX 438',
+    },
 ]
 
 class CediIngresso extends Component {

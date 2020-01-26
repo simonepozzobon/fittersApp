@@ -25,8 +25,12 @@ from 'react-navigation';
 
 import Login from './src/screens/Login'
 import Register from './src/screens/Register'
-import CompraIngresso from './src/screens/CompraIngresso'
 import Selection from './src/screens/Selection'
+
+import CompraIngresso from './src/screens/buy/Map'
+import BuyCheckout from './src/screens/buy/Checkout'
+import BuyCompleted from './src/screens/buy/Completed'
+
 import SaleSettings from './src/screens/sale/Settings'
 import SalesCompleted from './src/screens/sale/Completed'
 import 'react-native-gesture-handler'
@@ -38,12 +42,14 @@ const AppNavigator = createSwitchNavigator({
     userSelection: Selection,
 
     compraingresso: CompraIngresso,
+    buyCheckout: BuyCheckout,
+    buyCompleted: BuyCompleted,
 
     saleSettings: SaleSettings,
     saleCompleted: SalesCompleted,
 
 }, {
-    initialRouteName: 'saleCompleted',
+    initialRouteName: 'buyCompleted',
 });
 
 export default createAppContainer(AppNavigator);

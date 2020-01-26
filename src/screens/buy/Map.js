@@ -15,12 +15,14 @@ import {
 }
 from 'react-native'
 
-import MainTemplate from '../presentation/MainTemplate'
-import Header from '../presentation/Header'
-import MapTopBar from '../components/MapTopBar'
-const logo = require('../../assets/brand/logo.png');
-const Pin = require('../../assets/Pin.png');
-import MarkerData from '../dummies/Marker'
+import MainTemplate from '../../presentation/MainTemplate'
+import Header from '../../presentation/Header'
+import MapTopBar from '../../components/MapTopBar'
+import UiButton from '../../components/UiButton'
+const logo = require('../../../assets/brand/logo.png');
+const Pin = require('../../../assets/Pin.png');
+const rating = require('../../../assets/rating.png');
+import MarkerData from '../../dummies/Marker'
 
 import MapView from 'react-native-maps'
 import {
@@ -56,6 +58,7 @@ class Home extends Component {
             item: {
                 title: null,
                 description: null,
+                logo: null,
             }
         }
         // this.state.bounceValue = new Animated.Value(100)
@@ -73,6 +76,10 @@ class Home extends Component {
 
         this.initialPosition = Geolocation.getCurrentPosition(position => this.positionSet(position));
         this.watchID = Geolocation.watchPosition(position => this.positionSet(position));
+
+        setTimeout(() => {
+            this._toggleSubView(MarkerData[0])
+        }, 1000)
     }
 
     // Methods
@@ -118,7 +125,8 @@ class Home extends Component {
             this.setState({
                 item: {
                     title: marker.title,
-                    description: marker.description
+                    description: marker.description,
+                    logo: marker.logo,
                 }
             })
         }
@@ -200,33 +208,46 @@ class Home extends Component {
                           ]}
                           >
                             <View style={styles.panelTop}>
-                                <View>
-                                    <Text>Immagine</Text>
+                                <View style={styles.panelLeft}>
+                                    <Image
+                                      source={this.state.item.logo}
+                                      resizeMode="contain"
+                                      style={styles.panelImage}
+                                    />
                                 </View>
-                                <View>
-                                    <View style={{flex: 1, flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between'}}>
-                                        <View style={{}}>
+                                <View style={styles.panelRight}>
+                                    <View style={styles.panelNamePrice}>
+                                        <View>
                                             <Text style={styles.panelLabel}>Palestra</Text>
                                             <Text style={styles.panelData}>{this.state.item.title}</Text>
                                         </View>
                                         <View style={{flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'flex-end'}}>
-                                            <Text style={styles.panelRate}>5</Text>
-                                            <Text style={styles.panelRateDecimal}>,00</Text>
+                                            <Text style={styles.panelPrice}>5</Text>
+                                            <Text style={styles.panelPriceDecimal}>,00</Text>
                                         </View>
-                                    </View>
 
+                                    </View>
                                     <View style={[{
                                         marginTop: 20
                                     }]}>
                                         <Text style={styles.panelLabel}>Indirizzo palestra</Text>
                                         <Text style={styles.panelData}>{this.state.item.description}</Text>
                                     </View>
+                                    <View style={styles.panelInfo}>
+                                      <Image
+                                        source={rating}
+                                        resizeMode="contain"
+                                        style={styles.panelRating}
+                                      />
+                                    </View>
                                 </View>
                             </View>
                             <View style={styles.panelConfirmContainer}>
-                                <TouchableOpacity style={styles.panelConfirm}>
-                                    <Text style={styles.panelConfirmTxt}>Conferma</Text>
-                                </TouchableOpacity>
+                                <UiButton
+                                    title="Conferma"
+                                    fullWidth="0.8"
+                                    onPress={() => {this.goTo('buyCheckout')}}
+                                />
                             </View>
                       </Animated.View>
                 </View>
@@ -247,54 +268,75 @@ const styles = StyleSheet.create({
         height: 36,
     },
     subView: {
+        zIndex: 2,
         position: 'absolute',
+        width: width,
+        backgroundColor: "#f7f7f7",
+        flexDirection: 'column',
+        alignItems: 'center',
         bottom: 0,
         left: 0,
         right: 0,
-        backgroundColor: "#f7f7f7",
-        height: Dimensions.get('window').height * 0.3,
-        flex: 1,
-        paddingTop: 24,
-        alignItems: 'center',
+        paddingHorizontal: 36,
+        paddingTop: 12,
+        borderTopLeftRadius: 12,
+        borderTopRightRadius: 12,
+
+        // height: Dimensions.get('window').height * 0.3,
+        // flex: 1,
+        // paddingTop: 24,
+        // alignItems: 'center',
+    },
+    panelLeft: {
+        width: width * 0.3,
+    },
+    panelRight: {
+        flexGrow: 1,
+        marginLeft: 24,
+    },
+    panelImage: {
+        width: width * 0.3,
+        height: width * 0.3,
+        borderRadius: 12,
     },
     panelTop: {
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
-    panelRate: {
+    panelNamePrice: {
+        flexDirection: 'row',
+        alignItems: 'flex-end',
+        justifyContent: 'space-between',
+        flexGrow: 1
+    },
+    panelInfo: {
+        marginTop: 12
+    },
+    panelPrice: {
         fontSize: 28,
         fontWeight: '900',
         color: '#FC2D1C',
     },
-    panelRateDecimal: {
+    panelPriceDecimal: {
         fontSize: 18,
         fontWeight: '900',
         color: '#FC2D1C',
     },
     panelLabel: {
-        fontSize: 10
+        fontSize: 9,
+        fontWeight: '300',
     },
     panelData: {
-        fontSize: 18
+        fontSize: 14
+    },
+    panelRating: {
+        height: 18,
+        width: 95
     },
     panelConfirmContainer: {
-        marginTop: 40,
-        flex: 1,
-        width: '100%',
-        alignItems: 'center',
+        marginBottom: 60,
     },
-    panelConfirm: {
-        backgroundColor: 'white',
-        width: '80%',
-        padding: 8,
-        borderRadius: 12,
-    },
-    panelConfirmTxt: {
-        textAlign: 'center',
-        backgroundColor: 'white',
-        color: '#ff5900',
-    }
 })
 
 export default Home;

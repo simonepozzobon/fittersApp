@@ -41,23 +41,6 @@ const {
 
 let isHidden = true;
 
-const DummySubs = [{
-        id: 1,
-        label: 'Abbonamento Virgin',
-        value: 'AX 567',
-    },
-    {
-        id: 2,
-        label: 'Abbonamento GetFit',
-        value: 'AX 234',
-    },
-    {
-        id: 3,
-        label: 'Abbonamento Pure Fitness',
-        value: 'AX 438',
-    },
-]
-
 class CediIngresso extends Component {
     constructor() {
         super()
@@ -145,8 +128,8 @@ class CediIngresso extends Component {
                 <UiContainer>
                   <View style={styles.container}>
                     <UiBreadcrumb
-                      title="Cedi Ingresso"
-                      onPress={() => {this.goTo('saleSettings')}}
+                      title="Checkout"
+                      onPress={() => {this.goTo('buyCheckout')}}
                     />
                   </View>
                   <View style={styles.content}>
@@ -160,17 +143,22 @@ class CediIngresso extends Component {
                         end={{ x: 0.5, y: 1.0 }}
                         style={styles.panelGradient}>
                         <View>
-                          <Text style={styles.contentText}>Hai messo a disposizione</Text>
-                          <Text style={styles.contentText}>il tuo abbonamento</Text>
+                          <Text style={styles.contentText}>Hai appena acquistato</Text>
+                          <Text style={styles.contentText}>un ingresso.</Text>
                         </View>
                         <View style={{marginTop: 24}}>
-                          <Text style={styles.contentText}>Riceverai una notifica</Text>
-                          <Text style={styles.contentText}>appena verrà usato</Text>
+                          <Text style={styles.contentText}>Puoi trovarlo nella sezione</Text>
+                          <Text style={styles.contentText}>"ingressi" del menu.</Text>
                         </View>
                       </LinearGradient>
                     </View>
                   </View>
                   <View style={{marginBottom: 60}}>
+                    <UiButton
+                      title="Vai ad Ingressi"
+                      fullWidth="0.7"
+                      onPress={() => {this.goTo('userSelection')}}
+                    />
                     <UiButton
                       title="Esci"
                       fullWidth="0.7"
@@ -192,7 +180,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        marginBottom: 100
+        marginBottom: 60
     },
     mainText: {
         color: '#FC2D1C',
