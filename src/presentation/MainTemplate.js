@@ -35,7 +35,7 @@ class MainTemplate extends Component {
         // Component
         return (
             <LinearGradient
-                colors={['#ff5900', '#ff2a00']}
+                colors={['#ff2a00', '#ff5900']}
                 start={{ x: 0.0, y: 0.25 }}
                 end={{ x: 0.5, y: 1.0 }}
                 style={styles.backgroundGradient}>

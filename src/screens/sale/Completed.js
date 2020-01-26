@@ -21,9 +21,11 @@ import Header from '../../presentation/Header'
 import MapTopBar from '../../components/MapTopBar'
 import MarkerData from '../../dummies/Marker'
 import UiButton from '../../components/UiButton'
+import UiBreadcrumb from '../../components/UiBreadcrumb'
 import UiContainer from '../../components/UiContainer'
 import UiPageTitle from '../../components/UiPageTitle'
 import CalendarPicker from 'react-native-calendar-picker';
+import LinearGradient from 'react-native-linear-gradient'
 
 import moment from 'moment'
 
@@ -137,9 +139,39 @@ class CediIngresso extends Component {
                 />
                 <UiContainer>
                   <View style={styles.container}>
-                    <UiPageTitle title="Cedi Ingresso" />
+                    <UiBreadcrumb
+                      title="Cedi Ingresso"
+                      onPress={() => {this.goTo('saleSettings')}}
+                    />
                   </View>
-                  
+                  <View style={styles.content}>
+                    <View>
+                      <Text style={styles.mainText}>GRAZIE !</Text>
+                    </View>
+                    <View style={{marginTop: 24}}>
+                      <LinearGradient
+                        colors={['#ff2a00', '#ff5900']}
+                        start={{ x: 0.0, y: 0.25 }}
+                        end={{ x: 0.5, y: 1.0 }}
+                        style={styles.panelGradient}>
+                        <View>
+                          <Text style={styles.contentText}>Hai messo a disposizione</Text>
+                          <Text style={styles.contentText}>il tuo abbonamento</Text>
+                        </View>
+                        <View style={{marginTop: 24}}>
+                          <Text style={styles.contentText}>Riceverai una notifica</Text>
+                          <Text style={styles.contentText}>appena verrà usato</Text>
+                        </View>
+                      </LinearGradient>
+                    </View>
+                  </View>
+                  <View style={{marginBottom: 60}}>
+                    <UiButton
+                      title="Esci"
+                      fullWidth="0.7"
+                      onPress={() => {this.goTo('userSelection')}}
+                    />
+                  </View>
                 </UiContainer>
             </MainTemplate>
         );
@@ -151,58 +183,31 @@ const styles = StyleSheet.create({
     container: {
         width: width * 0.8,
     },
-    label: {
-        textAlign: 'center',
-    },
-    value: {
-        fontWeight: '700',
-        textAlign: 'center',
-    },
-    selectedDayStyle: {
-        backgroundColor: '#FC2D1C',
-    },
-    dayLabelsWrapper: {
-        borderBottomWidth: 0,
-        borderTopWidth: 0,
-    },
-    dayOfWeekStyles: {
-        fontSize: 10,
-    },
-    textStyle: {
-        fontSize: 14
-    },
-    selector: {
-        width: width * 0.7,
-        borderWidth: 0.5,
-        borderColor: '#252525',
-        paddingVertical: 10,
-        paddingHorizontal: 16,
-        borderRadius: 12,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-    },
-    selectorText: {
-        color: '#FC2D1C',
-        fontSize: 12,
-        fontWeight: '700',
-    },
-    subscriptionSelect: {
-        width: width,
-    },
-    subscriptionSelectBtn: {
-        marginBottom: 32
-    },
-    subView: {
-        zIndex: 2,
-        position: 'absolute',
-        width: width,
-        backgroundColor: '#f7f7f7',
-        flexDirection: 'column',
+    content: {
+        flex: 1,
         alignItems: 'center',
-        bottom: 0,
-        left: 0,
-        right: 0,
+        justifyContent: 'center',
+        marginBottom: 100
     },
+    mainText: {
+        color: '#FC2D1C',
+        fontSize: 44,
+        fontWeight: '800',
+        fontStyle: 'italic',
+    },
+    panelGradient: {
+        width: width * 0.8,
+        borderRadius: 14,
+        paddingVertical: 48,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    contentText: {
+        textAlign: 'center',
+        color: 'white',
+        fontSize: 18,
+        fontWeight: '700'
+    }
 })
 
 export default CediIngresso;
