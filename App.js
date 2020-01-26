@@ -27,7 +27,7 @@ import Login from './src/screens/Login'
 import Register from './src/screens/Register'
 import Selection from './src/screens/Selection'
 
-import CompraIngresso from './src/screens/buy/Map'
+import BuyMap from './src/screens/buy/Map'
 import BuyCheckout from './src/screens/buy/Checkout'
 import BuyCompleted from './src/screens/buy/Completed'
 
@@ -41,7 +41,7 @@ const AppNavigator = createSwitchNavigator({
 
     userSelection: Selection,
 
-    compraingresso: CompraIngresso,
+    buyMap: BuyMap,
     buyCheckout: BuyCheckout,
     buyCompleted: BuyCompleted,
 
@@ -49,7 +49,7 @@ const AppNavigator = createSwitchNavigator({
     saleCompleted: SalesCompleted,
 
 }, {
-    initialRouteName: 'buyCompleted',
+    initialRouteName: 'buyMap',
 });
 
 export default createAppContainer(AppNavigator);

@@ -30,6 +30,11 @@ import {
     Callout,
 }
 from 'react-native-maps'
+import GestureRecognizer, {
+    swipeDirections
+}
+from 'react-native-swipe-gestures'
+
 import Geolocation from '@react-native-community/geolocation';
 const {
     width,
@@ -231,7 +236,7 @@ class Home extends Component {
                                         marginTop: 20
                                     }]}>
                                         <Text style={styles.panelLabel}>Indirizzo palestra</Text>
-                                        <Text style={styles.panelData}>{this.state.item.description}</Text>
+                                        <Text style={styles.panelData}>{this.state.item.address}</Text>
                                     </View>
                                     <View style={styles.panelInfo}>
                                       <Image

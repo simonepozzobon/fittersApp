@@ -144,7 +144,7 @@ class CediIngresso extends Component {
                   <View style={styles.container}>
                     <UiBreadcrumb
                       title="Compra Ingresso"
-                      onPress={() => {this.goTo('compraingresso')}}
+                      onPress={() => {this.goTo('buyMap')}}
                     />
                   </View>
                   <View style={{width: width * 0.8, marginTop: 24}}>

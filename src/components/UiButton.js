@@ -69,6 +69,14 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 8,
         borderRadius: 12,
+        shadowColor: 'rgba(0, 0, 0, 0.1)',
+        shadowOpacity: 0.6,
+        elevation: 4,
+        shadowRadius: 8,
+        shadowOffset: {
+            width: 1,
+            height: 6
+        },
     },
     btnWhiteText: {
         textAlign: 'center',

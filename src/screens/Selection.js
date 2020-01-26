@@ -74,7 +74,7 @@ class Selection extends Component {
                         <UiButton
                             title="Compra Ingresso"
                             fullWidth="0.7"
-                            onPress={() => {this.goTo('compraingresso')}}
+                            onPress={() => {this.goTo('buyMap')}}
                           />
                     </View>
                   </View>

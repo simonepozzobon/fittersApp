@@ -29,7 +29,8 @@ function singlePoint(i = 0) {
             latitude: latE,
             longitude: lngE,
         },
-        description: 'Palestra',
+        address: 'Via Santa Margherita, 10 Milano',
+        description: 'La Sala Pesi di 1200 mq. è un\'area interamente dedicata al movimento per la tonificazione e per l\'allenamento cardiovascolare. La sala pesi offre una vasta gamma di attrezzi per soddisfare tutte le esigenze ed i desideri delle persone. Chi desidera sviluppare e potenziare la muscola- tura troverà entusiasmanti le attrezzature della linea "Pure" di Techno- gym; chi ama mantenersi in forma senza lunghi ed intensi allenamenti può utilizzare oltre 60 attrezzi per la tonificazione di ultima generazione. Le oltre 45 macchine per il cardiofitness disponibili in sala pesi rendono immediato l\'incremento della resistenza agli sforzi prolungati, allenando il cuore e riducendo gli eventuali grassi in eccesso.',
     }
 }
 
