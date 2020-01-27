@@ -4,13 +4,49 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>AppIcon20x20@2x.png</key>
+		<data>
+		ndplJPw+qwRZX6tCpE7nzNLmnzw=
+		</data>
+		<key>AppIcon20x20@3x.png</key>
+		<data>
+		eag648OsZ+dE1zHc/Rqh3UTkxpA=
+		</data>
+		<key>AppIcon29x29@2x.png</key>
+		<data>
+		7xORbyXmIb9RtJQJ4z2RuODRPEg=
+		</data>
+		<key>AppIcon29x29@3x.png</key>
+		<data>
+		Yb0WnVRsAvbFPPvd42oDxjkZgBU=
+		</data>
+		<key>AppIcon40x40@2x.png</key>
+		<data>
+		RYN6mn09kttcX4vP6crQK2W228c=
+		</data>
+		<key>AppIcon40x40@3x.png</key>
+		<data>
+		r2RO7IlNAuwwzxvSo6B9A/3RYDk=
+		</data>
+		<key>AppIcon60x60@2x.png</key>
+		<data>
+		r2RO7IlNAuwwzxvSo6B9A/3RYDk=
+		</data>
+		<key>AppIcon60x60@3x.png</key>
+		<data>
+		CrwyROKHO25nAJeq0mYJxWkrMd8=
+		</data>
+		<key>Assets.car</key>
+		<data>
+		di2vVN8yuYCBVrlMjnpxh/MOxf4=
+		</data>
 		<key>Base.lproj/LaunchScreen.nib/objects-13.0+.nib</key>
 		<data>
-		iGKwWVCFpNcSKCc8fyzb6mm1br4=
+		qM/Vh1Sj4pgMCQ2sstv7qB9ONYc=
 		</data>
 		<key>Base.lproj/LaunchScreen.nib/runtime.nib</key>
 		<data>
-		QhSl3jgcRP6tx+cx/s2RsNyftHc=
+		FvFTb36kwy9U98grTBCycGbIx8M=
 		</data>
 		<key>Frameworks/XCTAutomationSupport.framework/Info.plist</key>
 		<data>
@@ -63,7 +99,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		bYwFe6+mNw9w/jLSKy9eqwpIYx8=
+		WO8jjAn+Dx8uyWe72GJfrPyqmyA=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -87,31 +123,130 @@
 		</data>
 		<key>PlugIns/fittersAppTests.xctest/fittersAppTests</key>
 		<data>
-		EpyKqokHYA2cgn8NPVpY2X/QYTM=
+		uLfKL65tYqKbygBCFwUXYarsTNg=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>AppIcon20x20@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ndplJPw+qwRZX6tCpE7nzNLmnzw=
+			</data>
+			<key>hash2</key>
+			<data>
+			cEkFQKR3YnQacJ2C7hj0VM0D+SGGAVugxnY1oxoF6N4=
+			</data>
+		</dict>
+		<key>AppIcon20x20@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			eag648OsZ+dE1zHc/Rqh3UTkxpA=
+			</data>
+			<key>hash2</key>
+			<data>
+			ERVNLKfdT70q8NoQWm3muLxrK07YjrdKSVoOsv0iiZg=
+			</data>
+		</dict>
+		<key>AppIcon29x29@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			7xORbyXmIb9RtJQJ4z2RuODRPEg=
+			</data>
+			<key>hash2</key>
+			<data>
+			UH+ud0LFrOK92EfdNZt8W8iVM61y6a1wVddnBDp6jBU=
+			</data>
+		</dict>
+		<key>AppIcon29x29@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Yb0WnVRsAvbFPPvd42oDxjkZgBU=
+			</data>
+			<key>hash2</key>
+			<data>
+			JvFpOedrV01QSjESQWu/wUIy47B/y2DZsrswHv3OvLw=
+			</data>
+		</dict>
+		<key>AppIcon40x40@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			RYN6mn09kttcX4vP6crQK2W228c=
+			</data>
+			<key>hash2</key>
+			<data>
+			It6fmSTMj0EOMVGLCXpCiRXziCVvfrCaSWWESZd7cU0=
+			</data>
+		</dict>
+		<key>AppIcon40x40@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			r2RO7IlNAuwwzxvSo6B9A/3RYDk=
+			</data>
+			<key>hash2</key>
+			<data>
+			++DEpee/+0KZcac29B4hObzv0hFpS3wRYOmp4n9vk3c=
+			</data>
+		</dict>
+		<key>AppIcon60x60@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			r2RO7IlNAuwwzxvSo6B9A/3RYDk=
+			</data>
+			<key>hash2</key>
+			<data>
+			++DEpee/+0KZcac29B4hObzv0hFpS3wRYOmp4n9vk3c=
+			</data>
+		</dict>
+		<key>AppIcon60x60@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			CrwyROKHO25nAJeq0mYJxWkrMd8=
+			</data>
+			<key>hash2</key>
+			<data>
+			fyZjTyHYMU4sDaMKkxVQXSKOLA5EzIlG7e4QlGHwSt0=
+			</data>
+		</dict>
+		<key>Assets.car</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			di2vVN8yuYCBVrlMjnpxh/MOxf4=
+			</data>
+			<key>hash2</key>
+			<data>
+			tUKpCroVHiirxadrA+J1zvDIrWPM0oGTAs5fDr4+N9E=
+			</data>
+		</dict>
 		<key>Base.lproj/LaunchScreen.nib/objects-13.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			iGKwWVCFpNcSKCc8fyzb6mm1br4=
+			qM/Vh1Sj4pgMCQ2sstv7qB9ONYc=
 			</data>
 			<key>hash2</key>
 			<data>
-			UborY3+9PvRhfZhHpNWC09H3MSHXe8HaPzALvD/MdRo=
+			lGKuhY8JSOxMFglxdB3Z4mq4U/eItQPdIVXIGN6h7fQ=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			QhSl3jgcRP6tx+cx/s2RsNyftHc=
+			FvFTb36kwy9U98grTBCycGbIx8M=
 			</data>
 			<key>hash2</key>
 			<data>
-			Kli/zoC3EEfTdthDrctToKSQMg6k3lx5P8w9wlUQ/6A=
+			hUdswBxx16BE4BixIC2Xq7ZKg9cCk/aT2jlUXMFNxUg=
 			</data>
 		</dict>
 		<key>Frameworks/XCTAutomationSupport.framework/Info.plist</key>
@@ -285,11 +420,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			EpyKqokHYA2cgn8NPVpY2X/QYTM=
+			uLfKL65tYqKbygBCFwUXYarsTNg=
 			</data>
 			<key>hash2</key>
 			<data>
-			bWvrzQD0gipqo2AoGpC8UJ0KjvJMoKD8ZVQdDDqduS0=
+			bR8pM4QCQ1lvAxISdVbAS8i4J9DN3gsBe4KJEYh2Ork=
 			</data>
 		</dict>
 	</dict>
