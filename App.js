@@ -49,7 +49,7 @@ const AppNavigator = createSwitchNavigator({
     saleCompleted: SalesCompleted,
 
 }, {
-    initialRouteName: 'buyMap',
+    initialRouteName: 'login',
 });
 
 export default createAppContainer(AppNavigator);

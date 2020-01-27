@@ -15,8 +15,17 @@ import {
 from 'react-native'
 
 import MainTemplate from '../presentation/MainTemplate'
+import UiButton from '../components/UiButton'
+import SplashScreen from 'react-native-splash-screen'
 
 const logo = require('../../assets/brand/logo.png');
+const facebook = require('../../assets/facebook_social.png');
+const google = require('../../assets/google_social.png');
+
+const {
+    width,
+    height
+} = Dimensions.get('window')
 
 class Login extends Component {
     constructor() {
@@ -31,6 +40,8 @@ class Login extends Component {
     // Component State Management
 
     componentDidMount() {
+        SplashScreen.hide()
+
         this.setState({
             screenWidth: Dimensions.get('window').width
         })
@@ -44,15 +55,6 @@ class Login extends Component {
     // Render
     render() {
         // Dynamic styles
-        const lg = Math.floor(this.state.screenWidth / 1.5)
-        const compStyles = StyleSheet.create({
-            formInput: {
-                width: lg,
-            },
-            btnWhite: {
-                width: lg,
-            }
-        })
 
 
         // Component
@@ -69,7 +71,7 @@ class Login extends Component {
                               keyboardType="email-address"
                               onChangeText={this.emailSet}
                               onSubmitEditing={this.focusToPassword}
-                              style={[compStyles.formInput, styles.input, compStyles.formInput]}
+                              style={[styles.input, compStyles.formInput]}
                             />
                     </View>
                     <View style={{ marginTop: 20 }}>
@@ -82,38 +84,52 @@ class Login extends Component {
                               keyboardType="email-address"
                               onChangeText={this.emailSet}
                               onSubmitEditing={this.focusToPassword}
-                              style={[compStyles.formInput, styles.input, compStyles.formInput]}
+                              style={[styles.input, compStyles.formInput]}
                             />
                     </View>
                     <View style={{ marginTop: 20 }}>
-                        <TouchableOpacity
-                            style={[styles.btnWhite, compStyles.btnWhite]}
-                            onPress={() => {this.goTo('home')}}>
-                            <Text style={styles.btnWhiteText}>
-                                Login
-                            </Text>
-                        </TouchableOpacity>
+                        <UiButton
+                          title="Login"
+                          onPress={() => {this.goTo('userSelection')}}
+                          fullWidth="0.7"
+                        />
                     </View>
                     <View style={{marginTop: 40}}>
                         <Text style={{ color: 'white' }}>
                             Forgot Password?
                         </Text>
                     </View>
-                    <View style={{flexDirection: 'row', marginTop: 40}}>
+                    <View style={{ height: 80, marginTop: 100}}>
+                      <View style={{flexDirection: 'row', justifyContent: 'center'}}>
                         <TouchableOpacity
-                            style={[styles.btnWhite]}
+                            style={[styles.btnSocial]}
                             onPress={() => {this.goTo('register')}}>
-                            <Text style={styles.btnWhiteText}>
-                                Sign In
-                            </Text>
+                            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                              <Image
+                                source={facebook}
+                                resizeMode="contain"
+                                style={{ width: 24, height: 24}}
+                              />
+                              <Text style={[styles.btnFacebook, {marginLeft: 8}]}>
+                                  Sign Up
+                              </Text>
+                            </View>
                         </TouchableOpacity>
                         <TouchableOpacity
-                            style={[styles.btnWhite, { marginLeft: 20 }]}
+                            style={[styles.btnSocial, { marginLeft: 20 }]}
                             onPress={() => {this.goTo('register')}}>
-                            <Text style={styles.btnWhiteText}>
-                                Sign In
-                            </Text>
+                            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                              <Image
+                                source={google}
+                                resizeMode="contain"
+                                style={{ width: 24, height: 24}}
+                              />
+                              <Text style={[styles.btnGoogle, {marginLeft: 8}]}>
+                                  Sign Up
+                              </Text>
+                            </View>
                         </TouchableOpacity>
+                      </View>
                     </View>
                     <View style={{marginTop: 40, flexDirection: 'row'}}>
                         <Text style={{ color: 'white' }}>
@@ -148,8 +164,8 @@ const styles = StyleSheet.create({
         borderColor: 'white',
         borderWidth: 2,
         paddingHorizontal: 10,
-        width: '70%',
-        color: 'white'
+        color: 'white',
+        width: width * 0.7,
     },
     btnWhite: {
         backgroundColor: 'white',
@@ -159,6 +175,25 @@ const styles = StyleSheet.create({
     btnWhiteText: {
         textAlign: 'center',
         color: '#ff5900',
+    },
+    btnSocial: {
+        marginTop: 30,
+        backgroundColor: 'white',
+        paddingVertical: 8,
+        paddingHorizontal: 14,
+        borderRadius: 12,
+    },
+    btnFacebook: {
+        color: '#3C5388',
+        fontStyle: 'italic',
+        fontSize: 14,
+        fontWeight: '300',
+    },
+    btnGoogle: {
+        color: '#C45348',
+        fontStyle: 'italic',
+        fontSize: 14,
+        fontWeight: '300',
     },
     logo: {
         width: Dimensions.get('window').width / 4,

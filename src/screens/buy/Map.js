@@ -18,10 +18,11 @@ from 'react-native'
 import MainTemplate from '../../presentation/MainTemplate'
 import Header from '../../presentation/Header'
 import MapTopBar from '../../components/MapTopBar'
-import UiButton from '../../components/UiButton'
+import MapPanel from './components/MapPanel'
+
 const logo = require('../../../assets/brand/logo.png');
 const Pin = require('../../../assets/Pin.png');
-const rating = require('../../../assets/rating.png');
+
 import MarkerData from '../../dummies/Marker'
 
 import MapView from 'react-native-maps'
@@ -30,12 +31,14 @@ import {
     Callout,
 }
 from 'react-native-maps'
+
 import GestureRecognizer, {
     swipeDirections
 }
 from 'react-native-swipe-gestures'
 
 import Geolocation from '@react-native-community/geolocation';
+
 const {
     width,
     height
@@ -47,44 +50,49 @@ const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 let isHidden = true;
 
 class Home extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
+        Geolocation.getCurrentPosition(
+            position => this.positionSet(position),
+            err => {
+                console.error('errore Geolocation', 'https://github.com/react-native-community/react-native-geolocation#getcurrentposition')
+            }
+        )
+        // this.watchID = Geolocation.watchPosition(
+        //     position => this.positionSet(position),
+        //     err => {}
+        // )
+
         this.state = {
-            screenWidth: 0,
-            email: '',
-            password: '',
             region: {
                 latitude: 45.465317,
                 longitude: 9.189441,
                 latitudeDelta: LATITUDE_DELTA,
                 longitudeDelta: LONGITUDE_DELTA,
             },
-            bounceValue: new Animated.Value(Dimensions.get('window').height * 0.3),
+            cacheRegion: {},
             item: {
                 title: null,
                 description: null,
                 logo: null,
             }
         }
-        // this.state.bounceValue = new Animated.Value(100)
-
         this.current = null
+    }
+
+    init() {
 
     }
 
     // Component State Management
-
     componentDidMount() {
-        this.setState({
-            screenWidth: Dimensions.get('window').width,
-        })
+        // setTimeout(() => {
+        //     this._toggleSubView(MarkerData[0])
+        // }, 1000)
+    }
 
-        this.initialPosition = Geolocation.getCurrentPosition(position => this.positionSet(position));
-        this.watchID = Geolocation.watchPosition(position => this.positionSet(position));
-
-        setTimeout(() => {
-            this._toggleSubView(MarkerData[0])
-        }, 1000)
+    componentWillUnmount() {
+        Geolocation.clearWatch(this.watchID)
     }
 
     // Methods
@@ -115,58 +123,33 @@ class Home extends Component {
         });
     }
 
-    onPressPin(tile) {
-        console.log(tile);
-    }
+    _selectMarker(marker) {
+        const map = this.mapView
 
-    _toggleSubView(marker) {
-        let toValue = Dimensions.get('window').height * 0.3;
-
-        if (isHidden) {
-            toValue = 0;
-        }
-
-        if (this.current == null) {
-            this.setState({
-                item: {
-                    title: marker.title,
-                    description: marker.description,
-                    logo: marker.logo,
-                }
-            })
-        }
-
-        Animated.spring(
-            this.state.bounceValue, {
-                toValue: toValue,
-                duration: 600,
-                velocity: 3,
-                tension: 2,
-                friction: 6,
+        let camera = map.getCamera().then(camera => {
+            console.log(camera);
+        })
+        let region = this.state.region
+        if (marker.latlng.latitude && marker.latlng.longitude) {
+            region = {
+                latitude: marker.latlng.latitude,
+                longitude: marker.latlng.longitude,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421,
             }
-        ).start();
 
-        isHidden = !isHidden;
+            // this.mapView.animateToRegion(region, 1000)
+        }
+
+        // this.setState({
+        //     item: marker,
+        //     region: region,
+        // })
     }
 
     // Render
     render() {
         // Dynamic styles
-        const lg = Math.floor(this.state.screenWidth / 1.5)
-        const compStyles = StyleSheet.create({
-            formInput: {
-                width: lg,
-            },
-            btnWhite: {
-                width: lg,
-            }
-        })
-
-        let animationPanel = {
-            transform: [{
-                translateY: this.state.bounceValue
-            }]
-        }
 
         // Component
         return (
@@ -177,9 +160,13 @@ class Home extends Component {
                 <View style={{flex: 1}}>
                     <MapTopBar/>
                     <MapView
+                        ref={mapView => this.mapView = mapView}
                         style={styles.map}
                         region={this.state.region}
                         onRegionChange={this.onRegionChange.bind(this)}
+                        showsUserLocation={true}
+                        showsMyLocationButton={true}
+                        showsScale={true}
                     >
                         {
                             MarkerData.map(marker => (
@@ -190,7 +177,7 @@ class Home extends Component {
                                     description={marker.description}
                                 >
                                     <TouchableOpacity
-                                      onPress={() => {this._toggleSubView(marker)}}
+                                      onPress={() => {this._selectMarker(marker)}}
                                       >
                                         <Image
                                             style={styles.pin}
@@ -206,55 +193,10 @@ class Home extends Component {
                         }
 
                     </MapView>
-                      <Animated.View
-                          style={[
-                              styles.subView,
-                              animationPanel,
-                          ]}
-                          >
-                            <View style={styles.panelTop}>
-                                <View style={styles.panelLeft}>
-                                    <Image
-                                      source={this.state.item.logo}
-                                      resizeMode="contain"
-                                      style={styles.panelImage}
-                                    />
-                                </View>
-                                <View style={styles.panelRight}>
-                                    <View style={styles.panelNamePrice}>
-                                        <View>
-                                            <Text style={styles.panelLabel}>Palestra</Text>
-                                            <Text style={styles.panelData}>{this.state.item.title}</Text>
-                                        </View>
-                                        <View style={{flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'flex-end'}}>
-                                            <Text style={styles.panelPrice}>5</Text>
-                                            <Text style={styles.panelPriceDecimal}>,00</Text>
-                                        </View>
+                    {/* <MapPanel
+                        item={this.state.item}
+                    /> */}
 
-                                    </View>
-                                    <View style={[{
-                                        marginTop: 20
-                                    }]}>
-                                        <Text style={styles.panelLabel}>Indirizzo palestra</Text>
-                                        <Text style={styles.panelData}>{this.state.item.address}</Text>
-                                    </View>
-                                    <View style={styles.panelInfo}>
-                                      <Image
-                                        source={rating}
-                                        resizeMode="contain"
-                                        style={styles.panelRating}
-                                      />
-                                    </View>
-                                </View>
-                            </View>
-                            <View style={styles.panelConfirmContainer}>
-                                <UiButton
-                                    title="Conferma"
-                                    fullWidth="0.8"
-                                    onPress={() => {this.goTo('buyCheckout')}}
-                                />
-                            </View>
-                      </Animated.View>
                 </View>
             </MainTemplate>
         );
@@ -264,83 +206,13 @@ class Home extends Component {
 const styles = StyleSheet.create({
     // Forms
     map: {
-        width: Dimensions.get('window').width,
-        height: 100,
+        width: width,
+        height: height,
         flex: 1,
     },
     pin: {
         width: 36,
         height: 36,
-    },
-    subView: {
-        zIndex: 2,
-        position: 'absolute',
-        width: width,
-        backgroundColor: "#f7f7f7",
-        flexDirection: 'column',
-        alignItems: 'center',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        paddingHorizontal: 36,
-        paddingTop: 12,
-        borderTopLeftRadius: 12,
-        borderTopRightRadius: 12,
-
-        // height: Dimensions.get('window').height * 0.3,
-        // flex: 1,
-        // paddingTop: 24,
-        // alignItems: 'center',
-    },
-    panelLeft: {
-        width: width * 0.3,
-    },
-    panelRight: {
-        flexGrow: 1,
-        marginLeft: 24,
-    },
-    panelImage: {
-        width: width * 0.3,
-        height: width * 0.3,
-        borderRadius: 12,
-    },
-    panelTop: {
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'space-between'
-    },
-    panelNamePrice: {
-        flexDirection: 'row',
-        alignItems: 'flex-end',
-        justifyContent: 'space-between',
-        flexGrow: 1
-    },
-    panelInfo: {
-        marginTop: 12
-    },
-    panelPrice: {
-        fontSize: 28,
-        fontWeight: '900',
-        color: '#FC2D1C',
-    },
-    panelPriceDecimal: {
-        fontSize: 18,
-        fontWeight: '900',
-        color: '#FC2D1C',
-    },
-    panelLabel: {
-        fontSize: 9,
-        fontWeight: '300',
-    },
-    panelData: {
-        fontSize: 14
-    },
-    panelRating: {
-        height: 18,
-        width: 95
-    },
-    panelConfirmContainer: {
-        marginBottom: 60,
     },
 })
 
