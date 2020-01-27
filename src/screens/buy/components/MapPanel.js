@@ -32,10 +32,9 @@ class MapPanel extends Component {
             bounceValue: new Animated.Value(height * 0.3),
             isOpen: true,
             item: null,
-                description: null,
-                logo: null,
+            description: null,
+            logo: null,
         }
-    }
     }
 
     // Component State Management
@@ -71,10 +70,11 @@ class MapPanel extends Component {
 
                     this._toggleSubView()
                 })
-                item: {
-                    title: marker.title,
-                    description: marker.description,
-                    logo: marker.logo,
+                // item: {
+                //     title: marker.title,
+                //     description: marker.description,
+                //     logo: marker.logo,
+                // }
             }
             else {
                 this.setState({
@@ -106,29 +106,6 @@ class MapPanel extends Component {
                 resolve()
             });
         });
-
-
-
-
-        // setTimeout(() => {
-        //     if (marker) {
-        //         this.setState({
-        //             item: {
-        //                 title: marker.title,
-        //                 description: marker.description,
-        //                 logo: marker.logo,
-        //             }
-        //         })
-        //         isHidden = !isHidden;
-        //     }
-        //     else {
-        //         this.setState({
-        //             item: null
-        //         })
-        //         isHidden = !isHidden;
-        //     }
-        // }, 800)
-
     }
 
     onSwipeDown() {
@@ -152,7 +129,7 @@ class MapPanel extends Component {
             <Animated.View
                 style={[
                     styles.subView,
-                    // animationPanel,
+                    animationPanel,
                 ]}
                 >
                   <View style={styles.panelTop}>

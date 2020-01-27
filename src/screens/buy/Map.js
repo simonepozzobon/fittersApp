@@ -143,6 +143,8 @@ class Home extends Component {
                     item: marker
                 })
             }
+
+            this.mapPanel._selectMarker(marker)
         })
 
     }
@@ -195,6 +197,7 @@ class Home extends Component {
                     </MapView>
                     <MapPanel
                       item={this.state.item}
+                      ref={mapPanel => this.mapPanel = mapPanel}
                     />
 
                 </View>

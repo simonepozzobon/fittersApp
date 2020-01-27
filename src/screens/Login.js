@@ -71,7 +71,7 @@ class Login extends Component {
                               keyboardType="email-address"
                               onChangeText={this.emailSet}
                               onSubmitEditing={this.focusToPassword}
-                              style={[styles.input, compStyles.formInput]}
+                              style={[styles.input]}
                             />
                     </View>
                     <View style={{ marginTop: 20 }}>
@@ -84,7 +84,7 @@ class Login extends Component {
                               keyboardType="email-address"
                               onChangeText={this.emailSet}
                               onSubmitEditing={this.focusToPassword}
-                              style={[styles.input, compStyles.formInput]}
+                              style={[styles.input]}
                             />
                     </View>
                     <View style={{ marginTop: 20 }}>
