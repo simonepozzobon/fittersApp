@@ -127,24 +127,24 @@ class Home extends Component {
         const map = this.mapView
 
         let camera = map.getCamera().then(camera => {
-            console.log(camera);
-        })
-        let region = this.state.region
-        if (marker.latlng.latitude && marker.latlng.longitude) {
-            region = {
-                latitude: marker.latlng.latitude,
-                longitude: marker.latlng.longitude,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
+            if (marker.latlng.latitude && marker.latlng.longitude) {
+                let newCamera = {
+                    ...camera,
+                    altitude: 500,
+                    pitch: 20,
+                    center: {
+                        latitude: marker.latlng.latitude,
+                        longitude: marker.latlng.longitude,
+                    }
+                }
+
+                map.animateCamera(newCamera, 1000)
+                this.setState({
+                    item: marker
+                })
             }
+        })
 
-            // this.mapView.animateToRegion(region, 1000)
-        }
-
-        // this.setState({
-        //     item: marker,
-        //     region: region,
-        // })
     }
 
     // Render
@@ -153,7 +153,7 @@ class Home extends Component {
 
         // Component
         return (
-            <MainTemplate>
+            <MainTemplate fixedView={true}>
                 <Header
                     onPressTimes={() => {this.goTo('userSelection')}}
                 />
@@ -162,7 +162,7 @@ class Home extends Component {
                     <MapView
                         ref={mapView => this.mapView = mapView}
                         style={styles.map}
-                        region={this.state.region}
+                        initialRegion={this.state.region}
                         onRegionChange={this.onRegionChange.bind(this)}
                         showsUserLocation={true}
                         showsMyLocationButton={true}
@@ -193,9 +193,9 @@ class Home extends Component {
                         }
 
                     </MapView>
-                    {/* <MapPanel
-                        item={this.state.item}
-                    /> */}
+                    <MapPanel
+                      item={this.state.item}
+                    />
 
                 </View>
             </MainTemplate>
