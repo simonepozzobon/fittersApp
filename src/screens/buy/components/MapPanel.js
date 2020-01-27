@@ -12,6 +12,11 @@ import {
 }
 from 'react-native'
 
+import GestureRecognizer, {
+    swipeDirections
+}
+from 'react-native-swipe-gestures'
+
 import UiButton from '../../../components/UiButton'
 
 const rating = require('../../../../assets/rating.png')
@@ -21,50 +26,114 @@ const {
 } = Dimensions.get('window')
 
 class MapPanel extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             bounceValue: new Animated.Value(height * 0.3),
-            item: {
-                title: null,
+            isOpen: true,
+            item: null,
                 description: null,
                 logo: null,
-            }
         }
+    }
     }
 
     // Component State Management
-    componentDidMount() {}
+    componentDidMount() {
+
+    }
 
     // Methods
-    _toggleSubView(marker) {
-        let toValue = height * 0.3;
-
-        if (isHidden) {
+    _selectMarker(marker) {
+        if (this.state.isOpen == false && this.props.item == null) {
+            console.log('primo caso');
+            this.setState({
+                item: marker
+            })
+            this._toggleSubView()
             toValue = 0;
         }
+        else {
+            if (this.props.item && this.props.item.id == marker.id) {
+                console.log('sono uguali');
+                this._toggleSubView().then(() => {
+                    this.setState({
+                        item: null
+                    })
+                })
+            }
+            else if (this.props.item && this.props.item.id != marker.id) {
+                console.log('sono diversi');
+                this._toggleSubView().then(() => {
+                    this.setState({
+                        item: marker
+                    })
 
-        if (this.current == null) {
-            this.setState({
+                    this._toggleSubView()
+                })
                 item: {
                     title: marker.title,
                     description: marker.description,
                     logo: marker.logo,
-                }
-            })
-        }
-
-        Animated.spring(
-            this.state.bounceValue, {
-                toValue: toValue,
-                duration: 600,
-                velocity: 3,
-                tension: 2,
-                friction: 6,
             }
-        ).start();
+            else {
+                this.setState({
+                    item: marker
+                })
+                this._toggleSubView()
+            }
+        }
+    }
 
-        isHidden = !isHidden;
+    _toggleSubView() {
+        return new Promise((resolve, reject) => {
+
+            let toValue = this.state.isOpen == false ? height * 0.3 : 0
+
+            console.log('parte');
+            Animated.spring(
+                this.state.bounceValue, {
+                    toValue: toValue,
+                    duration: 600,
+                    velocity: 3,
+                    tension: 2,
+                    friction: 6,
+                }
+            ).start(() => {
+                this.setState({
+                    isOpen: !this.state.isOpen
+                })
+                resolve()
+            });
+        });
+
+
+
+
+        // setTimeout(() => {
+        //     if (marker) {
+        //         this.setState({
+        //             item: {
+        //                 title: marker.title,
+        //                 description: marker.description,
+        //                 logo: marker.logo,
+        //             }
+        //         })
+        //         isHidden = !isHidden;
+        //     }
+        //     else {
+        //         this.setState({
+        //             item: null
+        //         })
+        //         isHidden = !isHidden;
+        //     }
+        // }, 800)
+
+    }
+
+    onSwipeDown() {
+        console.log('down');
+        // this._toggleSubView(this.props.item)
     }
 
     // Render
@@ -89,7 +158,7 @@ class MapPanel extends Component {
                   <View style={styles.panelTop}>
                       <View style={styles.panelLeft}>
                           <Image
-                            source={this.props.item.logo}
+                            source={this.props.item ? this.props.item.logo : null}
                             resizeMode="contain"
                             style={styles.panelImage}
                           />
@@ -101,7 +170,7 @@ class MapPanel extends Component {
                                     Palestra
                                   </Text>
                                   <Text style={styles.panelData}>
-                                    {this.props.item.title}
+                                    {this.props.item ? this.props.item.title : null}
                                   </Text>
                               </View>
                               <View style={{flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'flex-end'}}>
@@ -121,7 +190,7 @@ class MapPanel extends Component {
                                 Indirizzo palestra
                               </Text>
                               <Text style={styles.panelData}>
-                                {this.props.item.address}
+                                {this.props.item ? this.props.item.address : null}
                               </Text>
                           </View>
                           <View style={styles.panelInfo}>
