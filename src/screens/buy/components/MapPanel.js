@@ -12,6 +12,11 @@ import {
 }
 from 'react-native'
 
+import GestureRecognizer, {
+    swipeDirections
+}
+from 'react-native-swipe-gestures'
+
 import UiButton from '../../../components/UiButton'
 
 const rating = require('../../../../assets/rating.png')
@@ -21,50 +26,106 @@ const {
 } = Dimensions.get('window')
 
 class MapPanel extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             bounceValue: new Animated.Value(height * 0.3),
-            item: {
-                title: null,
-                description: null,
-                logo: null,
-            }
+            isOpen: true,
+            item: null,
         }
     }
 
     // Component State Management
-    componentDidMount() {}
+    componentDidMount() {
+
+    }
 
     // Methods
-    _toggleSubView(marker) {
-        let toValue = height * 0.3;
+    _selectMarker(marker) {
+        // if (this.state.isOpen == false && this.props.item == null) {
+        //     console.log('primo caso');
+        //     this.setState({
+        //         item: marker
+        //     })
+        //     this._toggleSubView()
+        // }
+        // else {
+        //     if (this.props.item && this.props.item.id == marker.id) {
+        //         console.log('sono uguali');
+        //         this._toggleSubView().then(() => {
+        //             this.setState({
+        //                 item: null
+        //             })
+        //         })
+        //     }
+        //     else if (this.props.item && this.props.item.id != marker.id) {
+        //         console.log('sono diversi');
+        //         this._toggleSubView().then(() => {
+        //             this.setState({
+        //                 item: marker
+        //             })
+        //
+        //             this._toggleSubView()
+        //         })
+        //     }
+        //     else {
+        //         this.setState({
+        //             item: marker
+        //         })
+        //         this._toggleSubView()
+        //     }
+        // }
+    }
 
-        if (isHidden) {
-            toValue = 0;
-        }
+    _toggleSubView() {
+        return new Promise((resolve, reject) => {
 
-        if (this.current == null) {
-            this.setState({
-                item: {
-                    title: marker.title,
-                    description: marker.description,
-                    logo: marker.logo,
+            let toValue = this.state.isOpen == false ? height * 0.3 : 0
+
+            console.log('parte');
+            Animated.spring(
+                this.state.bounceValue, {
+                    toValue: toValue,
+                    duration: 600,
+                    velocity: 3,
+                    tension: 2,
+                    friction: 6,
                 }
-            })
-        }
+            ).start(() => {
+                this.setState({
+                    isOpen: !this.state.isOpen
+                })
+                resolve()
+            });
+        });
 
-        Animated.spring(
-            this.state.bounceValue, {
-                toValue: toValue,
-                duration: 600,
-                velocity: 3,
-                tension: 2,
-                friction: 6,
-            }
-        ).start();
 
-        isHidden = !isHidden;
+
+
+        // setTimeout(() => {
+        //     if (marker) {
+        //         this.setState({
+        //             item: {
+        //                 title: marker.title,
+        //                 description: marker.description,
+        //                 logo: marker.logo,
+        //             }
+        //         })
+        //         isHidden = !isHidden;
+        //     }
+        //     else {
+        //         this.setState({
+        //             item: null
+        //         })
+        //         isHidden = !isHidden;
+        //     }
+        // }, 800)
+
+    }
+
+    onSwipeDown() {
+        console.log('down');
+        // this._toggleSubView(this.props.item)
     }
 
     // Render
@@ -80,7 +141,10 @@ class MapPanel extends Component {
 
         // Component
         return (
-            <Animated.View
+            // <GestureRecognizer
+            //   onSwipeDown={gestureState => this.onSwipeDown}
+            // >
+            <View
                 style={[
                     styles.subView,
                     // animationPanel,
@@ -89,7 +153,7 @@ class MapPanel extends Component {
                   <View style={styles.panelTop}>
                       <View style={styles.panelLeft}>
                           <Image
-                            source={this.props.item.logo}
+                            source={this.props.item ? this.props.item.logo : null}
                             resizeMode="contain"
                             style={styles.panelImage}
                           />
@@ -101,7 +165,7 @@ class MapPanel extends Component {
                                     Palestra
                                   </Text>
                                   <Text style={styles.panelData}>
-                                    {this.props.item.title}
+                                    {this.props.item ? this.props.item.title : null}
                                   </Text>
                               </View>
                               <View style={{flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'flex-end'}}>
@@ -121,7 +185,7 @@ class MapPanel extends Component {
                                 Indirizzo palestra
                               </Text>
                               <Text style={styles.panelData}>
-                                {this.props.item.address}
+                                {this.props.item ? this.props.item.address : null}
                               </Text>
                           </View>
                           <View style={styles.panelInfo}>
@@ -140,7 +204,8 @@ class MapPanel extends Component {
                           onPress={() => {this.goTo('buyCheckout')}}
                       />
                   </View>
-            </Animated.View>
+            </View>
+            // </GestureRecognizer>
         );
     }
 }
@@ -150,16 +215,24 @@ const styles = StyleSheet.create({
         zIndex: 2,
         position: 'absolute',
         width: width,
+        left: 0,
+        right: 0,
+        top: '100%',
         backgroundColor: "#f7f7f7",
         flexDirection: 'column',
         alignItems: 'center',
-        bottom: 0,
-        left: 0,
-        right: 0,
+        // bottom: 0,
         paddingHorizontal: 36,
         paddingTop: 12,
         borderTopLeftRadius: 12,
         borderTopRightRadius: 12,
+
+        // position: 'absolute',
+        // width: width,
+        // height: 50,
+        // left: 0,
+        // right: 0,
+        // top: height,
 
         // height: Dimensions.get('window').height * 0.3,
         // flex: 1,

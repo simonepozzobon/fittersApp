@@ -18,24 +18,12 @@ from 'react-native'
 import MainTemplate from '../../presentation/MainTemplate'
 import Header from '../../presentation/Header'
 import MapTopBar from '../../components/MapTopBar'
-import MapPanel from './components/MapPanel'
+import MapMarker from './components/MapMarker'
 
 const logo = require('../../../assets/brand/logo.png');
-const Pin = require('../../../assets/Pin.png');
 
 import MarkerData from '../../dummies/Marker'
-
 import MapView from 'react-native-maps'
-import {
-    Marker,
-    Callout,
-}
-from 'react-native-maps'
-
-import GestureRecognizer, {
-    swipeDirections
-}
-from 'react-native-swipe-gestures'
 
 import Geolocation from '@react-native-community/geolocation';
 
@@ -71,11 +59,7 @@ class Home extends Component {
                 longitudeDelta: LONGITUDE_DELTA,
             },
             cacheRegion: {},
-            item: {
-                title: null,
-                description: null,
-                logo: null,
-            }
+            item: null
         }
         this.current = null
     }
@@ -97,7 +81,6 @@ class Home extends Component {
 
     // Methods
     positionSet(position) {
-
         let lat = position.coords.latitude
         let lng = position.coords.longitude
 
@@ -123,37 +106,13 @@ class Home extends Component {
         });
     }
 
-    _selectMarker(marker) {
-        const map = this.mapView
-
-        let camera = map.getCamera().then(camera => {
-            console.log(camera);
-        })
-        let region = this.state.region
-        if (marker.latlng.latitude && marker.latlng.longitude) {
-            region = {
-                latitude: marker.latlng.latitude,
-                longitude: marker.latlng.longitude,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
-            }
-
-            // this.mapView.animateToRegion(region, 1000)
-        }
-
-        // this.setState({
-        //     item: marker,
-        //     region: region,
-        // })
-    }
-
     // Render
     render() {
         // Dynamic styles
 
         // Component
         return (
-            <MainTemplate>
+            <MainTemplate fixedView={true}>
                 <Header
                     onPressTimes={() => {this.goTo('userSelection')}}
                 />
@@ -162,40 +121,24 @@ class Home extends Component {
                     <MapView
                         ref={mapView => this.mapView = mapView}
                         style={styles.map}
-                        region={this.state.region}
-                        onRegionChange={this.onRegionChange.bind(this)}
+                        initialRegion={this.state.region}
+                        onRegionChange={region => {this.onRegionChange(region)}}
                         showsUserLocation={true}
                         showsMyLocationButton={true}
                         showsScale={true}
                     >
                         {
                             MarkerData.map(marker => (
-                                <Marker
-                                    key={marker.id}
-                                    coordinate={marker.latlng}
-                                    title={marker.title}
-                                    description={marker.description}
-                                >
-                                    <TouchableOpacity
-                                      onPress={() => {this._selectMarker(marker)}}
-                                      >
-                                        <Image
-                                            style={styles.pin}
-                                            source={Pin}
-                                        />
-                                    </TouchableOpacity>
-                                    <Callout
-                                        alphaHitTest
-                                        tooltip
-                                    />
-                                </Marker>
+                                <MapMarker
+                                  key={marker.id}
+                                  marker={marker}
+                                  mapView={this.mapView}
+                                />
                             ))
                         }
 
                     </MapView>
-                    {/* <MapPanel
-                        item={this.state.item}
-                    /> */}
+
 
                 </View>
             </MainTemplate>
@@ -210,10 +153,7 @@ const styles = StyleSheet.create({
         height: height,
         flex: 1,
     },
-    pin: {
-        width: 36,
-        height: 36,
-    },
+
 })
 
 export default Home;
