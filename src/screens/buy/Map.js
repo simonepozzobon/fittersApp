@@ -197,6 +197,7 @@ class Home extends Component {
                     </MapView>
                     <MapPanel
                       item={this.state.item}
+                      navigation={this.props.navigation}
                       ref={mapPanel => this.mapPanel = mapPanel}
                     />
 

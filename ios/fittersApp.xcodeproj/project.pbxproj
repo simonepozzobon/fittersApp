@@ -651,7 +651,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.fittersApp;
+				PRODUCT_BUNDLE_IDENTIFIER = simonepozzobon.fittersApp;
 				PRODUCT_NAME = fittersApp;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -672,7 +672,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.fittersApp;
+				PRODUCT_BUNDLE_IDENTIFIER = simonepozzobon.fittersApp;
 				PRODUCT_NAME = fittersApp;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

@@ -42,6 +42,10 @@ class MapPanel extends Component {
 
     }
 
+    goTo(route) {
+        this.props.navigation.navigate(route)
+    }
+
     // Methods
     _selectMarker(marker) {
         if (this.state.isOpen == false && this.props.item == null) {
