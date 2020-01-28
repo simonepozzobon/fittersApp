@@ -11,7 +11,6 @@ import DrawerMenuSingle from "./DrawerMenuSingle";
 import menuIcons from "../../assets/ui";
 import assets from "../../assets";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import * as Animatable from "react-native-animatable";
 
 const { width, height } = Dimensions.get("window");
 
@@ -20,36 +19,49 @@ export class DrawerMenu extends Component {
 		super(props);
 
 		this.state = {
-			xPosition: new Animated.Value(width),
+			drawerPosition: new Animated.Value(width),
 			isOpen: false
 		};
 	}
 
 	closeMenu() {
 		if (this.state.isOpen == true) {
+			Animated.timing(this.state.drawerPosition, {
+				toValue: width,
+				duration: 300,
+				useNativeDriver: true
+			}).start(() => {
+				this.setState({ isOpen: false });
+			});
+		}
+	}
+
+	openDrawer() {
+		if (this.state.isOpen == false) {
+			Animated.timing(this.state.drawerPosition, {
+				toValue: 0,
+				duration: 300,
+				useNativeDriver: true
+			}).start(() => {
+				this.setState({ isOpen: true });
+			});
 		}
 	}
 
 	render() {
-		const test = StyleSheet.create({
-			animation: {
-				transform: [
-					{
-						translateX: width
-					}
-				]
-			}
-		});
+		let animationPanel = {
+			transform: [
+				{
+					translateX: this.state.drawerPosition
+				}
+			]
+		};
 
 		return (
-			<View style={[styles.wrapper]}>
+			<Animated.View style={[styles.wrapper, animationPanel]}>
 				<View style={styles.container}>
 					<View style={styles.burgerContainer}>
-						<TouchableOpacity
-							onPress={() => {
-								this.closeMenu();
-							}}
-						>
+						<TouchableOpacity onPress={this.closeMenu.bind(this)}>
 							<Image
 								source={assets.burger_orange}
 								resizeMode="contain"
@@ -88,7 +100,7 @@ export class DrawerMenu extends Component {
 						/>
 					</View>
 				</View>
-			</View>
+			</Animated.View>
 		);
 	}
 }
@@ -100,7 +112,12 @@ const styles = StyleSheet.create({
 		position: "absolute",
 		justifyContent: "space-between",
 		alignItems: "flex-end",
-		zIndex: 10
+		zIndex: 10,
+		transform: [
+			{
+				translateX: -width
+			}
+		]
 	},
 	container: {
 		height: height,
@@ -116,7 +133,7 @@ const styles = StyleSheet.create({
 		marginTop: 18
 	},
 	burgerContainer: {
-		marginTop: 78
+		marginTop: 54
 	},
 	burger: {
 		width: 24,

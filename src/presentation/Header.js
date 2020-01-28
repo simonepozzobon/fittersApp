@@ -46,7 +46,7 @@ class Header extends Component {
 		// Component
 		return (
 			<View style={[styles.header, topBar.topBarHeight]}>
-				<TouchableOpacity onPress={() => {}}>
+				<TouchableOpacity onPress={this.props.onPressBurger}>
 					<Image
 						source={burger}
 						resizeMode="contain"

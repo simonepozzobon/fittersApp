@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet, Text, View, Dimensions } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import DrawerMenu from "./DrawerMenu";
+import Header from "./Header";
 
 const { height } = Dimensions.get("window");
 
@@ -17,6 +18,9 @@ class MainTemplate extends Component {
 	componentDidMount() {}
 
 	// Methods
+	openDrawer() {
+		this.drawer.openDrawer();
+	}
 
 	// Render
 	render() {
@@ -43,7 +47,8 @@ class MainTemplate extends Component {
 				end={{ x: 0.5, y: 1.0 }}
 				style={styles.backgroundGradient}
 			>
-				<DrawerMenu></DrawerMenu>
+				<Header onPressBurger={this.openDrawer.bind(this)} />
+				<DrawerMenu ref={drawer => (this.drawer = drawer)}></DrawerMenu>
 				{view}
 			</LinearGradient>
 		);
