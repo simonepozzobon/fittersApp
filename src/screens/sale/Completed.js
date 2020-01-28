@@ -129,12 +129,11 @@ class CediIngresso extends Component {
 
 		// Component
 		return (
-			<MainTemplate>
-				<Header
-					onPressTimes={() => {
-						this.goTo("userSelection");
-					}}
-				/>
+			<MainTemplate
+				onPressTimes={() => {
+					this.goTo("userSelection");
+				}}
+			>
 				<UiContainer>
 					<View style={styles.container}>
 						<UiBreadcrumb

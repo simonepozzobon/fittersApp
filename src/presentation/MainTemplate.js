@@ -39,6 +39,19 @@ class MainTemplate extends Component {
 			view = <View style={styles.content}>{this.props.children}</View>;
 		}
 
+		let header;
+		if (
+			typeof this.props.hasHeader == "undefined" ||
+			this.props.hasHeader == null
+		) {
+			header = (
+				<Header
+					onPressBurger={this.openDrawer.bind(this)}
+					onPressTimes={this.props.onPressTimes}
+				/>
+			);
+		}
+
 		// Component
 		return (
 			<LinearGradient
@@ -47,7 +60,7 @@ class MainTemplate extends Component {
 				end={{ x: 0.5, y: 1.0 }}
 				style={styles.backgroundGradient}
 			>
-				<Header onPressBurger={this.openDrawer.bind(this)} />
+				{header}
 				<DrawerMenu ref={drawer => (this.drawer = drawer)}></DrawerMenu>
 				{view}
 			</LinearGradient>

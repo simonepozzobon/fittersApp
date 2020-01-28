@@ -5,7 +5,8 @@ import {
 	Text,
 	View,
 	StyleSheet,
-	Dimensions
+	Dimensions,
+	Easing
 } from "react-native";
 import DrawerMenuSingle from "./DrawerMenuSingle";
 import menuIcons from "../../assets/ui";
@@ -29,7 +30,7 @@ export class DrawerMenu extends Component {
 			Animated.timing(this.state.drawerPosition, {
 				toValue: width,
 				duration: 300,
-				useNativeDriver: true
+				easing: Easing.inOut(Easing.ease)
 			}).start(() => {
 				this.setState({ isOpen: false });
 			});
@@ -38,10 +39,12 @@ export class DrawerMenu extends Component {
 
 	openDrawer() {
 		if (this.state.isOpen == false) {
+			console.log("quiiii");
+
 			Animated.timing(this.state.drawerPosition, {
 				toValue: 0,
-				duration: 300,
-				useNativeDriver: true
+				duration: 200,
+				easing: Easing.inOut(Easing.ease)
 			}).start(() => {
 				this.setState({ isOpen: true });
 			});
