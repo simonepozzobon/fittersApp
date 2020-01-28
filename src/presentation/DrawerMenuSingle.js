@@ -1,17 +1,20 @@
 import React, { Component } from "react";
 import { Image, Text, View, StyleSheet } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export class DrawerMenuSingle extends Component {
 	render() {
 		return (
-			<View style={styles.container}>
-				<Text style={styles.link}>{this.props.title}</Text>
-				<Image
-					source={this.props.src}
-					resizeMode="contain"
-					style={styles.icon}
-				/>
-			</View>
+			<TouchableOpacity>
+				<View style={styles.container}>
+					<Text style={styles.link}>{this.props.title}</Text>
+					<Image
+						source={this.props.src}
+						resizeMode="contain"
+						style={styles.icon}
+					/>
+				</View>
+			</TouchableOpacity>
 		);
 	}
 }

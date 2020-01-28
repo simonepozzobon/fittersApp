@@ -21,14 +21,22 @@ export class DrawerMenu extends Component {
 
 		this.state = {
 			drawerPosition: new Animated.Value(width),
-			isOpen: false
+			isOpen: false,
+			panelWidth: 0
 		};
+	}
+
+	componentDidMount() {
+		setTimeout(this.openDrawer.bind(this), 1000);
 	}
 
 	closeMenu() {
 		if (this.state.isOpen == true) {
+			let toValue =
+				this.state.panelWidth < 1 ? width : this.state.panelWidth;
+
 			Animated.timing(this.state.drawerPosition, {
-				toValue: width,
+				toValue: toValue,
 				duration: 300,
 				easing: Easing.inOut(Easing.ease)
 			}).start(() => {
@@ -39,8 +47,6 @@ export class DrawerMenu extends Component {
 
 	openDrawer() {
 		if (this.state.isOpen == false) {
-			console.log("quiiii");
-
 			Animated.timing(this.state.drawerPosition, {
 				toValue: 0,
 				duration: 200,
@@ -62,7 +68,15 @@ export class DrawerMenu extends Component {
 
 		return (
 			<Animated.View style={[styles.wrapper, animationPanel]}>
-				<View style={styles.container}>
+				<View
+					style={styles.container}
+					onLayout={event => {
+						let panelWidth = event.nativeEvent.layout.width;
+						console.log(panelWidth);
+
+						this.setState({ panelWidth: panelWidth });
+					}}
+				>
 					<View style={styles.burgerContainer}>
 						<TouchableOpacity onPress={this.closeMenu.bind(this)}>
 							<Image
@@ -111,11 +125,11 @@ export class DrawerMenu extends Component {
 const styles = StyleSheet.create({
 	wrapper: {
 		height: height,
-		width: width,
 		position: "absolute",
 		justifyContent: "space-between",
 		alignItems: "flex-end",
 		zIndex: 10,
+		right: 0,
 		transform: [
 			{
 				translateX: -width
