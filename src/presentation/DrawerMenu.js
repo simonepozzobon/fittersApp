@@ -26,9 +26,9 @@ export class DrawerMenu extends Component {
 		};
 	}
 
-	componentDidMount() {
-		setTimeout(this.openDrawer.bind(this), 1000);
-	}
+	// componentDidMount() {
+	// 	setTimeout(this.openDrawer.bind(this), 1000);
+	// }
 
 	closeMenu() {
 		if (this.state.isOpen == true) {
@@ -93,27 +93,33 @@ export class DrawerMenu extends Component {
 						<DrawerMenuSingle
 							title="Profilo"
 							src={menuIcons.profile}
+							destination="userSelection"
 						/>
 
 						<DrawerMenuSingle
 							title="I tuoi abbonamenti"
 							src={menuIcons.abbonamenti}
+							destination="userSelection"
 						/>
 						<DrawerMenuSingle
 							title="I tuoi ingressi"
 							src={menuIcons.ingressi}
+							destination="userSelection"
 						/>
 						<DrawerMenuSingle
 							title="Regolamento"
 							src={menuIcons.regolamento}
+							destination="terms"
 						/>
 						<DrawerMenuSingle
 							title="Pagamento"
 							src={menuIcons.pagamento}
+							destination="userSelection"
 						/>
 						<DrawerMenuSingle
 							title="Invita i tuoi amici"
 							src={menuIcons.invite}
+							destination="userSelection"
 						/>
 					</View>
 				</View>

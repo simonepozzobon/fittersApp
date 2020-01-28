@@ -18,6 +18,7 @@ import BuyCompleted from "./src/screens/buy/Completed";
 
 import SaleSettings from "./src/screens/sale/Settings";
 import SalesCompleted from "./src/screens/sale/Completed";
+import Terms from "./src/screens/Terms";
 import "react-native-gesture-handler";
 
 const AppNavigator = createSwitchNavigator(
@@ -32,10 +33,12 @@ const AppNavigator = createSwitchNavigator(
 		buyCompleted: BuyCompleted,
 
 		saleSettings: SaleSettings,
-		saleCompleted: SalesCompleted
+		saleCompleted: SalesCompleted,
+
+		terms: Terms
 	},
 	{
-		initialRouteName: "buyCompleted"
+		initialRouteName: "terms"
 	}
 );
 

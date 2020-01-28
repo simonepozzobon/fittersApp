@@ -24,9 +24,6 @@ class MainTemplate extends Component {
 
 	// Render
 	render() {
-		// Dynamic styles
-		const compStyles = StyleSheet.create({});
-
 		let view = (
 			<KeyboardAwareScrollView contentContainerStyle={styles.container}>
 				<ScrollView contentContainerStyle={styles.scroll}>
@@ -61,7 +58,10 @@ class MainTemplate extends Component {
 				style={styles.backgroundGradient}
 			>
 				{header}
-				<DrawerMenu ref={drawer => (this.drawer = drawer)}></DrawerMenu>
+				<DrawerMenu
+					ref={drawer => (this.drawer = drawer)}
+					navigation={this.props.navigation}
+				/>
 				{view}
 			</LinearGradient>
 		);
