@@ -32,6 +32,24 @@ class MainTemplate extends Component {
         // Dynamic styles
         const compStyles = StyleSheet.create({})
 
+        let view = (
+            <KeyboardAwareScrollView contentContainerStyle={styles.container}>
+              <ScrollView contentContainerStyle={styles.scroll}>
+                  <View style={styles.content} >
+                      {this.props.children}
+                  </View>
+              </ScrollView>
+          </KeyboardAwareScrollView>
+        )
+
+        if (this.props.fixedView == true) {
+            view = (
+                <View style={styles.content} >
+                  {this.props.children}
+                </View>
+            )
+        }
+
         // Component
         return (
             <LinearGradient
@@ -39,14 +57,8 @@ class MainTemplate extends Component {
                 start={{ x: 0.0, y: 0.25 }}
                 end={{ x: 0.5, y: 1.0 }}
                 style={styles.backgroundGradient}>
-                    <KeyboardAwareScrollView contentContainerStyle={styles.container}>
-                        <ScrollView contentContainerStyle={styles.scroll}>
-                            <View style={styles.content} >
-                                {this.props.children}
-                            </View>
-                        </ScrollView>
-                    </KeyboardAwareScrollView>
-        </LinearGradient>
+                    {view}
+            </LinearGradient>
         );
     }
 }
