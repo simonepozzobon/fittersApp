@@ -1,5 +1,5 @@
-import React from 'react';
-import { Component } from 'react';
+import React from "react";
+import { Component } from "react";
 
 import {
 	StyleSheet,
@@ -7,15 +7,15 @@ import {
 	View,
 	Image,
 	TouchableOpacity
-} from 'react-native';
+} from "react-native";
 
-import { hasNotch } from 'react-native-device-info';
+import { hasNotch } from "react-native-device-info";
 // @ts-ignore
-const times = require('../../assets/times.png');
+const times = require("../../assets/times.png");
 // @ts-ignore
-const burger = require('../../assets/burger_menu.png');
+const burger = require("../../assets/burger_menu.png");
 
-const { width } = Dimensions.get('window');
+const { width } = Dimensions.get("window");
 
 class Header extends Component {
 	/**
@@ -35,7 +35,6 @@ class Header extends Component {
 	// Render
 	render() {
 		// Dynamic styles
-		const compStyles = StyleSheet.create({});
 		const notch = hasNotch();
 
 		const topBar = StyleSheet.create({
@@ -69,10 +68,10 @@ class Header extends Component {
 const styles = StyleSheet.create({
 	header: {
 		width: width,
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		alignItems: 'flex-end',
-		alignSelf: 'stretch',
+		flexDirection: "row",
+		justifyContent: "space-between",
+		alignItems: "flex-end",
+		alignSelf: "stretch",
 		paddingHorizontal: 28,
 		paddingBottom: 18
 	},

@@ -10,12 +10,6 @@
 		"editor.formatOnPaste": false,
 		"[javascript]": {
 			"editor.defaultFormatter": "esbenp.prettier-vscode"
-		},
-		"prettier.bracketSpacing": true,
-		"prettier.jsxBracketSameLine": false,
-		"prettier.singleQuote": true,
-		"prettier.resolveGlobalModules": true,
-		"prettier.tabWidth": 4,
-		"prettier.useTabs": true
+		}
 	}
 }

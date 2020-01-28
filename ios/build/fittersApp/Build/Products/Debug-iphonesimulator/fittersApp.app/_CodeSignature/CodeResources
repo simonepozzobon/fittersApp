@@ -4,6 +4,10 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>AppCenter-Config.plist</key>
+		<data>
+		d//BLnx7BPyebaEnJONvNoKX/Rg=
+		</data>
 		<key>AppIcon20x20@2x.png</key>
 		<data>
 		ndplJPw+qwRZX6tCpE7nzNLmnzw=
@@ -38,15 +42,15 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		di2vVN8yuYCBVrlMjnpxh/MOxf4=
+		e7IHUU1NpA+VjoTv+fUnOXAGhCc=
 		</data>
 		<key>Base.lproj/LaunchScreen.nib/objects-13.0+.nib</key>
 		<data>
-		qM/Vh1Sj4pgMCQ2sstv7qB9ONYc=
+		o+pUg/ZF+jMlC0QBe8hwLM1Ydw0=
 		</data>
 		<key>Base.lproj/LaunchScreen.nib/runtime.nib</key>
 		<data>
-		FvFTb36kwy9U98grTBCycGbIx8M=
+		UOV4HPjGsd5cYHZzeBweqaPTWqk=
 		</data>
 		<key>Frameworks/XCTAutomationSupport.framework/Info.plist</key>
 		<data>
@@ -99,7 +103,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		WO8jjAn+Dx8uyWe72GJfrPyqmyA=
+		Ibpc9cH/Z06g9HncQz6Db/miKH8=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -128,6 +132,17 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>AppCenter-Config.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			d//BLnx7BPyebaEnJONvNoKX/Rg=
+			</data>
+			<key>hash2</key>
+			<data>
+			JEMIUH4TuaTlA3EgskOgJK3O2JUyfH3nF5s0IFOtWsw=
+			</data>
+		</dict>
 		<key>AppIcon20x20@2x.png</key>
 		<dict>
 			<key>hash</key>
@@ -220,33 +235,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			di2vVN8yuYCBVrlMjnpxh/MOxf4=
+			e7IHUU1NpA+VjoTv+fUnOXAGhCc=
 			</data>
 			<key>hash2</key>
 			<data>
-			tUKpCroVHiirxadrA+J1zvDIrWPM0oGTAs5fDr4+N9E=
+			hOrg9EnQR5jW51dRgxFsRDBLsx4U8ogarqvWUxgw83c=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.nib/objects-13.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			qM/Vh1Sj4pgMCQ2sstv7qB9ONYc=
+			o+pUg/ZF+jMlC0QBe8hwLM1Ydw0=
 			</data>
 			<key>hash2</key>
 			<data>
-			lGKuhY8JSOxMFglxdB3Z4mq4U/eItQPdIVXIGN6h7fQ=
+			eL1Lu9m1Z+PPg2emOCcg1qVj2eD5VGHdcJq2HZvzUBE=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			FvFTb36kwy9U98grTBCycGbIx8M=
+			UOV4HPjGsd5cYHZzeBweqaPTWqk=
 			</data>
 			<key>hash2</key>
 			<data>
-			hUdswBxx16BE4BixIC2Xq7ZKg9cCk/aT2jlUXMFNxUg=
+			sW05gRyzqEblAbiIDuzgggWg2WgvyA4kfjn7TtoISXg=
 			</data>
 		</dict>
 		<key>Frameworks/XCTAutomationSupport.framework/Info.plist</key>

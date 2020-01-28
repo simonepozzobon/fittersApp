@@ -1,7 +1,10 @@
-import React, { Component } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import React, { Component } from "react";
+import { ScrollView, StyleSheet, Text, View, Dimensions } from "react-native";
+import LinearGradient from "react-native-linear-gradient";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import DrawerMenu from "./DrawerMenu";
+
+const { height } = Dimensions.get("window");
 
 class MainTemplate extends Component {
 	constructor(props) {
@@ -35,30 +38,50 @@ class MainTemplate extends Component {
 		// Component
 		return (
 			<LinearGradient
-				colors={['#ff2a00', '#ff5900']}
+				colors={["#ff2a00", "#FF2A00"]}
 				start={{ x: 0.0, y: 0.25 }}
 				end={{ x: 0.5, y: 1.0 }}
 				style={styles.backgroundGradient}
 			>
+				<DrawerMenu></DrawerMenu>
 				{view}
 			</LinearGradient>
 		);
 	}
 }
 
+const drawer = StyleSheet.create({
+	container: {
+		flex: 1,
+		backgroundColor: "#fff",
+		alignItems: "center",
+		justifyContent: "center",
+		marginTop: 30,
+		zIndex: 0
+	},
+	animatedBox: {
+		flex: 1,
+		backgroundColor: "#38C8EC",
+		padding: 10,
+		zIndex: 2,
+		height: height
+	}
+});
+
 const styles = StyleSheet.create({
 	backgroundGradient: {
-		flex: 12
+		flex: 12,
+		zIndex: 0
 	},
 	scroll: {
 		flex: 12,
-		justifyContent: 'center',
-		alignItems: 'center'
+		justifyContent: "center",
+		alignItems: "center"
 	},
 	container: {
 		flex: 12,
-		justifyContent: 'center',
-		alignItems: 'center'
+		justifyContent: "center",
+		alignItems: "center"
 	},
 	content: {
 		flex: 12

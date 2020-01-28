@@ -6,19 +6,19 @@
  * @flow
  */
 
-import {createAppContainer, createSwitchNavigator} from 'react-navigation';
+import { createAppContainer, createSwitchNavigator } from "react-navigation";
 
-import Login from './src/screens/Login';
-import Register from './src/screens/Register';
-import Selection from './src/screens/Selection';
+import Login from "./src/screens/Login";
+import Register from "./src/screens/Register";
+import Selection from "./src/screens/Selection";
 
-import BuyMap from './src/screens/buy/Map';
-import BuyCheckout from './src/screens/buy/Checkout';
-import BuyCompleted from './src/screens/buy/Completed';
+import BuyMap from "./src/screens/buy/Map";
+import BuyCheckout from "./src/screens/buy/Checkout";
+import BuyCompleted from "./src/screens/buy/Completed";
 
-import SaleSettings from './src/screens/sale/Settings';
-import SalesCompleted from './src/screens/sale/Completed';
-import 'react-native-gesture-handler';
+import SaleSettings from "./src/screens/sale/Settings";
+import SalesCompleted from "./src/screens/sale/Completed";
+import "react-native-gesture-handler";
 
 const AppNavigator = createSwitchNavigator(
 	{
@@ -35,7 +35,7 @@ const AppNavigator = createSwitchNavigator(
 		saleCompleted: SalesCompleted
 	},
 	{
-		initialRouteName: 'buyMap'
+		initialRouteName: "buyCompleted"
 	}
 );
 

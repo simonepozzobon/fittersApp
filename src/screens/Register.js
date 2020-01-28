@@ -379,7 +379,7 @@ const styles = StyleSheet.create({
 	},
 	btnWhiteText: {
 		textAlign: 'center',
-		color: '#ff5900',
+		color: '#FF2A00',
 		fontWeight: '800',
 	},
 	btnSocial: {

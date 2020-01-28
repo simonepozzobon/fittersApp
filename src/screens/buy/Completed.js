@@ -138,7 +138,7 @@ class CediIngresso extends Component {
                     </View>
                     <View style={{marginTop: 24}}>
                       <LinearGradient
-                        colors={['#ff2a00', '#ff5900']}
+                        colors={['#ff2a00', '#FF2A00']}
                         start={{ x: 0.0, y: 0.25 }}
                         end={{ x: 0.5, y: 1.0 }}
                         style={styles.panelGradient}>
