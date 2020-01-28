@@ -11,6 +11,7 @@
 		0996C8A11195490ACDDF1154 /* libPods-fittersApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD13B06B128810DCDB122D0 /* libPods-fittersApp.a */; };
 		0C0B10CF23DB0ED700C24967 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C0B10CE23DB0ED700C24967 /* MapKit.framework */; };
 		0C4E115B23DE56C600135396 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
+		0CB7501023DFB67100E449FD /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0CB7500F23DFB67100E449FD /* AppCenter-Config.plist */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -48,6 +49,7 @@
 		087C4B96E8D5088FBC934512 /* Pods-fittersApp-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fittersApp-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-fittersApp-tvOS/Pods-fittersApp-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		0C0B10CE23DB0ED700C24967 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		0C1CA6B3CD4B1DB7F33B89C5 /* libPods-fittersAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fittersAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CB7500F23DFB67100E449FD /* AppCenter-Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AppCenter-Config.plist"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* fittersApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fittersApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = fittersApp/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = fittersApp/AppDelegate.m; sourceTree = "<group>"; usesTabs = 0; };
@@ -178,6 +180,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				0CB7500F23DFB67100E449FD /* AppCenter-Config.plist */,
 				13B07FAE1A68108700A75B9A /* fittersApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* fittersAppTests */,
@@ -349,6 +352,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				0CB7501023DFB67100E449FD /* AppCenter-Config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
