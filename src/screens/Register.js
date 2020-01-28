@@ -15,7 +15,6 @@ import {
 from 'react-native'
 
 import CheckBox from '@react-native-community/checkbox'
-
 import MainTemplate from '../presentation/MainTemplate'
 
 const logo = require('../../assets/brand/logo.png');
@@ -60,177 +59,398 @@ class Register extends Component {
 
 
         // Component
-        return (
-            <MainTemplate>
-            <View style={{ height: 80, marginTop: 100}}>
-              <View style={{flexDirection: 'row', justifyContent: 'center'}}>
-                <TouchableOpacity
-                    style={[styles.btnSocial]}
-                    onPress={() => {this.goTo('register')}}>
-                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                      <Image
-                        source={facebook}
-                        resizeMode="contain"
-                        style={{ width: 24, height: 24}}
-                      />
-                      <Text style={[styles.btnFacebook, {marginLeft: 8}]}>
-                          Sign Up
-                      </Text>
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={[styles.btnSocial, { marginLeft: 20 }]}
-                    onPress={() => {this.goTo('register')}}>
-                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                      <Image
-                        source={google}
-                        resizeMode="contain"
-                        style={{ width: 24, height: 24}}
-                      />
-                      <Text style={[styles.btnGoogle, {marginLeft: 8}]}>
-                          Sign Up
-                      </Text>
-                    </View>
-                </TouchableOpacity>
-              </View>
-            </View>
+        return ( <
+            MainTemplate >
+            <
+            View style = {
+                {
+                    height: 80,
+                    marginTop: 100
+                }
+            } >
+            <
+            View style = {
+                {
+                    flexDirection: 'row',
+                    justifyContent: 'center'
+                }
+            } >
+            <
+            TouchableOpacity style = {
+                [styles.btnSocial]
+            }
+            onPress = {
+                () => {
+                    this.goTo('register')
+                }
+            } >
+            <
+            View style = {
+                {
+                    flexDirection: 'row',
+                    alignItems: 'center'
+                }
+            } >
+            <
+            Image source = {
+                facebook
+            }
+            resizeMode = "contain"
+            style = {
+                {
+                    width: 24,
+                    height: 24
+                }
+            }
+            /> <
+            Text style = {
+                [styles.btnFacebook, {
+                    marginLeft: 8
+                }]
+            } >
+            Sign Up <
+            /Text> <
+            /View> <
+            /TouchableOpacity> <
+            TouchableOpacity style = {
+                [styles.btnSocial, {
+                    marginLeft: 20
+                }]
+            }
+            onPress = {
+                () => {
+                    this.goTo('register')
+                }
+            } >
+            <
+            View style = {
+                {
+                    flexDirection: 'row',
+                    alignItems: 'center'
+                }
+            } >
+            <
+            Image source = {
+                google
+            }
+            resizeMode = "contain"
+            style = {
+                {
+                    width: 24,
+                    height: 24
+                }
+            }
+            /> <
+            Text style = {
+                [styles.btnGoogle, {
+                    marginLeft: 8
+                }]
+            } >
+            Sign Up <
+            /Text> <
+            /View> <
+            /TouchableOpacity> <
+            /View> <
+            /View>
 
-            <View style={{ flex: 1, marginTop: 32 }}>
-                <View>
-                    <TextInput
-                          autoCorrect={false}
-                          value={this.state.email}
-                          placeholder="Name"
-                          placeholderTextColor="white"
-                          returnKeyType="next"
-                          keyboardType="email-address"
-                          onChangeText={this.emailSet}
-                          onSubmitEditing={this.focusToPassword}
-                          style={[compStyles.formInput, styles.input, compStyles.formInput]}
-                        />
-                </View>
-                <View style={{ marginTop: 12 }}>
-                    <TextInput
-                          autoCorrect={false}
-                          value={this.state.email}
-                          placeholder="Surname"
-                          placeholderTextColor="white"
-                          returnKeyType="next"
-                          keyboardType="email-address"
-                          onChangeText={this.emailSet}
-                          onSubmitEditing={this.focusToPassword}
-                          style={[compStyles.formInput, styles.input, compStyles.formInput]}
-                        />
-                </View>
-                <View style={{ marginTop: 12 }}>
-                    <TextInput
-                          autoCorrect={false}
-                          value={this.state.email}
-                          placeholder="Age"
-                          placeholderTextColor="white"
-                          returnKeyType="next"
-                          keyboardType="email-address"
-                          onChangeText={this.emailSet}
-                          onSubmitEditing={this.focusToPassword}
-                          style={[compStyles.formInput, styles.input, compStyles.formInput]}
-                        />
-                </View>
-                <View style={{ marginTop: 12 }}>
-                    <TextInput
-                          autoCorrect={false}
-                          value={this.state.email}
-                          placeholder="Indirizzo"
-                          placeholderTextColor="white"
-                          returnKeyType="next"
-                          keyboardType="email-address"
-                          onChangeText={this.emailSet}
-                          onSubmitEditing={this.focusToPassword}
-                          style={[compStyles.formInput, styles.input, compStyles.formInput]}
-                        />
-                </View>
-                <View style={{ marginTop: 12 }}>
-                    <TextInput
-                          autoCorrect={false}
-                          value={this.state.email}
-                          placeholder="Città"
-                          placeholderTextColor="white"
-                          returnKeyType="next"
-                          keyboardType="email-address"
-                          onChangeText={this.emailSet}
-                          onSubmitEditing={this.focusToPassword}
-                          style={[compStyles.formInput, styles.input, compStyles.formInput]}
-                        />
-                </View>
-                <View style={{ marginTop: 40 }}>
-                    <TextInput
-                          autoCorrect={false}
-                          value={this.state.email}
-                          placeholder="Email"
-                          placeholderTextColor="white"
-                          returnKeyType="next"
-                          keyboardType="email-address"
-                          onChangeText={this.emailSet}
-                          onSubmitEditing={this.focusToPassword}
-                          style={[compStyles.formInput, styles.input, compStyles.formInput]}
-                        />
-                </View>
-                <View style={{ marginTop: 12 }}>
-                    <TextInput
-                          autoCorrect={false}
-                          value={this.state.email}
-                          placeholder="Password"
-                          placeholderTextColor="white"
-                          returnKeyType="next"
-                          keyboardType="email-address"
-                          onChangeText={this.emailSet}
-                          onSubmitEditing={this.focusToPassword}
-                          style={[compStyles.formInput, styles.input, compStyles.formInput]}
-                        />
-                </View>
-                <View style={styles.checkboxes}>
-                    <View style={{flexDirection: 'row'}}>
-                      <CheckBox
-                        value={false}
-                        disabled={true}
-                        style={styles.checkbox}
-                      ></CheckBox>
-                      <View style={{flexDirection: 'row', alignItems: 'center', marginLeft: 8}}>
-                        <Text style={[styles.checkboxText]}>
-                          Accetta il
-                        </Text>
-                        <Text style={[styles.boldText]}>
-                          Regolamento
-                        </Text>
-                      </View>
-                    </View>
-                    <View style={{marginTop: 10, flexDirection: 'row', alignItems: 'center'}}>
-                      <CheckBox
-                        value={true}
-                        disabled={false}
-                        style={styles.checkbox}
-                      ></CheckBox>
-                      <View style={{flexDirection: 'row', alignItems: 'center', marginLeft: 8 }}>
-                        <Text style={[styles.checkboxText]}>
-                          Scarico di
-                        </Text>
-                        <Text style={[styles.boldText]}>
-                          Responsabilità
-                        </Text>
-                      </View>
-                    </View>
+            <
+            View style = {
+                {
+                    flex: 1,
+                    marginTop: 32
+                }
+            } >
+            <
+            View >
+            <
+            TextInput autoCorrect = {
+                false
+            }
+            value = {
+                this.state.email
+            }
+            placeholder = "Name"
+            placeholderTextColor = "white"
+            returnKeyType = "next"
+            keyboardType = "email-address"
+            onChangeText = {
+                this.emailSet
+            }
+            onSubmitEditing = {
+                this.focusToPassword
+            }
+            style = {
+                [compStyles.formInput, styles.input, compStyles.formInput]
+            }
+            /> <
+            /View> <
+            View style = {
+                {
+                    marginTop: 12
+                }
+            } >
+            <
+            TextInput autoCorrect = {
+                false
+            }
+            value = {
+                this.state.email
+            }
+            placeholder = "Surname"
+            placeholderTextColor = "white"
+            returnKeyType = "next"
+            keyboardType = "email-address"
+            onChangeText = {
+                this.emailSet
+            }
+            onSubmitEditing = {
+                this.focusToPassword
+            }
+            style = {
+                [compStyles.formInput, styles.input, compStyles.formInput]
+            }
+            /> <
+            /View> <
+            View style = {
+                {
+                    marginTop: 12
+                }
+            } >
+            <
+            TextInput autoCorrect = {
+                false
+            }
+            value = {
+                this.state.email
+            }
+            placeholder = "Age"
+            placeholderTextColor = "white"
+            returnKeyType = "next"
+            keyboardType = "email-address"
+            onChangeText = {
+                this.emailSet
+            }
+            onSubmitEditing = {
+                this.focusToPassword
+            }
+            style = {
+                [compStyles.formInput, styles.input, compStyles.formInput]
+            }
+            /> <
+            /View> <
+            View style = {
+                {
+                    marginTop: 12
+                }
+            } >
+            <
+            TextInput autoCorrect = {
+                false
+            }
+            value = {
+                this.state.email
+            }
+            placeholder = "Indirizzo"
+            placeholderTextColor = "white"
+            returnKeyType = "next"
+            keyboardType = "email-address"
+            onChangeText = {
+                this.emailSet
+            }
+            onSubmitEditing = {
+                this.focusToPassword
+            }
+            style = {
+                [compStyles.formInput, styles.input, compStyles.formInput]
+            }
+            /> <
+            /View> <
+            View style = {
+                {
+                    marginTop: 12
+                }
+            } >
+            <
+            TextInput autoCorrect = {
+                false
+            }
+            value = {
+                this.state.email
+            }
+            placeholder = "Città"
+            placeholderTextColor = "white"
+            returnKeyType = "next"
+            keyboardType = "email-address"
+            onChangeText = {
+                this.emailSet
+            }
+            onSubmitEditing = {
+                this.focusToPassword
+            }
+            style = {
+                [compStyles.formInput, styles.input, compStyles.formInput]
+            }
+            /> <
+            /View> <
+            View style = {
+                {
+                    marginTop: 40
+                }
+            } >
+            <
+            TextInput autoCorrect = {
+                false
+            }
+            value = {
+                this.state.email
+            }
+            placeholder = "Email"
+            placeholderTextColor = "white"
+            returnKeyType = "next"
+            keyboardType = "email-address"
+            onChangeText = {
+                this.emailSet
+            }
+            onSubmitEditing = {
+                this.focusToPassword
+            }
+            style = {
+                [compStyles.formInput, styles.input, compStyles.formInput]
+            }
+            /> <
+            /View> <
+            View style = {
+                {
+                    marginTop: 12
+                }
+            } >
+            <
+            TextInput autoCorrect = {
+                false
+            }
+            value = {
+                this.state.email
+            }
+            placeholder = "Password"
+            placeholderTextColor = "white"
+            returnKeyType = "next"
+            keyboardType = "email-address"
+            onChangeText = {
+                this.emailSet
+            }
+            onSubmitEditing = {
+                this.focusToPassword
+            }
+            style = {
+                [compStyles.formInput, styles.input, compStyles.formInput]
+            }
+            /> <
+            /View> <
+            View style = {
+                styles.checkboxes
+            } >
+            <
+            View style = {
+                {
+                    flexDirection: 'row'
+                }
+            } >
+            <
+            CheckBox value = {
+                false
+            }
+            disabled = {
+                true
+            }
+            style = {
+                styles.checkbox
+            } >
+            < /CheckBox> <
+            View style = {
+                {
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    marginLeft: 8
+                }
+            } >
+            <
+            Text style = {
+                [styles.checkboxText]
+            } >
+            Accetta il <
+            /Text> <
+            Text style = {
+                [styles.boldText]
+            } >
+            Regolamento <
+            /Text> <
+            /View> <
+            /View> <
+            View style = {
+                {
+                    marginTop: 10,
+                    flexDirection: 'row',
+                    alignItems: 'center'
+                }
+            } >
+            <
+            CheckBox value = {
+                true
+            }
+            disabled = {
+                false
+            }
+            style = {
+                styles.checkbox
+            } >
+            < /CheckBox> <
+            View style = {
+                {
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    marginLeft: 8
+                }
+            } >
+            <
+            Text style = {
+                [styles.checkboxText]
+            } >
+            Scarico di <
+            /Text> <
+            Text style = {
+                [styles.boldText]
+            } >
+            Responsabilità <
+            /Text> <
+            /View> <
+            /View>
 
-                </View>
-                <View style={{ marginTop: 12 }}>
-                    <TouchableOpacity
-                        style={[styles.btnWhite, compStyles.btnWhite]}
-                        onPress={() => {this.goTo('register')}}>
-                        <Text style={styles.btnWhiteText}>
-                            Create Account
-                        </Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
-          </MainTemplate>
+            <
+            /View> <
+            View style = {
+                {
+                    marginTop: 12
+                }
+            } >
+            <
+            TouchableOpacity style = {
+                [styles.btnWhite, compStyles.btnWhite]
+            }
+            onPress = {
+                () => {
+                    this.goTo('register')
+                }
+            } >
+            <
+            Text style = {
+                styles.btnWhiteText
+            } >
+            Create Account <
+            /Text> <
+            /TouchableOpacity> <
+            /View> <
+            /View> <
+            /MainTemplate>
         );
     }
 }
