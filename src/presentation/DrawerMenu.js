@@ -114,7 +114,7 @@ export class DrawerMenu extends Component {
 						<DrawerMenuSingle
 							title="Pagamento"
 							src={menuIcons.pagamento}
-							destination="userSelection"
+							destination="payment"
 						/>
 						<DrawerMenuSingle
 							title="Invita i tuoi amici"

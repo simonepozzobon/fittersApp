@@ -8,9 +8,9 @@ import {
 	View
 } from "react-native";
 
-import GestureRecognizer, {
-	swipeDirections
-} from "react-native-swipe-gestures";
+// import GestureRecognizer, {
+// 	swipeDirections
+// } from "react-native-swipe-gestures";
 
 import UiButton from "../../../components/UiButton";
 
@@ -29,9 +29,6 @@ class MapPanel extends Component {
 		};
 	}
 
-	// Component State Management
-	componentDidMount() {}
-
 	goTo(route) {
 		this.props.navigation.navigate(route);
 	}
@@ -39,7 +36,7 @@ class MapPanel extends Component {
 	// Methods
 	_selectMarker(marker) {
 		if (this.state.isOpen == false && this.props.item == null) {
-			console.log("primo caso");
+			// console.log("primo caso");
 			this.setState({
 				item: marker
 			});
@@ -47,14 +44,14 @@ class MapPanel extends Component {
 			toValue = 0;
 		} else {
 			if (this.props.item && this.props.item.id == marker.id) {
-				console.log("sono uguali");
+				// console.log("sono uguali");
 				this._toggleSubView().then(() => {
 					this.setState({
 						item: null
 					});
 				});
 			} else if (this.props.item && this.props.item.id != marker.id) {
-				console.log("sono diversi");
+				// console.log("sono diversi");
 				this._toggleSubView().then(() => {
 					this.setState({
 						item: marker
@@ -80,7 +77,7 @@ class MapPanel extends Component {
 		return new Promise((resolve, reject) => {
 			let toValue = this.state.isOpen == false ? height * 0.3 : 0;
 
-			console.log("parte");
+			// console.log("parte");
 			Animated.spring(this.state.bounceValue, {
 				toValue: toValue,
 				duration: 600,
@@ -97,7 +94,7 @@ class MapPanel extends Component {
 	}
 
 	onSwipeDown() {
-		console.log("down");
+		// console.log("down");
 		// this._toggleSubView(this.props.item)
 	}
 

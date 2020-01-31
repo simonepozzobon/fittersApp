@@ -75,9 +75,9 @@ class Home extends Component {
 
 	// Component State Management
 	componentDidMount() {
-		// setTimeout(() => {
-		//     this._toggleSubView(MarkerData[0])
-		// }, 1000)
+		setTimeout(() => {
+			this._selectMarker(MarkerData[0]);
+		}, 1000);
 	}
 
 	componentWillUnmount() {
