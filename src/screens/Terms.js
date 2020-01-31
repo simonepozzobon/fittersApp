@@ -16,10 +16,6 @@ import Paragraph from "../dummies/Paragraph";
 const { width, height } = Dimensions.get("window");
 
 export class Terms extends Component {
-	goTo(route) {
-		this.props.navigation.navigate(route);
-	}
-
 	render() {
 		return (
 			<MainTemplate
@@ -32,7 +28,7 @@ export class Terms extends Component {
 						<UiBreadcrumb
 							title="Compra Ingresso"
 							onPress={() => {
-								this.goTo("buyMap");
+								this.props.navigation.goBack();
 							}}
 						/>
 					</View>
