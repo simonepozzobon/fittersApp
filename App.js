@@ -19,6 +19,7 @@ import BuyCompleted from "./src/screens/buy/Completed";
 import SaleSettings from "./src/screens/sale/Settings";
 import SalesCompleted from "./src/screens/sale/Completed";
 
+import Profile from "./src/screens/profile/Profile";
 import Terms from "./src/screens/profile/Terms";
 import Payment from "./src/screens/profile/Payment";
 import EntranceHome from "./src/screens/profile/EntranceList";
@@ -73,12 +74,13 @@ const AppStack = createStackNavigator(
 
 const ProfileStack = createStackNavigator(
 	{
+		profile: Profile,
 		entranceHome: EntranceHome,
 		terms: Terms,
 		payment: Payment
 	},
 	{
-		initialRouteName: "entranceHome",
+		initialRouteName: "profile",
 		headerMode: "none"
 	}
 );
