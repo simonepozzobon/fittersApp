@@ -18,6 +18,10 @@ const { width, height } = Dimensions.get("window");
 import Entrances from "../../dummies/Entrances";
 
 export class EntranceList extends Component {
+	goTo(route) {
+		this.props.navigation.navigate(route);
+	}
+
 	render() {
 		return (
 			<MainTemplate fixedView={true}>
@@ -39,7 +43,9 @@ export class EntranceList extends Component {
 						<UiButton
 							title="Compra ingresso"
 							fullWidth="0.8"
-							onPress={() => {}}
+							onPress={() => {
+								this.goTo("buyMap");
+							}}
 						/>
 					</View>
 				</UiContainer>
