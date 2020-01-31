@@ -95,7 +95,7 @@ class Register extends Component {
 										width: 24,
 										height: 24
 									}}
-								/>{" "}
+								/>
 								<Text
 									style={[
 										styles.btnFacebook,
@@ -104,10 +104,10 @@ class Register extends Component {
 										}
 									]}
 								>
-									Sign Up{" "}
-								</Text>{" "}
-							</View>{" "}
-						</TouchableOpacity>{" "}
+									Sign Up
+								</Text>
+							</View>
+						</TouchableOpacity>
 						<TouchableOpacity
 							style={[
 								styles.btnSocial,
@@ -132,7 +132,7 @@ class Register extends Component {
 										width: 24,
 										height: 24
 									}}
-								/>{" "}
+								/>
 								<Text
 									style={[
 										styles.btnGoogle,
@@ -141,11 +141,11 @@ class Register extends Component {
 										}
 									]}
 								>
-									Sign Up{" "}
-								</Text>{" "}
-							</View>{" "}
-						</TouchableOpacity>{" "}
-					</View>{" "}
+									Sign Up
+								</Text>
+							</View>
+						</TouchableOpacity>
+					</View>
 				</View>
 				<View
 					style={{
@@ -163,13 +163,9 @@ class Register extends Component {
 							keyboardType="email-address"
 							onChangeText={this.emailSet}
 							onSubmitEditing={this.focusToPassword}
-							style={[
-								compStyles.formInput,
-								styles.input,
-								compStyles.formInput
-							]}
-						/>{" "}
-					</View>{" "}
+							style={[compStyles.formInput, styles.input]}
+						/>
+					</View>
 					<View
 						style={{
 							marginTop: 12
@@ -184,13 +180,9 @@ class Register extends Component {
 							keyboardType="email-address"
 							onChangeText={this.emailSet}
 							onSubmitEditing={this.focusToPassword}
-							style={[
-								compStyles.formInput,
-								styles.input,
-								compStyles.formInput
-							]}
-						/>{" "}
-					</View>{" "}
+							style={[compStyles.formInput, styles.input]}
+						/>
+					</View>
 					<View
 						style={{
 							marginTop: 12
@@ -205,13 +197,9 @@ class Register extends Component {
 							keyboardType="email-address"
 							onChangeText={this.emailSet}
 							onSubmitEditing={this.focusToPassword}
-							style={[
-								compStyles.formInput,
-								styles.input,
-								compStyles.formInput
-							]}
-						/>{" "}
-					</View>{" "}
+							style={[compStyles.formInput, styles.input]}
+						/>
+					</View>
 					<View
 						style={{
 							marginTop: 12
@@ -226,13 +214,9 @@ class Register extends Component {
 							keyboardType="email-address"
 							onChangeText={this.emailSet}
 							onSubmitEditing={this.focusToPassword}
-							style={[
-								compStyles.formInput,
-								styles.input,
-								compStyles.formInput
-							]}
-						/>{" "}
-					</View>{" "}
+							style={[compStyles.formInput, styles.input]}
+						/>
+					</View>
 					<View
 						style={{
 							marginTop: 12
@@ -247,13 +231,9 @@ class Register extends Component {
 							keyboardType="email-address"
 							onChangeText={this.emailSet}
 							onSubmitEditing={this.focusToPassword}
-							style={[
-								compStyles.formInput,
-								styles.input,
-								compStyles.formInput
-							]}
-						/>{" "}
-					</View>{" "}
+							style={[compStyles.formInput, styles.input]}
+						/>
+					</View>
 					<View
 						style={{
 							marginTop: 40
@@ -268,13 +248,9 @@ class Register extends Component {
 							keyboardType="email-address"
 							onChangeText={this.emailSet}
 							onSubmitEditing={this.focusToPassword}
-							style={[
-								compStyles.formInput,
-								styles.input,
-								compStyles.formInput
-							]}
-						/>{" "}
-					</View>{" "}
+							style={[compStyles.formInput, styles.input]}
+						/>
+					</View>
 					<View
 						style={{
 							marginTop: 12
@@ -289,13 +265,9 @@ class Register extends Component {
 							keyboardType="email-address"
 							onChangeText={this.emailSet}
 							onSubmitEditing={this.focusToPassword}
-							style={[
-								compStyles.formInput,
-								styles.input,
-								compStyles.formInput
-							]}
-						/>{" "}
-					</View>{" "}
+							style={[compStyles.formInput, styles.input]}
+						/>
+					</View>
 					<View style={styles.checkboxes}>
 						<View
 							style={{
@@ -306,7 +278,7 @@ class Register extends Component {
 								value={false}
 								disabled={true}
 								style={styles.checkbox}
-							></CheckBox>{" "}
+							></CheckBox>
 							<View
 								style={{
 									flexDirection: "row",
@@ -315,13 +287,13 @@ class Register extends Component {
 								}}
 							>
 								<Text style={[styles.checkboxText]}>
-									Accetta il{" "}
-								</Text>{" "}
+									Accetta il
+								</Text>
 								<Text style={[styles.boldText]}>
-									Regolamento{" "}
-								</Text>{" "}
-							</View>{" "}
-						</View>{" "}
+									Regolamento
+								</Text>
+							</View>
+						</View>
 						<View
 							style={{
 								marginTop: 10,
@@ -333,7 +305,7 @@ class Register extends Component {
 								value={true}
 								disabled={false}
 								style={styles.checkbox}
-							></CheckBox>{" "}
+							></CheckBox>
 							<View
 								style={{
 									flexDirection: "row",
@@ -342,14 +314,14 @@ class Register extends Component {
 								}}
 							>
 								<Text style={[styles.checkboxText]}>
-									Scarico di{" "}
-								</Text>{" "}
+									Scarico di
+								</Text>
 								<Text style={[styles.boldText]}>
-									Responsabilità{" "}
-								</Text>{" "}
-							</View>{" "}
+									Responsabilità
+								</Text>
+							</View>
 						</View>
-					</View>{" "}
+					</View>
 					<View
 						style={{
 							marginTop: 12
@@ -362,11 +334,11 @@ class Register extends Component {
 							}}
 						>
 							<Text style={styles.btnWhiteText}>
-								Create Account{" "}
-							</Text>{" "}
-						</TouchableOpacity>{" "}
-					</View>{" "}
-				</View>{" "}
+								Create Account
+							</Text>
+						</TouchableOpacity>
+					</View>
+				</View>
 			</MainTemplate>
 		);
 	}
