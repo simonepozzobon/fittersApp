@@ -104,7 +104,7 @@ export class DrawerMenu extends Component {
 						<DrawerMenuSingle
 							title="I tuoi ingressi"
 							src={menuIcons.ingressi}
-							destination="userSelection"
+							destination="entranceHome"
 						/>
 						<DrawerMenuSingle
 							title="Regolamento"
