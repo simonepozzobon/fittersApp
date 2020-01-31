@@ -4,292 +4,435 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>AntDesign.ttf</key>
+		<data>
+		TneGhDkoD7Q01Gl8e5EScUBsgfM=
+		</data>
+		<key>AppCenter-Config.plist</key>
+		<data>
+		d//BLnx7BPyebaEnJONvNoKX/Rg=
+		</data>
+		<key>AppIcon20x20@2x.png</key>
+		<data>
+		ndplJPw+qwRZX6tCpE7nzNLmnzw=
+		</data>
+		<key>AppIcon20x20@3x.png</key>
+		<data>
+		eag648OsZ+dE1zHc/Rqh3UTkxpA=
+		</data>
+		<key>AppIcon29x29@2x.png</key>
+		<data>
+		7xORbyXmIb9RtJQJ4z2RuODRPEg=
+		</data>
+		<key>AppIcon29x29@3x.png</key>
+		<data>
+		Yb0WnVRsAvbFPPvd42oDxjkZgBU=
+		</data>
+		<key>AppIcon40x40@2x.png</key>
+		<data>
+		RYN6mn09kttcX4vP6crQK2W228c=
+		</data>
+		<key>AppIcon40x40@3x.png</key>
+		<data>
+		r2RO7IlNAuwwzxvSo6B9A/3RYDk=
+		</data>
+		<key>AppIcon60x60@2x.png</key>
+		<data>
+		r2RO7IlNAuwwzxvSo6B9A/3RYDk=
+		</data>
+		<key>AppIcon60x60@3x.png</key>
+		<data>
+		CrwyROKHO25nAJeq0mYJxWkrMd8=
+		</data>
+		<key>Assets.car</key>
+		<data>
+		nAympzp4mUxj1lbNjFlI8ei2zSA=
+		</data>
 		<key>Base.lproj/LaunchScreen.nib/objects-13.0+.nib</key>
 		<data>
-		iGKwWVCFpNcSKCc8fyzb6mm1br4=
+		zdQi+uEDpzE2oYf2Rw8RLWyLQ2U=
 		</data>
 		<key>Base.lproj/LaunchScreen.nib/runtime.nib</key>
 		<data>
-		QhSl3jgcRP6tx+cx/s2RsNyftHc=
+		xT/OPkMSZAXjpQRkyAph0tF5ZfQ=
 		</data>
-		<key>Frameworks/XCTAutomationSupport.framework/Info.plist</key>
+		<key>Entypo.ttf</key>
 		<data>
-		OGPOMv0LkN+98GkggDQcBibUZk8=
+		R4cKZ91Qhxdl95nKqX2ochnuR8U=
 		</data>
-		<key>Frameworks/XCTAutomationSupport.framework/XCTAutomationSupport</key>
+		<key>EvilIcons.ttf</key>
 		<data>
-		76Mf6x2aLge9pMTTnfd9xPAV1G0=
+		kdN36jz0dJCyVsLtCBcEp9q9rgw=
 		</data>
-		<key>Frameworks/XCTAutomationSupport.framework/_CodeSignature/CodeResources</key>
+		<key>Feather.ttf</key>
 		<data>
-		dz9607MmqKVrtwuy2phqXTw27i4=
+		PrIrzr9ebr1AiD5LkhMjKMXWvkI=
 		</data>
-		<key>Frameworks/XCTAutomationSupport.framework/version.plist</key>
+		<key>FontAwesome.ttf</key>
 		<data>
-		6MXj3acPmvECwyiIwFONRsIpgDk=
+		E7HqtlqYPHpzvHmXxHnWaUP3xss=
 		</data>
-		<key>Frameworks/XCTest.framework/Info.plist</key>
+		<key>FontAwesome5_Brands.ttf</key>
 		<data>
-		j8pxwEMsKyiaEvnS05Y2BR2rf9o=
+		abc988iZKpOFkkYGWiZ6Bb/Yz1Y=
 		</data>
-		<key>Frameworks/XCTest.framework/XCTest</key>
+		<key>FontAwesome5_Regular.ttf</key>
 		<data>
-		kiQr4VusyXwJauzmEZ0PqmCC+C8=
+		lwZFPD6ptz58CLO+HnxxbWVc+RY=
 		</data>
-		<key>Frameworks/XCTest.framework/_CodeSignature/CodeResources</key>
+		<key>FontAwesome5_Solid.ttf</key>
 		<data>
-		1xhd55E4lxTdj6MUNv/dlKr2dQk=
+		P3YEFmOPZFmt5yUbgP17wn1q0cY=
 		</data>
-		<key>Frameworks/XCTest.framework/en.lproj/InfoPlist.strings</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			TuBj57ZP6zBqcL9HttO2Rucaw9E=
-			</data>
-			<key>optional</key>
-			<true/>
-		</dict>
-		<key>Frameworks/XCTest.framework/version.plist</key>
+		<key>Fontisto.ttf</key>
 		<data>
-		6MXj3acPmvECwyiIwFONRsIpgDk=
+		wJCj7Jaj8bubYVwvPyBM4Nzc28M=
 		</data>
-		<key>Frameworks/libXCTestBundleInject.dylib</key>
+		<key>Foundation.ttf</key>
 		<data>
-		dkqitB7jE5YxYAZU7wHYzoQ51qM=
-		</data>
-		<key>Frameworks/libXCTestSwiftSupport.dylib</key>
-		<data>
-		DjkU1iwRPJ1oLH/Ox0vn+gbA+DM=
+		SyvObHkkk6SlcWtv7C2+/olJLD8=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		bYwFe6+mNw9w/jLSKy9eqwpIYx8=
+		no8oNWVqwu7tDEsV7iWxeyOnMUg=
+		</data>
+		<key>Ionicons.ttf</key>
+		<data>
+		mRu3+slwnNWNo3kBdw79RwPFQu0=
+		</data>
+		<key>MaterialCommunityIcons.ttf</key>
+		<data>
+		9G+WBPkJGz6eeDUmlnNpZ2Lh6Hw=
+		</data>
+		<key>MaterialIcons.ttf</key>
+		<data>
+		/AXeMSNOAJD33cKM4bI69AJssdo=
+		</data>
+		<key>Octicons.ttf</key>
+		<data>
+		KIdYdEE1A7zAgQ6ipE3BuDEsZlo=
 		</data>
 		<key>PkgInfo</key>
 		<data>
 		n57qDP4tZfLD1rCS43W0B4LQjzE=
 		</data>
-		<key>PlugIns/fittersAppTests.xctest.dSYM/Contents/Info.plist</key>
+		<key>SimpleLineIcons.ttf</key>
 		<data>
-		JqNJilhPdW4SR3aywG+U1NF3ehg=
+		n/uBpaEREuKS8swyPphIa61ZdZk=
 		</data>
-		<key>PlugIns/fittersAppTests.xctest.dSYM/Contents/Resources/DWARF/fittersAppTests</key>
+		<key>Zocial.ttf</key>
 		<data>
-		h4h9rIFqo/0hXU4JNim0KDDLSxU=
-		</data>
-		<key>PlugIns/fittersAppTests.xctest/Info.plist</key>
-		<data>
-		5xMIKVvKl+32YoG/+oICVLOba4M=
-		</data>
-		<key>PlugIns/fittersAppTests.xctest/_CodeSignature/CodeResources</key>
-		<data>
-		M6hOz1JDxKB0KAIoWA0/10MmEiY=
-		</data>
-		<key>PlugIns/fittersAppTests.xctest/fittersAppTests</key>
-		<data>
-		EpyKqokHYA2cgn8NPVpY2X/QYTM=
+		C9pZx7zT05J94EfgkYdaRCi/0as=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>AntDesign.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			TneGhDkoD7Q01Gl8e5EScUBsgfM=
+			</data>
+			<key>hash2</key>
+			<data>
+			eVXKFBJ7MEEsEU6xPP1wK12rJl/rGIDRaV1zyqgkzeE=
+			</data>
+		</dict>
+		<key>AppCenter-Config.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			d//BLnx7BPyebaEnJONvNoKX/Rg=
+			</data>
+			<key>hash2</key>
+			<data>
+			JEMIUH4TuaTlA3EgskOgJK3O2JUyfH3nF5s0IFOtWsw=
+			</data>
+		</dict>
+		<key>AppIcon20x20@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ndplJPw+qwRZX6tCpE7nzNLmnzw=
+			</data>
+			<key>hash2</key>
+			<data>
+			cEkFQKR3YnQacJ2C7hj0VM0D+SGGAVugxnY1oxoF6N4=
+			</data>
+		</dict>
+		<key>AppIcon20x20@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			eag648OsZ+dE1zHc/Rqh3UTkxpA=
+			</data>
+			<key>hash2</key>
+			<data>
+			ERVNLKfdT70q8NoQWm3muLxrK07YjrdKSVoOsv0iiZg=
+			</data>
+		</dict>
+		<key>AppIcon29x29@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			7xORbyXmIb9RtJQJ4z2RuODRPEg=
+			</data>
+			<key>hash2</key>
+			<data>
+			UH+ud0LFrOK92EfdNZt8W8iVM61y6a1wVddnBDp6jBU=
+			</data>
+		</dict>
+		<key>AppIcon29x29@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Yb0WnVRsAvbFPPvd42oDxjkZgBU=
+			</data>
+			<key>hash2</key>
+			<data>
+			JvFpOedrV01QSjESQWu/wUIy47B/y2DZsrswHv3OvLw=
+			</data>
+		</dict>
+		<key>AppIcon40x40@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			RYN6mn09kttcX4vP6crQK2W228c=
+			</data>
+			<key>hash2</key>
+			<data>
+			It6fmSTMj0EOMVGLCXpCiRXziCVvfrCaSWWESZd7cU0=
+			</data>
+		</dict>
+		<key>AppIcon40x40@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			r2RO7IlNAuwwzxvSo6B9A/3RYDk=
+			</data>
+			<key>hash2</key>
+			<data>
+			++DEpee/+0KZcac29B4hObzv0hFpS3wRYOmp4n9vk3c=
+			</data>
+		</dict>
+		<key>AppIcon60x60@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			r2RO7IlNAuwwzxvSo6B9A/3RYDk=
+			</data>
+			<key>hash2</key>
+			<data>
+			++DEpee/+0KZcac29B4hObzv0hFpS3wRYOmp4n9vk3c=
+			</data>
+		</dict>
+		<key>AppIcon60x60@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			CrwyROKHO25nAJeq0mYJxWkrMd8=
+			</data>
+			<key>hash2</key>
+			<data>
+			fyZjTyHYMU4sDaMKkxVQXSKOLA5EzIlG7e4QlGHwSt0=
+			</data>
+		</dict>
+		<key>Assets.car</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			nAympzp4mUxj1lbNjFlI8ei2zSA=
+			</data>
+			<key>hash2</key>
+			<data>
+			HKZfRXsLKCv7Zp5f/1p6q25j24N7k9uwHVzdKl9jMjE=
+			</data>
+		</dict>
 		<key>Base.lproj/LaunchScreen.nib/objects-13.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			iGKwWVCFpNcSKCc8fyzb6mm1br4=
+			zdQi+uEDpzE2oYf2Rw8RLWyLQ2U=
 			</data>
 			<key>hash2</key>
 			<data>
-			UborY3+9PvRhfZhHpNWC09H3MSHXe8HaPzALvD/MdRo=
+			DEZx4Ov0JPtyvQgwsA5ok0o78PfwxmwIBkRlc3/pUFA=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			QhSl3jgcRP6tx+cx/s2RsNyftHc=
+			xT/OPkMSZAXjpQRkyAph0tF5ZfQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			Kli/zoC3EEfTdthDrctToKSQMg6k3lx5P8w9wlUQ/6A=
+			7jDN3uqZiM64d9PSLB1Vw7wWihxgjr6rLNXwfE/TCe0=
 			</data>
 		</dict>
-		<key>Frameworks/XCTAutomationSupport.framework/Info.plist</key>
+		<key>Entypo.ttf</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			OGPOMv0LkN+98GkggDQcBibUZk8=
+			R4cKZ91Qhxdl95nKqX2ochnuR8U=
 			</data>
 			<key>hash2</key>
 			<data>
-			UXjx+dzbH/VUdL1VrjpVNceWMlj3rQw+BT8iPYNyHX8=
+			3QhJoVkfiNp5N7I/kiQYpc7FTgdeCePMyo/rYgFvqoI=
 			</data>
 		</dict>
-		<key>Frameworks/XCTAutomationSupport.framework/XCTAutomationSupport</key>
+		<key>EvilIcons.ttf</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			76Mf6x2aLge9pMTTnfd9xPAV1G0=
+			kdN36jz0dJCyVsLtCBcEp9q9rgw=
 			</data>
 			<key>hash2</key>
 			<data>
-			zxQojWPPAT9d5MhhhtqjiKa8ajefe1sbL9YPQ5FToWM=
+			pcrrTTlcXjLx1aMKyzgq68Zk8brf0UkxmQfyIV5OPiY=
 			</data>
 		</dict>
-		<key>Frameworks/XCTAutomationSupport.framework/_CodeSignature/CodeResources</key>
+		<key>Feather.ttf</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			dz9607MmqKVrtwuy2phqXTw27i4=
+			PrIrzr9ebr1AiD5LkhMjKMXWvkI=
 			</data>
 			<key>hash2</key>
 			<data>
-			mzlD+A+oDWtL/lanJNY6K9wKXpMYXXZzhbcmHn9IU2A=
+			nRKAiLj3fyyRdNATa3y4YZ8IhSWcv3KpiFbLxsaZXzg=
 			</data>
 		</dict>
-		<key>Frameworks/XCTAutomationSupport.framework/version.plist</key>
+		<key>FontAwesome.ttf</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			6MXj3acPmvECwyiIwFONRsIpgDk=
+			E7HqtlqYPHpzvHmXxHnWaUP3xss=
 			</data>
 			<key>hash2</key>
 			<data>
-			A7eEgXfoApba0i1QcUkjoURwTLNAyVLq7o5r3CXdxx0=
+			qljzPyOaD7AvXHpsRcBD16msmgkzNYBmlOzW1O3A1qg=
 			</data>
 		</dict>
-		<key>Frameworks/XCTest.framework/Info.plist</key>
+		<key>FontAwesome5_Brands.ttf</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			j8pxwEMsKyiaEvnS05Y2BR2rf9o=
+			abc988iZKpOFkkYGWiZ6Bb/Yz1Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			4H2jujm0DMjzEs33dWK7yVTQZiUp/ho5TCbnhg1YoAA=
+			NSPzVRWd/5tqRoE4vIyPzdWSGMAXP+6lG+TYw0iNyhA=
 			</data>
 		</dict>
-		<key>Frameworks/XCTest.framework/XCTest</key>
+		<key>FontAwesome5_Regular.ttf</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			kiQr4VusyXwJauzmEZ0PqmCC+C8=
+			lwZFPD6ptz58CLO+HnxxbWVc+RY=
 			</data>
 			<key>hash2</key>
 			<data>
-			vopu/wV34z7A0qHZbbU2SR9Ij/sPLuHE/UlGvGaC/18=
+			dHHOyKGia7DwFCbUgQeGkTt3cHnS+WaoU/X5dvIusqo=
 			</data>
 		</dict>
-		<key>Frameworks/XCTest.framework/_CodeSignature/CodeResources</key>
+		<key>FontAwesome5_Solid.ttf</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			1xhd55E4lxTdj6MUNv/dlKr2dQk=
+			P3YEFmOPZFmt5yUbgP17wn1q0cY=
 			</data>
 			<key>hash2</key>
 			<data>
-			75TawGTGqdl4610TTHdT5qqHpKR9wqe4gdI9pUZMOtE=
+			lHqsFqptKzsKT6IOILje+kYC6bQvj9n6KxlTi0xajqk=
 			</data>
 		</dict>
-		<key>Frameworks/XCTest.framework/en.lproj/InfoPlist.strings</key>
+		<key>Fontisto.ttf</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			TuBj57ZP6zBqcL9HttO2Rucaw9E=
+			wJCj7Jaj8bubYVwvPyBM4Nzc28M=
 			</data>
 			<key>hash2</key>
 			<data>
-			89RGkjZaKuewYnjpzwhIswhqfrU8+pcEXqM/DHVrUmo=
+			lNq58dWxPqB2nRJKLaDQJDPzuZ1t6loHwERqdxWBAMA=
 			</data>
-			<key>optional</key>
-			<true/>
 		</dict>
-		<key>Frameworks/XCTest.framework/version.plist</key>
+		<key>Foundation.ttf</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			6MXj3acPmvECwyiIwFONRsIpgDk=
+			SyvObHkkk6SlcWtv7C2+/olJLD8=
 			</data>
 			<key>hash2</key>
 			<data>
-			A7eEgXfoApba0i1QcUkjoURwTLNAyVLq7o5r3CXdxx0=
+			fh3QPdTOkLZYBSVUzXRZ3xZxZxc4mlUvpMbVal+JM+Y=
 			</data>
 		</dict>
-		<key>Frameworks/libXCTestBundleInject.dylib</key>
+		<key>Ionicons.ttf</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			dkqitB7jE5YxYAZU7wHYzoQ51qM=
+			mRu3+slwnNWNo3kBdw79RwPFQu0=
 			</data>
 			<key>hash2</key>
 			<data>
-			uJ4boiRtdjrOexpyY2JnKgH0xuab39MQwTpLtzjNsBc=
+			INFzvLYFHQlzvgymqi+08npbKQ2AEGyyxWfI/cdyxxE=
 			</data>
 		</dict>
-		<key>Frameworks/libXCTestSwiftSupport.dylib</key>
+		<key>MaterialCommunityIcons.ttf</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			DjkU1iwRPJ1oLH/Ox0vn+gbA+DM=
+			9G+WBPkJGz6eeDUmlnNpZ2Lh6Hw=
 			</data>
 			<key>hash2</key>
 			<data>
-			6/hmEcPJ7UVcwq1OD63w8JeYVRJTmiYn10aCiZcVqlA=
+			vEyn5uskUqB2CZMyWblwAKWfMw2Qo010U5Uqyo4GkhA=
 			</data>
 		</dict>
-		<key>PlugIns/fittersAppTests.xctest.dSYM/Contents/Info.plist</key>
+		<key>MaterialIcons.ttf</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			JqNJilhPdW4SR3aywG+U1NF3ehg=
+			/AXeMSNOAJD33cKM4bI69AJssdo=
 			</data>
 			<key>hash2</key>
 			<data>
-			2URJj5/XQtQsbbJHkM+fwO+mVB8/RQvLV0O/wvLN1oE=
+			t/Sjq1YgSPKN0fppFgG8QzY6YdD4dtFtgxbFLk8y1pY=
 			</data>
 		</dict>
-		<key>PlugIns/fittersAppTests.xctest.dSYM/Contents/Resources/DWARF/fittersAppTests</key>
+		<key>Octicons.ttf</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			h4h9rIFqo/0hXU4JNim0KDDLSxU=
+			KIdYdEE1A7zAgQ6ipE3BuDEsZlo=
 			</data>
 			<key>hash2</key>
 			<data>
-			NQ2rGN25a8Rr42UdJ+w8RIcmSptQpy2KzkluG+rH+P0=
+			ua3cE7d8ZyDNSM0Y8PSoyuWJsbkQNjDCSd5gq3Lf1r4=
 			</data>
 		</dict>
-		<key>PlugIns/fittersAppTests.xctest/Info.plist</key>
+		<key>SimpleLineIcons.ttf</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			5xMIKVvKl+32YoG/+oICVLOba4M=
+			n/uBpaEREuKS8swyPphIa61ZdZk=
 			</data>
 			<key>hash2</key>
 			<data>
-			AsH6SV1xEzkpy/Xq1PLN9omwc3RYHQfv83+0rS6E0k4=
+			P1Ad2wXHCCm7tRz+nKn/9X854GBFfCV7PM8l33Z/CHA=
 			</data>
 		</dict>
-		<key>PlugIns/fittersAppTests.xctest/_CodeSignature/CodeResources</key>
+		<key>Zocial.ttf</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			M6hOz1JDxKB0KAIoWA0/10MmEiY=
+			C9pZx7zT05J94EfgkYdaRCi/0as=
 			</data>
 			<key>hash2</key>
 			<data>
-			3O5PY0Hp1Lz3tTU55gUzzpfkiYhavd/vSjPRl/cLjls=
-			</data>
-		</dict>
-		<key>PlugIns/fittersAppTests.xctest/fittersAppTests</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			EpyKqokHYA2cgn8NPVpY2X/QYTM=
-			</data>
-			<key>hash2</key>
-			<data>
-			bWvrzQD0gipqo2AoGpC8UJ0KjvJMoKD8ZVQdDDqduS0=
+			17EKHr4YMOWi8I9JA7moDiwZEsDdL3O5P88r+DIhZgI=
 			</data>
 		</dict>
 	</dict>

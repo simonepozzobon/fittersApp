@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     },
     btnWhiteText: {
         textAlign: 'center',
-        color: '#ff5900',
+        color: '#FF2A00',
     },
     logo: {
         width: Dimensions.get('window').width / 4,
