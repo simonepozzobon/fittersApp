@@ -29,7 +29,7 @@ export class EntranceList extends Component {
 	render() {
 		console.log(this.props.navigation);
 		return (
-			<MainTemplate fixedView={true}>
+			<MainTemplate fixedView={true} onPressTimes="userSelection">
 				<UiContainer>
 					<View style={[styles.container, { paddingBottom: 24 }]}>
 						<UiBreadcrumb

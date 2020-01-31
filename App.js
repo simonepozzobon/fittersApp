@@ -43,6 +43,7 @@ const BuyStack = createStackNavigator(
 		buyCompleted: BuyCompleted
 	},
 	{
+		initialRouteName: "buyMap",
 		headerMode: "none"
 	}
 );
@@ -53,6 +54,7 @@ const SaleStack = createStackNavigator(
 		saleCompleted: SalesCompleted
 	},
 	{
+		initialRouteName: "saleSettings",
 		headerMode: "none"
 	}
 );
@@ -64,16 +66,19 @@ const AppStack = createStackNavigator(
 		sale: SaleStack
 	},
 	{
+		initialRouteName: "userSelection",
 		headerMode: "none"
 	}
 );
 
 const ProfileStack = createStackNavigator(
 	{
+		entranceHome: EntranceHome,
 		terms: Terms,
 		payment: Payment
 	},
 	{
+		initialRouteName: "entranceHome",
 		headerMode: "none"
 	}
 );
@@ -84,9 +89,7 @@ const AppNavigator = createSwitchNavigator(
 
 		app: AppStack,
 
-		profile: ProfileStack,
-
-		entranceHome: EntranceHome
+		profile: ProfileStack
 	},
 	{
 		initialRouteName: "profile",

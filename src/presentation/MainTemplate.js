@@ -16,7 +16,9 @@ class MainTemplate extends Component {
 
 	// Component State Management
 
-	componentDidMount() {}
+	componentDidMount() {
+		console.log(this.props.navigation);
+	}
 
 	// Methods
 	openDrawer() {
@@ -28,7 +30,7 @@ class MainTemplate extends Component {
 			this.props.onPressTimes();
 		} else if (this.props.onPressTimes) {
 			if (this.props.onPressTimes == "back") {
-				this.props.navigation.goBack();
+				this.props.navigation.goBack(null);
 			} else {
 				this.props.navigation.navigate(this.props.onPressTimes);
 			}
