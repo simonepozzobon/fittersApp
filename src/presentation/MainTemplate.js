@@ -17,7 +17,7 @@ class MainTemplate extends Component {
 	// Component State Management
 
 	componentDidMount() {
-		console.log(this.props.navigation);
+		// console.log(this.props.navigation);
 	}
 
 	// Methods

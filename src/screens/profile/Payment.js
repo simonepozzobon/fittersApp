@@ -7,11 +7,11 @@ import {
 	SafeAreaView,
 	ScrollView
 } from "react-native";
-import MainTemplate from "../presentation/MainTemplate";
-import UiButton from "../components/UiButton";
-import UiContainer from "../components/UiContainer";
-import UiSectionTitle from "../components/UiSectionTitle";
-import UiBreadcrumb from "../components/UiBreadcrumb";
+import MainTemplate from "../../presentation/MainTemplate";
+import UiButton from "../../components/UiButton";
+import UiContainer from "../../components/UiContainer";
+import UiSectionTitle from "../../components/UiSectionTitle";
+import UiBreadcrumb from "../../components/UiBreadcrumb";
 import { TextInput } from "react-native-gesture-handler";
 
 const { width, height } = Dimensions.get("window");

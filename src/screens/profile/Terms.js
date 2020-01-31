@@ -7,11 +7,11 @@ import {
 	SafeAreaView,
 	ScrollView
 } from "react-native";
-import MainTemplate from "../presentation/MainTemplate";
-import UiContainer from "../components/UiContainer";
-import UiSectionTitle from "../components/UiSectionTitle";
-import UiBreadcrumb from "../components/UiBreadcrumb";
-import Paragraph from "../dummies/Paragraph";
+import MainTemplate from "../../presentation/MainTemplate";
+import UiContainer from "../../components/UiContainer";
+import UiSectionTitle from "../../components/UiSectionTitle";
+import UiBreadcrumb from "../../components/UiBreadcrumb";
+import Paragraph from "../../dummies/Paragraph";
 
 const { width, height } = Dimensions.get("window");
 
