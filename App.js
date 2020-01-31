@@ -6,50 +6,42 @@
  * @flow
  */
 
-import React from 'react';
-import {
-    Header,
-    LearnMoreLinks,
-    Colors,
-    DebugInstructions,
-    ReloadInstructions,
-}
-from 'react-native/Libraries/NewAppScreen';
+import { createAppContainer, createSwitchNavigator } from "react-navigation";
 
-import {
-    createAppContainer,
-    createSwitchNavigator
+import Login from "./src/screens/Login";
+import Register from "./src/screens/Register";
+import Selection from "./src/screens/Selection";
 
-}
-from 'react-navigation';
+import BuyMap from "./src/screens/buy/Map";
+import BuyCheckout from "./src/screens/buy/Checkout";
+import BuyCompleted from "./src/screens/buy/Completed";
 
-import Login from './src/screens/Login'
-import Register from './src/screens/Register'
-import Selection from './src/screens/Selection'
+import SaleSettings from "./src/screens/sale/Settings";
+import SalesCompleted from "./src/screens/sale/Completed";
+import Terms from "./src/screens/Terms";
+import Payment from "./src/screens/Payment";
+import "react-native-gesture-handler";
 
-import BuyMap from './src/screens/buy/Map'
-import BuyCheckout from './src/screens/buy/Checkout'
-import BuyCompleted from './src/screens/buy/Completed'
+const AppNavigator = createSwitchNavigator(
+	{
+		login: Login,
+		register: Register,
 
-import SaleSettings from './src/screens/sale/Settings'
-import SalesCompleted from './src/screens/sale/Completed'
-import 'react-native-gesture-handler'
+		userSelection: Selection,
 
-const AppNavigator = createSwitchNavigator({
-    login: Login,
-    register: Register,
+		buyMap: BuyMap,
+		buyCheckout: BuyCheckout,
+		buyCompleted: BuyCompleted,
 
-    userSelection: Selection,
+		saleSettings: SaleSettings,
+		saleCompleted: SalesCompleted,
 
-    buyMap: BuyMap,
-    buyCheckout: BuyCheckout,
-    buyCompleted: BuyCompleted,
-
-    saleSettings: SaleSettings,
-    saleCompleted: SalesCompleted,
-
-}, {
-    initialRouteName: 'login',
-});
+		terms: Terms,
+		payment: Payment
+	},
+	{
+		initialRouteName: "login"
+	}
+);
 
 export default createAppContainer(AppNavigator);
