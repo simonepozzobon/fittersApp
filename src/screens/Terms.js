@@ -16,20 +16,20 @@ import Paragraph from "../dummies/Paragraph";
 const { width, height } = Dimensions.get("window");
 
 export class Terms extends Component {
-	render() {
-		const { goBack } = this.props.navigation;
+	goBack() {
+		this.props.navigation.goBack();
+	}
 
+	render() {
 		return (
-			<MainTemplate
-				onPressTimes={() => {
-					this.goTo("userSelection");
-				}}
-			>
+			<MainTemplate onPressTimes="userSelection">
 				<UiContainer>
 					<View style={[styles.container, { paddingBottom: 24 }]}>
 						<UiBreadcrumb
 							title="Indietro"
-							onPress={() => goBack()}
+							onPress={() => {
+								this.goBack();
+							}}
 						/>
 					</View>
 

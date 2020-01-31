@@ -4,6 +4,7 @@ import LinearGradient from "react-native-linear-gradient";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import DrawerMenu from "./DrawerMenu";
 import Header from "./Header";
+import { withNavigation } from "react-navigation";
 
 const { height } = Dimensions.get("window");
 
@@ -20,6 +21,21 @@ class MainTemplate extends Component {
 	// Methods
 	openDrawer() {
 		this.drawer.openDrawer();
+	}
+
+	goTo() {
+		if (typeof this.props.onPressTimes == "function") {
+			this.props.onPressTimes();
+		} else if (this.props.onPressTimes) {
+			if (this.props.onPressTimes == "back") {
+				this.props.navigation.goBack();
+			} else {
+				this.props.navigation.navigate(this.props.onPressTimes);
+			}
+		} else {
+			console.log("non props");
+		}
+		// this.props.onPressTimes
 	}
 
 	// Render
@@ -44,7 +60,7 @@ class MainTemplate extends Component {
 			header = (
 				<Header
 					onPressBurger={this.openDrawer.bind(this)}
-					onPressTimes={this.props.onPressTimes}
+					onPressTimes={this.goTo.bind(this)}
 				/>
 			);
 		}
@@ -106,4 +122,4 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default MainTemplate;
+export default withNavigation(MainTemplate);

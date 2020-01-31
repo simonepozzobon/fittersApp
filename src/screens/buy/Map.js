@@ -142,12 +142,7 @@ class Home extends Component {
 
 		// Component
 		return (
-			<MainTemplate
-				fixedView={true}
-				onPressTimes={() => {
-					this.goTo("userSelection");
-				}}
-			>
+			<MainTemplate fixedView={true} onPressTimes="userSelection">
 				<View style={{ flex: 1 }}>
 					<MapTopBar />
 					<MapView

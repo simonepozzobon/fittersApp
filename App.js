@@ -24,28 +24,73 @@ import Payment from "./src/screens/Payment";
 import EntranceHome from "./src/screens/entrance/EntranceList";
 
 import "react-native-gesture-handler";
+import { createStackNavigator } from "react-navigation-stack";
+
+const AuthStack = createStackNavigator(
+	{
+		login: Login,
+		register: Register
+	},
+	{
+		headerMode: "none"
+	}
+);
+
+const BuyStack = createStackNavigator(
+	{
+		buyMap: BuyMap,
+		buyCheckout: BuyCheckout,
+		buyCompleted: BuyCompleted
+	},
+	{
+		headerMode: "none"
+	}
+);
+
+const SaleStack = createStackNavigator(
+	{
+		saleSettings: SaleSettings,
+		saleCompleted: SalesCompleted
+	},
+	{
+		headerMode: "none"
+	}
+);
+
+const AppStack = createStackNavigator(
+	{
+		userSelection: Selection,
+		buy: BuyStack,
+		sale: SaleStack
+	},
+	{
+		headerMode: "none"
+	}
+);
+
+const ProfileStack = createStackNavigator(
+	{
+		terms: Terms,
+		payment: Payment
+	},
+	{
+		headerMode: "none"
+	}
+);
 
 const AppNavigator = createSwitchNavigator(
 	{
-		login: Login,
-		register: Register,
+		login: AuthStack,
 
-		userSelection: Selection,
+		app: AppStack,
 
-		buyMap: BuyMap,
-		buyCheckout: BuyCheckout,
-		buyCompleted: BuyCompleted,
-
-		saleSettings: SaleSettings,
-		saleCompleted: SalesCompleted,
-
-		terms: Terms,
-		payment: Payment,
+		profile: ProfileStack,
 
 		entranceHome: EntranceHome
 	},
 	{
-		initialRouteName: "entranceHome"
+		initialRouteName: "profile",
+		backBehavior: "history"
 	}
 );
 

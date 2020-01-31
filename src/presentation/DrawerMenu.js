@@ -72,7 +72,7 @@ export class DrawerMenu extends Component {
 					style={styles.container}
 					onLayout={event => {
 						let panelWidth = event.nativeEvent.layout.width;
-						console.log(panelWidth);
+						// console.log(panelWidth);
 
 						this.setState({ panelWidth: panelWidth });
 					}}

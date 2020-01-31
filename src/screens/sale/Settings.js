@@ -127,11 +127,7 @@ class CediIngresso extends Component {
 
 		// Component
 		return (
-			<MainTemplate
-				onPressTimes={() => {
-					this.goTo("userSelection");
-				}}
-			>
+			<MainTemplate onPressTimes="userSelection">
 				<UiContainer>
 					<View style={styles.container}>
 						<UiPageTitle title="Cedi Ingresso" />

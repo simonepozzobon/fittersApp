@@ -50,11 +50,7 @@ export class Payment extends Component {
 
 	render() {
 		return (
-			<MainTemplate
-				onPressTimes={() => {
-					this.goTo("userSelection");
-				}}
-			>
+			<MainTemplate onPressTimes="back">
 				<UiContainer>
 					<View style={[styles.container, { paddingBottom: 24 }]}>
 						<UiBreadcrumb

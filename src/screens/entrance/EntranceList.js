@@ -22,7 +22,12 @@ export class EntranceList extends Component {
 		this.props.navigation.navigate(route);
 	}
 
+	goBack() {
+		this.props.navigation.goBack();
+	}
+
 	render() {
+		console.log(this.props.navigation);
 		return (
 			<MainTemplate fixedView={true}>
 				<UiContainer>
@@ -30,7 +35,7 @@ export class EntranceList extends Component {
 						<UiBreadcrumb
 							title="Indietro"
 							onPress={() => {
-								this.props.navigation.goBack();
+								this.goBack();
 							}}
 						/>
 					</View>
