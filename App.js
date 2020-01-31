@@ -40,7 +40,7 @@ const AppNavigator = createSwitchNavigator(
 		payment: Payment
 	},
 	{
-		initialRouteName: "buyMap"
+		initialRouteName: "login"
 	}
 );
 

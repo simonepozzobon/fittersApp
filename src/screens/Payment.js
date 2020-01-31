@@ -47,7 +47,9 @@ export class Payment extends Component {
 							>
 								<UiSectionTitle title="Pagamento" />
 							</View>
-							<View></View>
+							<View>
+								<Text>Qui va il pagamento</Text>
+							</View>
 						</ScrollView>
 					</SafeAreaView>
 				</UiContainer>

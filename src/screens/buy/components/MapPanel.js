@@ -59,11 +59,6 @@ class MapPanel extends Component {
 
 					this._toggleSubView();
 				});
-				// item: {
-				//     title: marker.title,
-				//     description: marker.description,
-				//     logo: marker.logo,
-				// }
 			} else {
 				this.setState({
 					item: marker
@@ -101,8 +96,6 @@ class MapPanel extends Component {
 	// Render
 	render() {
 		// Dynamic styles
-		const compStyles = StyleSheet.create({});
-
 		let animationPanel = {
 			transform: [
 				{

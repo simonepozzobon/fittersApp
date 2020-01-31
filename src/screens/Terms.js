@@ -17,6 +17,8 @@ const { width, height } = Dimensions.get("window");
 
 export class Terms extends Component {
 	render() {
+		const { goBack } = this.props.navigation;
+
 		return (
 			<MainTemplate
 				onPressTimes={() => {
@@ -26,10 +28,8 @@ export class Terms extends Component {
 				<UiContainer>
 					<View style={[styles.container, { paddingBottom: 24 }]}>
 						<UiBreadcrumb
-							title="Compra Ingresso"
-							onPress={() => {
-								this.props.navigation.goBack();
-							}}
+							title="Indietro"
+							onPress={() => goBack()}
 						/>
 					</View>
 
