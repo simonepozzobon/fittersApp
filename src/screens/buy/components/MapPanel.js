@@ -14,7 +14,6 @@ import GestureRecognizer from "react-native-swipe-gestures";
 import Collapsible from "react-native-collapsible";
 
 import UiButton from "../../../components/UiButton";
-import GymGallery from "./GymGallery";
 import { ScrollView } from "react-native-gesture-handler";
 
 import MarkerData from "../../../dummies/Marker";

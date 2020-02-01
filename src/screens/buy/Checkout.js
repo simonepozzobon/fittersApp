@@ -181,7 +181,7 @@ class CediIngresso extends Component {
 									justifyContent: "flex-start"
 								}}
 							>
-								<Text style={styles.panelPrice}>5</Text>
+								<Text style={styles.panelPrice}>€ 5</Text>
 								<Text style={styles.panelPriceDecimal}>
 									,00
 								</Text>
