@@ -21,8 +21,8 @@ const google = require("../../assets/google_social.png");
 const { width, height } = Dimensions.get("window");
 
 class Login extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			screenWidth: 0,
 			email: "",
