@@ -7,7 +7,8 @@ import {
 	Easing,
 	Text,
 	View,
-	SafeAreaView
+	SafeAreaView,
+	TouchableWithoutFeedback
 } from "react-native";
 
 import GestureRecognizer from "react-native-swipe-gestures";
@@ -177,16 +178,26 @@ class MapPanel extends Component {
 					onSwipeDown={this.onSwipeDown.bind(this)}
 					style={styles.gestureContainer}
 				>
-					<Image
-						source={this.state.arrowIcon}
-						resizeMode="stretch"
-						style={{
-							marginTop: 4,
-							width: 24,
-							height: 8,
-							opacity: 0.3
+					<TouchableWithoutFeedback
+						onPress={() => {
+							if (this.state.isCollapsed) {
+								this.onSwipeUp();
+							} else {
+								this.onSwipeDown();
+							}
 						}}
-					/>
+					>
+						<Image
+							source={this.state.arrowIcon}
+							resizeMode="stretch"
+							style={{
+								marginTop: 4,
+								width: 24,
+								height: 8,
+								opacity: 0.3
+							}}
+						/>
+					</TouchableWithoutFeedback>
 				</GestureRecognizer>
 				<View style={styles.panelTop}>
 					<View style={styles.panelLeft}>

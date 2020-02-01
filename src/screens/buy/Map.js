@@ -14,7 +14,7 @@ import {
 
 import MainTemplate from "../../presentation/MainTemplate";
 import Header from "../../presentation/Header";
-import MapTopBar from "../../components/MapTopBar";
+import MapTopBar from "./components/MapTopBar";
 import MapPanel from "./components/MapPanel";
 
 const logo = require("../../../assets/brand/logo.png");
