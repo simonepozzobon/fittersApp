@@ -61,6 +61,7 @@ class MainTemplate extends Component {
 		) {
 			header = (
 				<Header
+					onlyBurger={this.props.onlyBurger}
 					onPressBurger={this.openDrawer.bind(this)}
 					onPressTimes={this.goTo.bind(this)}
 				/>

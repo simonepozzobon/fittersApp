@@ -27,7 +27,7 @@ export class DrawerMenu extends Component {
 	}
 
 	// componentDidMount() {
-	// 	setTimeout(this.openDrawer.bind(this), 1000);
+	// 	setTimeout(this.openDrawer.bind(this), 500);
 	// }
 
 	closeMenu() {
@@ -93,7 +93,7 @@ export class DrawerMenu extends Component {
 						<DrawerMenuSingle
 							title="Profilo"
 							src={menuIcons.profile}
-							destination="userSelection"
+							destination="profile"
 						/>
 
 						<DrawerMenuSingle
@@ -120,6 +120,13 @@ export class DrawerMenu extends Component {
 							title="Invita i tuoi amici"
 							src={menuIcons.invite}
 							destination="userSelection"
+						/>
+					</View>
+					<View style={styles.logout}>
+						<DrawerMenuSingle
+							title="Logout"
+							src={menuIcons.invite}
+							destination="login"
 						/>
 					</View>
 				</View>
@@ -164,6 +171,11 @@ const styles = StyleSheet.create({
 	},
 	name: {
 		marginTop: 64
+	},
+	logout: {
+		flexGrow: 1,
+		marginBottom: 85,
+		justifyContent: "flex-end"
 	},
 	nameTxt: {
 		fontSize: 16,

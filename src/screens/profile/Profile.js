@@ -67,18 +67,17 @@ export class Profile extends Component {
 									label="telefono"
 									value={proData.phone}
 								/>
+								<DataGroup label="email" value={proData.mail} />
+								<View>
+									<UiButton
+										title="Modifica profilo"
+										fullWidth="0.8"
+										onPress={() => {}}
+									/>
+								</View>
 							</View>
 						</ScrollView>
 					</SafeAreaView>
-					<View>
-						<UiButton
-							title="Compra ingresso"
-							fullWidth="0.8"
-							onPress={() => {
-								this.goTo("buyMap");
-							}}
-						/>
-					</View>
 				</UiContainer>
 			</MainTemplate>
 		);
