@@ -55,10 +55,18 @@ class MapPanel extends Component {
 	}
 
 	// Methods
-	openMarker(marker) {
+	openMarker(marker, internal = false) {
 		// console.log("openMArker", this.state.isOpen, this.state.item, marker);
 
 		return new Promise((resolve, reject) => {
+			if (internal == false) {
+				this.setState({
+					isCollapsed: true,
+					descriptionIsOpen: false,
+					arrowIcon: ArrowUp
+				});
+			}
+
 			if (this.state.isOpen == true && this.state.item == null) {
 				this.setState({
 					item: marker
@@ -95,11 +103,14 @@ class MapPanel extends Component {
 	_toggleSubView() {
 		return new Promise((resolve, reject) => {
 			let toValue = this.state.isOpen == false ? height : 0;
-			let easing = Easing.inOut(Easing.back(1));
+			let easing =
+				this.state.isOpen == false
+					? Easing.in(Easing.back(1))
+					: Easing.out(Easing.back(0.5));
 
 			Animated.timing(this.state.bounceValue, {
 				toValue: toValue,
-				duration: this.state.isOpen == false ? 500 : 300,
+				duration: this.state.isOpen == false ? 300 : 400,
 				easing,
 				useNativeDriver: true
 			}).start(() => {
@@ -129,7 +140,7 @@ class MapPanel extends Component {
 				arrowIcon: ArrowUp
 			});
 		} else {
-			this.openMarker(this.state.item);
+			this.openMarker(this.state.item, true);
 		}
 	}
 
@@ -239,7 +250,7 @@ class MapPanel extends Component {
 				<SafeAreaView style={[styles.galleryContainer]}>
 					<Collapsible
 						collapsed={this.state.isCollapsed}
-						style={{ height: height * 0.3 }}
+						style={{ height: height * 0.3, marginTop: 32 }}
 						duration={this.state.isCollapsed ? 300 : 500}
 					>
 						<ScrollView>
@@ -371,14 +382,13 @@ const styles = StyleSheet.create({
 		width: 95
 	},
 	panelConfirmContainer: {
-		marginBottom: 18
+		marginBottom: 32
 	},
 	description: {},
 	gallery: {},
 	galleryContainer: {
 		flexGrow: 1,
-		alignItems: "center",
-		marginTop: 32
+		alignItems: "center"
 	}
 });
 
