@@ -114,12 +114,7 @@ class CediIngresso extends Component {
 			<MainTemplate onPressTimes="userSelection">
 				<UiContainer>
 					<View style={styles.container}>
-						<UiBreadcrumb
-							title="Checkout"
-							onPress={() => {
-								this.goTo("buyCheckout");
-							}}
-						/>
+						<UiBreadcrumb title="Indietro" onPress="back" />
 					</View>
 					<View style={styles.content}>
 						<View>
@@ -156,7 +151,7 @@ class CediIngresso extends Component {
 							title="Vai ad Ingressi"
 							fullWidth="0.7"
 							onPress={() => {
-								this.goTo("userSelection");
+								this.goTo("tickets");
 							}}
 						/>
 						<UiButton

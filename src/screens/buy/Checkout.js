@@ -130,12 +130,7 @@ class CediIngresso extends Component {
 			<MainTemplate onPressTimes="userSelection">
 				<UiContainer>
 					<View style={styles.container}>
-						<UiBreadcrumb
-							title="Compra Ingresso"
-							onPress={() => {
-								this.goTo("buyMap");
-							}}
-						/>
+						<UiBreadcrumb title="Indietro" onPress="back" />
 					</View>
 					<View style={{ width: width * 0.8, marginTop: 24 }}>
 						<UiSectionTitle title="Hai selezionato:" />

@@ -30,7 +30,7 @@ export class DrawerMenu extends Component {
 	// 	setTimeout(this.openDrawer.bind(this), 500);
 	// }
 
-	closeMenu() {
+	closeDrawer() {
 		if (this.state.isOpen == true) {
 			let toValue =
 				this.state.panelWidth < 1 ? width : this.state.panelWidth;
@@ -78,7 +78,7 @@ export class DrawerMenu extends Component {
 					}}
 				>
 					<View style={styles.burgerContainer}>
-						<TouchableOpacity onPress={this.closeMenu.bind(this)}>
+						<TouchableOpacity onPress={this.closeDrawer.bind(this)}>
 							<Image
 								source={assets.burger_orange}
 								resizeMode="contain"

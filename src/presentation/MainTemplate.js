@@ -4,7 +4,7 @@ import LinearGradient from "react-native-linear-gradient";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import DrawerMenu from "./DrawerMenu";
 import Header from "./Header";
-import { withNavigation } from "react-navigation";
+import { withNavigation, NavigationEvents } from "react-navigation";
 
 const { height } = Dimensions.get("window");
 
@@ -18,11 +18,23 @@ class MainTemplate extends Component {
 
 	componentDidMount() {
 		// console.log(this.props.navigation);
+		this.unmountListener = this.props.navigation.addListener(
+			"willBlur",
+			() => {
+				this.beforeUnmount();
+			}
+		);
 	}
 
 	// Methods
 	openDrawer() {
 		this.drawer.openDrawer();
+	}
+
+	beforeUnmount() {
+		if (this.drawer) {
+			this.drawer.closeDrawer();
+		}
 	}
 
 	goTo() {

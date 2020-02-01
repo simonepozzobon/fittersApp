@@ -22,7 +22,7 @@ export class Terms extends Component {
 
 	render() {
 		return (
-			<MainTemplate onPressTimes="userSelection">
+			<MainTemplate fixedView={true} onPressTimes="userSelection">
 				<UiContainer>
 					<View style={[styles.container, { paddingBottom: 24 }]}>
 						<UiBreadcrumb title="Indietro" onPress="back" />

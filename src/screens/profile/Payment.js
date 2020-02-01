@@ -50,15 +50,10 @@ export class Payment extends Component {
 
 	render() {
 		return (
-			<MainTemplate onPressTimes="back">
+			<MainTemplate fixedView={true} onPressTimes="back">
 				<UiContainer>
 					<View style={[styles.container, { paddingBottom: 24 }]}>
-						<UiBreadcrumb
-							title="Indietro"
-							onPress={() => {
-								this.props.navigation.goBack();
-							}}
-						/>
+						<UiBreadcrumb title="Indietro" onPress="back" />
 					</View>
 
 					<SafeAreaView style={styles.scrollContainer}>
