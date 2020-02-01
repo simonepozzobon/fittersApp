@@ -22,7 +22,8 @@ import SalesCompleted from "./src/screens/sale/Completed";
 import Profile from "./src/screens/profile/Profile";
 import Terms from "./src/screens/profile/Terms";
 import Payment from "./src/screens/profile/Payment";
-import EntranceHome from "./src/screens/profile/EntranceList";
+import Tickets from "./src/screens/profile/EntranceList";
+import Subscriptions from "./src/screens/profile/Subscriptions";
 
 import "react-native-gesture-handler";
 import { createStackNavigator } from "react-navigation-stack";
@@ -75,12 +76,13 @@ const AppStack = createStackNavigator(
 const ProfileStack = createStackNavigator(
 	{
 		profile: Profile,
-		entranceHome: EntranceHome,
+		tickets: Tickets,
+		subscriptions: Subscriptions,
 		terms: Terms,
 		payment: Payment
 	},
 	{
-		initialRouteName: "profile",
+		initialRouteName: "subscriptions",
 		headerMode: "none"
 	}
 );

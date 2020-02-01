@@ -1,28 +1,24 @@
 import React, { Component } from "react";
 import {
-	Text,
 	View,
-	Dimensions,
+	Text,
 	StyleSheet,
+	Dimensions,
 	SafeAreaView,
 	ScrollView
 } from "react-native";
 import MainTemplate from "../../presentation/MainTemplate";
+import UiButton from "../../components/UiButton";
 import UiContainer from "../../components/UiContainer";
-import UiSectionTitle from "../../components/UiSectionTitle";
 import UiBreadcrumb from "../../components/UiBreadcrumb";
-import Paragraph from "../../dummies/Paragraph";
+import UiSectionTitle from "../../components/UiSectionTitle";
+import SubscriptionView from "./components/SubscriptionView";
+const { width } = Dimensions.get("window");
 
-const { width, height } = Dimensions.get("window");
-
-export class Terms extends Component {
-	goBack() {
-		this.props.navigation.goBack();
-	}
-
+export class Subscriptions extends Component {
 	render() {
 		return (
-			<MainTemplate onPressTimes="userSelection">
+			<MainTemplate fixedView={true} onPressTimes="userSelection">
 				<UiContainer>
 					<View style={[styles.container, { paddingBottom: 24 }]}>
 						<UiBreadcrumb title="Indietro" onPress="back" />
@@ -37,10 +33,17 @@ export class Terms extends Component {
 							<View
 								style={[styles.container, { marginBottom: 32 }]}
 							>
-								<UiSectionTitle title="Regolamento" />
+								<UiSectionTitle title="I tuoi abbonamenti" />
 							</View>
 							<View style={styles.container}>
-								<Text>{Paragraph}</Text>
+								<SubscriptionView />
+								<View>
+									<UiButton
+										title="Aggiungi abbonamento"
+										fullWidth="0.8"
+										onPress={() => {}}
+									/>
+								</View>
 							</View>
 						</ScrollView>
 					</SafeAreaView>
@@ -51,18 +54,16 @@ export class Terms extends Component {
 }
 
 const styles = StyleSheet.create({
-	container: { width: width * 0.8 },
 	scrollContainer: {
+		width: width
+	},
+	container: {
 		width: width * 0.8
 	},
 	content: {
-		// flex: 1,
 		alignItems: "center",
 		justifyContent: "center"
-		// flexGrow: 1,
-		// height: '100%',
-		// backgroundColor: 'blue',
 	}
 });
 
-export default Terms;
+export default Subscriptions;

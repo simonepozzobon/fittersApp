@@ -99,12 +99,12 @@ export class DrawerMenu extends Component {
 						<DrawerMenuSingle
 							title="I tuoi abbonamenti"
 							src={menuIcons.abbonamenti}
-							destination="userSelection"
+							destination="subscriptions"
 						/>
 						<DrawerMenuSingle
 							title="I tuoi ingressi"
 							src={menuIcons.ingressi}
-							destination="entranceHome"
+							destination="tickets"
 						/>
 						<DrawerMenuSingle
 							title="Regolamento"
