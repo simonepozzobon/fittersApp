@@ -21,7 +21,6 @@ import MarkerData from "../../dummies/Marker";
 import UiButton from "../../components/UiButton";
 import UiBreadcrumb from "../../components/UiBreadcrumb";
 import UiSectionTitle from "../../components/UiSectionTitle";
-import UiContainer from "../../components/UiContainer";
 import UiPageTitle from "../../components/UiPageTitle";
 import CalendarPicker from "react-native-calendar-picker";
 
@@ -127,99 +126,95 @@ class CediIngresso extends Component {
 
 		// Component
 		return (
-			<MainTemplate onPressTimes="userSelection">
-				<UiContainer>
-					<View style={styles.container}>
-						<UiBreadcrumb title="Indietro" onPress="back" />
-					</View>
-					<View style={{ width: width * 0.8, marginTop: 24 }}>
-						<UiSectionTitle title="Hai selezionato:" />
-					</View>
-					<SafeAreaView style={styles.scrollContainer}>
-						<ScrollView
-							contentContainerStyle={styles.content}
-							showsVerticalScrollIndicator={false}
-							centerContent={true}
-						>
-							<View style={{ width: width * 0.7, marginTop: 24 }}>
-								<Text style={styles.label}>Palestra</Text>
-								<Text style={styles.value}>Pure Fitness</Text>
-							</View>
-							<View style={{ width: width * 0.7, marginTop: 12 }}>
-								<Text style={styles.label}>
-									Indirizzo palestra
-								</Text>
-								<Text style={styles.value}>
-									Via Santa Margherita, 10
-								</Text>
-							</View>
-							<View style={{ width: width * 0.7, marginTop: 12 }}>
-								<Text style={styles.label}>Codice postale</Text>
-								<Text style={styles.value}>12345</Text>
-							</View>
-							<View style={{ width: width * 0.7, marginTop: 12 }}>
-								<Text style={styles.label}>Città</Text>
-								<Text style={styles.value}>Milano</Text>
-							</View>
-							<View style={{ width: width * 0.7, marginTop: 12 }}>
-								<Text style={styles.label}>Paese</Text>
-								<Text style={styles.value}>Italia</Text>
-							</View>
-							<View style={{ width: width * 0.7, marginTop: 12 }}>
-								<Text style={styles.label}>
-									Giorni prenotazione
-								</Text>
-								<Text style={styles.value}>15/12/2020</Text>
-							</View>
-							<View style={{ width: width * 0.7, marginTop: 12 }}>
-								<Text style={styles.label}>Ore</Text>
-								<Text style={styles.value}>18:30</Text>
-							</View>
-							<View style={{ width: width * 0.8, marginTop: 24 }}>
-								<UiSectionTitle title="Costo Ingresso:" />
-							</View>
-							<View style={{ width: width * 0.8, marginTop: 6 }}>
-								<View
-									style={{
-										flexDirection: "row",
-										justifyContent: "flex-start"
-									}}
-								>
-									<Text style={styles.panelPrice}>5</Text>
-									<Text style={styles.panelPriceDecimal}>
-										,00
-									</Text>
-								</View>
-							</View>
-							<View style={{ marginTop: 24 }}>
-								<Text>Seleziona il metodo di pagamento</Text>
-							</View>
-							<View style={{ marginBottom: -24 }}>
-								<Image
-									source={payments}
-									resizeMode="contain"
-									style={styles.payments}
-								/>
-							</View>
+			<MainTemplate onPressTimes="userSelection" hasContainer={true}>
+				<View style={styles.container}>
+					<UiBreadcrumb title="Indietro" onPress="back" />
+				</View>
+				<View style={{ width: width * 0.8, marginTop: 24 }}>
+					<UiSectionTitle title="Hai selezionato:" />
+				</View>
+				<SafeAreaView style={styles.scrollContainer}>
+					<ScrollView
+						contentContainerStyle={styles.content}
+						showsVerticalScrollIndicator={false}
+						centerContent={true}
+					>
+						<View style={{ width: width * 0.7, marginTop: 24 }}>
+							<Text style={styles.label}>Palestra</Text>
+							<Text style={styles.value}>Pure Fitness</Text>
+						</View>
+						<View style={{ width: width * 0.7, marginTop: 12 }}>
+							<Text style={styles.label}>Indirizzo palestra</Text>
+							<Text style={styles.value}>
+								Via Santa Margherita, 10
+							</Text>
+						</View>
+						<View style={{ width: width * 0.7, marginTop: 12 }}>
+							<Text style={styles.label}>Codice postale</Text>
+							<Text style={styles.value}>12345</Text>
+						</View>
+						<View style={{ width: width * 0.7, marginTop: 12 }}>
+							<Text style={styles.label}>Città</Text>
+							<Text style={styles.value}>Milano</Text>
+						</View>
+						<View style={{ width: width * 0.7, marginTop: 12 }}>
+							<Text style={styles.label}>Paese</Text>
+							<Text style={styles.value}>Italia</Text>
+						</View>
+						<View style={{ width: width * 0.7, marginTop: 12 }}>
+							<Text style={styles.label}>
+								Giorni prenotazione
+							</Text>
+							<Text style={styles.value}>15/12/2020</Text>
+						</View>
+						<View style={{ width: width * 0.7, marginTop: 12 }}>
+							<Text style={styles.label}>Ore</Text>
+							<Text style={styles.value}>18:30</Text>
+						</View>
+						<View style={{ width: width * 0.8, marginTop: 24 }}>
+							<UiSectionTitle title="Costo Ingresso:" />
+						</View>
+						<View style={{ width: width * 0.8, marginTop: 6 }}>
 							<View
 								style={{
-									marginTop: 0,
-									width: width,
 									flexDirection: "row",
-									justifyContent: "center"
+									justifyContent: "flex-start"
 								}}
 							>
-								<UiButton
-									title="Paga e prenota"
-									fullWidth="0.8"
-									onPress={() => {
-										this.goTo("buyCompleted");
-									}}
-								/>
+								<Text style={styles.panelPrice}>5</Text>
+								<Text style={styles.panelPriceDecimal}>
+									,00
+								</Text>
 							</View>
-						</ScrollView>
-					</SafeAreaView>
-				</UiContainer>
+						</View>
+						<View style={{ marginTop: 24 }}>
+							<Text>Seleziona il metodo di pagamento</Text>
+						</View>
+						<View style={{ marginBottom: -24 }}>
+							<Image
+								source={payments}
+								resizeMode="contain"
+								style={styles.payments}
+							/>
+						</View>
+						<View
+							style={{
+								marginTop: 0,
+								width: width,
+								flexDirection: "row",
+								justifyContent: "center"
+							}}
+						>
+							<UiButton
+								title="Paga e prenota"
+								fullWidth="0.8"
+								onPress={() => {
+									this.goTo("buyCompleted");
+								}}
+							/>
+						</View>
+					</ScrollView>
+				</SafeAreaView>
 			</MainTemplate>
 		);
 	}

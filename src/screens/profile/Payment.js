@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import MainTemplate from "../../presentation/MainTemplate";
 import UiButton from "../../components/UiButton";
-import UiContainer from "../../components/UiContainer";
 import UiSectionTitle from "../../components/UiSectionTitle";
 import UiBreadcrumb from "../../components/UiBreadcrumb";
 import { TextInput } from "react-native-gesture-handler";
@@ -50,98 +49,92 @@ export class Payment extends Component {
 
 	render() {
 		return (
-			<MainTemplate fixedView={true} onPressTimes="back">
-				<UiContainer>
-					<View style={[styles.container, { paddingBottom: 24 }]}>
-						<UiBreadcrumb title="Indietro" onPress="back" />
-					</View>
+			<MainTemplate
+				fixedView={true}
+				onPressTimes="back"
+				hasContainer={true}
+			>
+				<View style={[styles.container, { paddingBottom: 24 }]}>
+					<UiBreadcrumb title="Indietro" onPress="back" />
+				</View>
 
-					<SafeAreaView style={styles.scrollContainer}>
-						<ScrollView
-							contentContainerStyle={styles.content}
-							showsVerticalScrollIndicator={false}
-							centerContent={true}
+				<SafeAreaView style={styles.scrollContainer}>
+					<ScrollView
+						contentContainerStyle={styles.content}
+						showsVerticalScrollIndicator={false}
+						centerContent={true}
+					>
+						<View style={[styles.container, { marginBottom: 32 }]}>
+							<UiSectionTitle title="Pagamento" />
+						</View>
+						<View style={styles.container}>
+							<Text style={styles.label}>Numero Carta</Text>
+							<TextInput
+								style={[
+									styles.cardInput,
+									styles.input,
+									styles.hasMarginTop
+								]}
+								onChangeText={text =>
+									this._handlingCardNumber(text)
+								}
+								keyboardType="number-pad"
+								autoCompleteType="cc-number"
+								maxLength={16}
+								textContentType="creditCardNumber"
+								placeholder="0000 0000 0000 0000"
+								value={this.cardNumber}
+							/>
+						</View>
+						<View
+							style={[
+								styles.container,
+								{
+									marginTop: 24,
+									flexDirection: "row"
+								}
+							]}
 						>
-							<View
-								style={[styles.container, { marginBottom: 32 }]}
-							>
-								<UiSectionTitle title="Pagamento" />
-							</View>
-							<View style={styles.container}>
-								<Text style={styles.label}>Numero Carta</Text>
+							<View>
+								<Text style={styles.label}>Scadenza</Text>
 								<TextInput
-									style={[
-										styles.cardInput,
-										styles.input,
-										styles.hasMarginTop
-									]}
+									style={[styles.input, styles.hasMarginTop]}
 									onChangeText={text =>
-										this._handlingCardNumber(text)
+										this._handlingCardExp(text)
 									}
 									keyboardType="number-pad"
-									autoCompleteType="cc-number"
-									maxLength={16}
+									autoCompleteType="cc-exp"
+									maxLength={5}
 									textContentType="creditCardNumber"
-									placeholder="0000 0000 0000 0000"
-									value={this.cardNumber}
+									placeholder="MM/YY"
+									value={this.cardExp}
 								/>
 							</View>
-							<View
-								style={[
-									styles.container,
-									{
-										marginTop: 24,
-										flexDirection: "row"
+							<View style={{ marginLeft: 24 }}>
+								<Text style={styles.label}>CVV</Text>
+								<TextInput
+									style={[styles.input, styles.hasMarginTop]}
+									onChangeText={text =>
+										this._handlingCardCvv(text)
 									}
-								]}
-							>
-								<View>
-									<Text style={styles.label}>Scadenza</Text>
-									<TextInput
-										style={[
-											styles.input,
-											styles.hasMarginTop
-										]}
-										onChangeText={text =>
-											this._handlingCardExp(text)
-										}
-										keyboardType="number-pad"
-										autoCompleteType="cc-exp"
-										maxLength={5}
-										textContentType="creditCardNumber"
-										placeholder="MM/YY"
-										value={this.cardExp}
-									/>
-								</View>
-								<View style={{ marginLeft: 24 }}>
-									<Text style={styles.label}>CVV</Text>
-									<TextInput
-										style={[
-											styles.input,
-											styles.hasMarginTop
-										]}
-										onChangeText={text =>
-											this._handlingCardCvv(text)
-										}
-										keyboardType="number-pad"
-										autoCompleteType="cc-csc"
-										maxLength={4}
-										textContentType="creditCardNumber"
-										placeholder="CVV"
-										value={this.cardCvv}
-									/>
-								</View>
-							</View>
-							<View>
-								<UiButton
-									title="Aggiorna Metodo di Pagamento"
-									fullWidth="0.8"
-									onPress={() => {}}
+									keyboardType="number-pad"
+									autoCompleteType="cc-csc"
+									maxLength={4}
+									textContentType="creditCardNumber"
+									placeholder="CVV"
+									value={this.cardCvv}
 								/>
 							</View>
-						</ScrollView>
-					</SafeAreaView>
-				</UiContainer>
+						</View>
+						<View>
+							<UiButton
+								title="Aggiorna Metodo di Pagamento"
+								fullWidth="0.8"
+								onPress={() => {}}
+							/>
+						</View>
+					</ScrollView>
+				</SafeAreaView>
 			</MainTemplate>
 		);
 	}

@@ -22,29 +22,29 @@ export class Terms extends Component {
 
 	render() {
 		return (
-			<MainTemplate fixedView={true} onPressTimes="userSelection">
-				<UiContainer>
-					<View style={[styles.container, { paddingBottom: 24 }]}>
-						<UiBreadcrumb title="Indietro" onPress="back" />
-					</View>
+			<MainTemplate
+				fixedView={true}
+				onPressTimes="userSelection"
+				hasContainer={true}
+			>
+				<View style={[styles.container, { paddingBottom: 24 }]}>
+					<UiBreadcrumb title="Indietro" onPress="back" />
+				</View>
 
-					<SafeAreaView style={styles.scrollContainer}>
-						<ScrollView
-							contentContainerStyle={styles.content}
-							showsVerticalScrollIndicator={false}
-							centerContent={true}
-						>
-							<View
-								style={[styles.container, { marginBottom: 32 }]}
-							>
-								<UiSectionTitle title="Regolamento" />
-							</View>
-							<View style={styles.container}>
-								<Text>{Paragraph}</Text>
-							</View>
-						</ScrollView>
-					</SafeAreaView>
-				</UiContainer>
+				<SafeAreaView style={styles.scrollContainer}>
+					<ScrollView
+						contentContainerStyle={styles.content}
+						showsVerticalScrollIndicator={false}
+						centerContent={true}
+					>
+						<View style={[styles.container, { marginBottom: 32 }]}>
+							<UiSectionTitle title="Regolamento" />
+						</View>
+						<View style={styles.container}>
+							<Text>{Paragraph}</Text>
+						</View>
+					</ScrollView>
+				</SafeAreaView>
 			</MainTemplate>
 		);
 	}

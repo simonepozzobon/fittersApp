@@ -50,8 +50,8 @@ const ProfileStack = createStackNavigator(
 		payment: Payment
 	},
 	{
-		initialRouteName: "profile",
-		headerMode: "none"
+		headerMode: "none",
+		initialRouteName: "subscriptions"
 	}
 );
 
@@ -63,7 +63,7 @@ const AppStack = createStackNavigator(
 		profile: ProfileStack
 	},
 	{
-		initialRouteName: "userSelection",
+		initialRouteName: "profile",
 		headerMode: "none"
 	}
 );
@@ -85,7 +85,7 @@ const AppNavigator = createSwitchNavigator(
 		app: AppStack
 	},
 	{
-		initialRouteName: "auth"
+		initialRouteName: "app"
 	}
 );
 

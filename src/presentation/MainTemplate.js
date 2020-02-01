@@ -5,6 +5,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import DrawerMenu from "./DrawerMenu";
 import Header from "./Header";
 import { withNavigation, NavigationEvents } from "react-navigation";
+import UiContainer from "../components/UiContainer";
 
 const { height } = Dimensions.get("window");
 
@@ -54,16 +55,30 @@ class MainTemplate extends Component {
 
 	// Render
 	render() {
+		let hasContainer;
+
+		if (this.props.hasContainer == true) {
+			hasContainer = (
+				<View style={styles.content}>
+					<UiContainer>{this.props.children}</UiContainer>
+				</View>
+			);
+		} else {
+			hasContainer = (
+				<View style={styles.content}>{this.props.children}</View>
+			);
+		}
+
 		let view = (
 			<KeyboardAwareScrollView contentContainerStyle={styles.container}>
 				<ScrollView contentContainerStyle={styles.scroll}>
-					<View style={styles.content}>{this.props.children}</View>
+					{hasContainer}
 				</ScrollView>
 			</KeyboardAwareScrollView>
 		);
 
 		if (this.props.fixedView == true) {
-			view = <View style={styles.content}>{this.props.children}</View>;
+			view = hasContainer;
 		}
 
 		let header;

@@ -129,51 +129,49 @@ class CediIngresso extends Component {
 
 		// Component
 		return (
-			<MainTemplate onPressTimes="userSelection">
-				<UiContainer>
-					<View style={styles.container}>
-						<UiBreadcrumb title="Indietro" onPress="back" />
+			<MainTemplate onPressTimes="userSelection" hasContainer={true}>
+				<View style={styles.container}>
+					<UiBreadcrumb title="Indietro" onPress="back" />
+				</View>
+				<View style={styles.content}>
+					<View>
+						<Text style={styles.mainText}>GRAZIE !</Text>
 					</View>
-					<View style={styles.content}>
-						<View>
-							<Text style={styles.mainText}>GRAZIE !</Text>
-						</View>
-						<View style={{ marginTop: 24 }}>
-							<LinearGradient
-								colors={["#ff2a00", "#FF2A00"]}
-								start={{ x: 0.0, y: 0.25 }}
-								end={{ x: 0.5, y: 1.0 }}
-								style={styles.panelGradient}
-							>
-								<View>
-									<Text style={styles.contentText}>
-										Hai messo a disposizione
-									</Text>
-									<Text style={styles.contentText}>
-										il tuo abbonamento
-									</Text>
-								</View>
-								<View style={{ marginTop: 24 }}>
-									<Text style={styles.contentText}>
-										Riceverai una notifica
-									</Text>
-									<Text style={styles.contentText}>
-										appena verrà usato
-									</Text>
-								</View>
-							</LinearGradient>
-						</View>
+					<View style={{ marginTop: 24 }}>
+						<LinearGradient
+							colors={["#ff2a00", "#FF2A00"]}
+							start={{ x: 0.0, y: 0.25 }}
+							end={{ x: 0.5, y: 1.0 }}
+							style={styles.panelGradient}
+						>
+							<View>
+								<Text style={styles.contentText}>
+									Hai messo a disposizione
+								</Text>
+								<Text style={styles.contentText}>
+									il tuo abbonamento
+								</Text>
+							</View>
+							<View style={{ marginTop: 24 }}>
+								<Text style={styles.contentText}>
+									Riceverai una notifica
+								</Text>
+								<Text style={styles.contentText}>
+									appena verrà usato
+								</Text>
+							</View>
+						</LinearGradient>
 					</View>
-					<View style={{ marginBottom: 60 }}>
-						<UiButton
-							title="Esci"
-							fullWidth="0.7"
-							onPress={() => {
-								this.goTo("userSelection");
-							}}
-						/>
-					</View>
-				</UiContainer>
+				</View>
+				<View style={{ marginBottom: 60 }}>
+					<UiButton
+						title="Esci"
+						fullWidth="0.7"
+						onPress={() => {
+							this.goTo("userSelection");
+						}}
+					/>
+				</View>
 			</MainTemplate>
 		);
 	}

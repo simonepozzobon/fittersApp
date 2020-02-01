@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import MainTemplate from "../../presentation/MainTemplate";
 import UiButton from "../../components/UiButton";
-import UiContainer from "../../components/UiContainer";
 import UiBreadcrumb from "../../components/UiBreadcrumb";
 import UiSectionTitle from "../../components/UiSectionTitle";
 import ItemList from "./components/ItemList";
@@ -29,26 +28,28 @@ export class EntranceList extends Component {
 	render() {
 		console.log(this.props.navigation);
 		return (
-			<MainTemplate fixedView={true} onPressTimes="userSelection">
-				<UiContainer>
-					<View style={[styles.container, { paddingBottom: 24 }]}>
-						<UiBreadcrumb title="Indietro" onPress="back" />
-					</View>
+			<MainTemplate
+				fixedView={true}
+				onPressTimes="userSelection"
+				hasContainer={true}
+			>
+				<View style={[styles.container, { paddingBottom: 24 }]}>
+					<UiBreadcrumb title="Indietro" onPress="back" />
+				</View>
 
-					<View style={[styles.container, { marginBottom: 32 }]}>
-						<UiSectionTitle title="I tuoi ingressi" />
-					</View>
-					<ItemList items={Entrances} />
-					<View>
-						<UiButton
-							title="Compra ingresso"
-							fullWidth="0.8"
-							onPress={() => {
-								this.goTo("buyMap");
-							}}
-						/>
-					</View>
-				</UiContainer>
+				<View style={[styles.container, { marginBottom: 32 }]}>
+					<UiSectionTitle title="I tuoi ingressi" />
+				</View>
+				<ItemList items={Entrances} />
+				<View>
+					<UiButton
+						title="Compra ingresso"
+						fullWidth="0.8"
+						onPress={() => {
+							this.goTo("buyMap");
+						}}
+					/>
+				</View>
 			</MainTemplate>
 		);
 	}

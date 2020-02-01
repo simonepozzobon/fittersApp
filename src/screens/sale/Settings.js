@@ -201,120 +201,116 @@ class CediIngresso extends Component {
 
 		// Component
 		return (
-			<MainTemplate onPressTimes="userSelection">
-				<UiContainer>
-					<View style={[styles.container, { paddingBottom: 24 }]}>
-						<UiBreadcrumb title="Indietro" onPress="back" />
-					</View>
-					<View style={styles.container}>
-						<UiPageTitle title="Cedi Ingresso" />
-					</View>
-					<View style={{ marginTop: 24 }}>
-						<TouchableOpacity
-							activeOpacity={0.7}
-							onPress={this._toggleSubView.bind(this)}
-							style={styles.selector}
-						>
-							<Text style={styles.selectorText}>
-								{this.state.subscriptionTxt}
-							</Text>
-							<Image
-								source={arrowDown}
-								resizeMode="contain"
-								style={{
-									width: 15,
-									height: 15
-								}}
-							/>
-						</TouchableOpacity>
-					</View>
-					<View style={[styles.calendar, { marginTop: 24 }]}>
-						<Calendar
+			<MainTemplate onPressTimes="userSelection" hasContainer={true}>
+				<View style={[styles.container, { paddingBottom: 24 }]}>
+					<UiBreadcrumb title="Indietro" onPress="back" />
+				</View>
+				<View style={styles.container}>
+					<UiPageTitle title="Cedi Ingresso" />
+				</View>
+				<View style={{ marginTop: 24 }}>
+					<TouchableOpacity
+						activeOpacity={0.7}
+						onPress={this._toggleSubView.bind(this)}
+						style={styles.selector}
+					>
+						<Text style={styles.selectorText}>
+							{this.state.subscriptionTxt}
+						</Text>
+						<Image
+							source={arrowDown}
+							resizeMode="contain"
 							style={{
-								width: width * 0.8,
-								borderColor: "#252525",
-								borderWidth: 0.5,
-								borderRadius: 12
+								width: 15,
+								height: 15
 							}}
-							theme={{
-								backgroundColor: "transparent",
-								calendarBackground: "transparent",
-								arrowColor: "#252525",
-								textSectionTitleColor: "#252525",
-								monthTextColor: "#252525",
-								indicatorColor: "#252525",
-								todayTextColor: "rgba(255, 42, 0, 0.5)",
-								textDayHeaderFontSize: 10,
-								textDayFontWeight: "400",
-								dayTextColor: "#252525",
-								textDisabledColor: "rgba(37,37,37, 0.1)",
+						/>
+					</TouchableOpacity>
+				</View>
+				<View style={[styles.calendar, { marginTop: 24 }]}>
+					<Calendar
+						style={{
+							width: width * 0.8,
+							borderColor: "#252525",
+							borderWidth: 0.5,
+							borderRadius: 12
+						}}
+						theme={{
+							backgroundColor: "transparent",
+							calendarBackground: "transparent",
+							arrowColor: "#252525",
+							textSectionTitleColor: "#252525",
+							monthTextColor: "#252525",
+							indicatorColor: "#252525",
+							todayTextColor: "rgba(255, 42, 0, 0.5)",
+							textDayHeaderFontSize: 10,
+							textDayFontWeight: "400",
+							dayTextColor: "#252525",
+							textDisabledColor: "rgba(37,37,37, 0.1)",
 
-								dotColor: "#ffffff",
-								selectedDotColor: "blue",
-								selectedDayBackgroundColor: "#FF2A00",
-								selectedDayTextColor: "white"
-							}}
-							// current={this.state.startDate}
-							minDate={this.state.startDate}
-							markedDates={this.state.markedDates}
-							// maxDate={"2012-05-30"}
-							onDayPress={this.daySelect.bind(this)}
-							monthFormat={"MMMM - yyyy"}
-							// onMonthChange={month => {
-							// 	console.log("month changed", month);
-							// }}
-							// hideExtraDays={true}
-							firstDay={1}
-							// onPressArrowLeft={substractMonth =>
-							// 	substractMonth()
-							// }
-							// onPressArrowRight={addMonth => addMonth()}
+							dotColor: "#ffffff",
+							selectedDotColor: "blue",
+							selectedDayBackgroundColor: "#FF2A00",
+							selectedDayTextColor: "white"
+						}}
+						// current={this.state.startDate}
+						minDate={this.state.startDate}
+						markedDates={this.state.markedDates}
+						// maxDate={"2012-05-30"}
+						onDayPress={this.daySelect.bind(this)}
+						monthFormat={"MMMM - yyyy"}
+						// onMonthChange={month => {
+						// 	console.log("month changed", month);
+						// }}
+						// hideExtraDays={true}
+						firstDay={1}
+						// onPressArrowLeft={substractMonth =>
+						// 	substractMonth()
+						// }
+						// onPressArrowRight={addMonth => addMonth()}
+					/>
+				</View>
+				<View style={{ marginTop: 24 }}>
+					<Text style={styles.label}>Stai cedendo:</Text>
+					<Text style={styles.value}>{this.state.subscription}</Text>
+				</View>
+				<View style={{ marginTop: 24 }}>
+					<Text style={styles.label}>Per i giorni:</Text>
+					{this.state.selectedDates.map(date => (
+						<Text key={date} style={styles.value}>
+							{date}
+						</Text>
+					))}
+				</View>
+				<UiButton
+					title="Cedi Ingresso"
+					fullWidth="0.7"
+					onPress={() => {
+						this.goTo("saleCompleted");
+					}}
+				/>
+				<Animated.View style={[styles.subView, animationPanel]}>
+					<Picker
+						selectedValue={this.state.subscription}
+						style={styles.subscriptionSelect}
+						onValueChange={this.setSubscription.bind(this)}
+					>
+						{DummySubs.map(item => (
+							<Picker.Item
+								key={item.id}
+								label={item.label}
+								value={item.value}
+							/>
+						))}
+					</Picker>
+					<View style={styles.subscriptionSelectBtn}>
+						<UiButton
+							title="Conferma"
+							fullWidth="0.8"
+							onPress={this._toggleSubView.bind(this)}
 						/>
 					</View>
-					<View style={{ marginTop: 24 }}>
-						<Text style={styles.label}>Stai cedendo:</Text>
-						<Text style={styles.value}>
-							{this.state.subscription}
-						</Text>
-					</View>
-					<View style={{ marginTop: 24 }}>
-						<Text style={styles.label}>Per i giorni:</Text>
-						{this.state.selectedDates.map(date => (
-							<Text key={date} style={styles.value}>
-								{date}
-							</Text>
-						))}
-					</View>
-					<UiButton
-						title="Cedi Ingresso"
-						fullWidth="0.7"
-						onPress={() => {
-							this.goTo("saleCompleted");
-						}}
-					/>
-					<Animated.View style={[styles.subView, animationPanel]}>
-						<Picker
-							selectedValue={this.state.subscription}
-							style={styles.subscriptionSelect}
-							onValueChange={this.setSubscription.bind(this)}
-						>
-							{DummySubs.map(item => (
-								<Picker.Item
-									key={item.id}
-									label={item.label}
-									value={item.value}
-								/>
-							))}
-						</Picker>
-						<View style={styles.subscriptionSelectBtn}>
-							<UiButton
-								title="Conferma"
-								fullWidth="0.8"
-								onPress={this._toggleSubView.bind(this)}
-							/>
-						</View>
-					</Animated.View>
-				</UiContainer>
+				</Animated.View>
 			</MainTemplate>
 		);
 	}
