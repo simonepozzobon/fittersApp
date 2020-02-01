@@ -80,6 +80,9 @@ class Home extends Component {
 	componentDidMount() {
 		// setTimeout(() => {
 		// 	this._selectMarker(MarkerData[0]);
+		// 	setTimeout(() => {
+		// 		this.mapPanel.onSwipeUp();
+		// 	}, 200);
 		// }, 1000);
 	}
 

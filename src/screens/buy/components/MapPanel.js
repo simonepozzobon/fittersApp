@@ -6,14 +6,22 @@ import {
 	StyleSheet,
 	Easing,
 	Text,
-	View
+	View,
+	SafeAreaView
 } from "react-native";
 
 import GestureRecognizer from "react-native-swipe-gestures";
+import Collapsible from "react-native-collapsible";
 
 import UiButton from "../../../components/UiButton";
+import GymGallery from "./GymGallery";
+import { ScrollView } from "react-native-gesture-handler";
+
+import MarkerData from "../../../dummies/Marker";
 
 const rating = require("../../../../assets/rating.png");
+const ArrowDown = require("../../../../assets/arrow_down.png");
+const ArrowUp = require("../../../../assets/arrow_up.png");
 const { width, height } = Dimensions.get("window");
 
 class MapPanel extends Component {
@@ -21,15 +29,25 @@ class MapPanel extends Component {
 		super(props);
 		this.state = {
 			bounceValue: new Animated.Value(height),
-			heightValue: new Animated.Value(0),
+			heightValue: new Animated.Value(),
 			isOpen: true,
 			item: null,
 			description: null,
 			logo: null,
-			descriptionIsOpen: false
+			descriptionIsOpen: false,
+			arrowIcon: ArrowUp
 		};
 
 		this._toggleSubView = this._toggleSubView.bind(this);
+	}
+
+	componentDidMount() {
+		// setTimeout(() => {
+		// 	this.openMarker(MarkerData[0]);
+		// 	setTimeout(() => {
+		// 		this.onSwipeUp();
+		// 	}, 200);
+		// }, 1000);
 	}
 
 	goTo(route) {
@@ -95,33 +113,23 @@ class MapPanel extends Component {
 
 	onSwipeUp() {
 		if (this.state.descriptionIsOpen == false) {
-			Animated.spring(this.state.heightValue, {
-				toValue: height,
-				duration: 600,
-				velocity: 3,
-				tension: 2,
-				friction: 6
-			}).start(() => {
-				this.setState({ descriptionIsOpen: true });
+			this.setState({
+				isCollapsed: false,
+				descriptionIsOpen: true,
+				arrowIcon: ArrowDown
 			});
 		}
 	}
 
 	onSwipeDown() {
-		// console.log("down");
-		// this._toggleSubView(this.props.item)
 		if (this.state.descriptionIsOpen) {
-			Animated.spring(this.state.heightValue, {
-				toValue: 0,
-				duration: 600,
-				velocity: 3,
-				tension: 2,
-				friction: 6
-			}).start(() => {
-				this.setState({ descriptionIsOpen: false });
+			this.setState({
+				isCollapsed: true,
+				descriptionIsOpen: false,
+				arrowIcon: ArrowUp
 			});
 		} else {
-			this._toggleSubView();
+			this.openMarker(this.state.item);
 		}
 	}
 
@@ -137,22 +145,39 @@ class MapPanel extends Component {
 		};
 
 		let animateDescription = {
-			height: this.state.heightValue
+			height: this.state.heightValue.interpolate({
+				inputRange: [0, 1],
+				outputRange: [0, height]
+			})
 		};
 
 		const config = {
 			velocityThreshold: 0.3,
-			directionalOffsetThreshold: 80
+			directionalOffsetThreshold: 50
 		};
+
+		let GalleryImages = this.state.item ? this.state.item.images : [];
 
 		// Component
 		return (
 			<Animated.View style={[styles.subView, animationPanel]}>
-				{/* <GestureRecognizer
+				<GestureRecognizer
 					config={config}
 					onSwipeUp={this.onSwipeUp.bind(this)}
 					onSwipeDown={this.onSwipeDown.bind(this)}
-				> */}
+					style={styles.gestureContainer}
+				>
+					<Image
+						source={this.state.arrowIcon}
+						resizeMode="stretch"
+						style={{
+							marginTop: 4,
+							width: 24,
+							height: 8,
+							opacity: 0.3
+						}}
+					/>
+				</GestureRecognizer>
 				<View style={styles.panelTop}>
 					<View style={styles.panelLeft}>
 						<Image
@@ -180,7 +205,7 @@ class MapPanel extends Component {
 									justifyContent: "flex-end"
 								}}
 							>
-								<Text style={styles.panelPrice}>5</Text>
+								<Text style={styles.panelPrice}>€ 5</Text>
 								<Text style={styles.panelPriceDecimal}>
 									,00
 								</Text>
@@ -211,11 +236,46 @@ class MapPanel extends Component {
 						</View>
 					</View>
 				</View>
-				<Animated.View style={[styles.description, animateDescription]}>
-					<Text>
-						{this.state.item ? this.state.item.description : null}
-					</Text>
-				</Animated.View>
+				<SafeAreaView style={[styles.galleryContainer]}>
+					<Collapsible
+						collapsed={this.state.isCollapsed}
+						style={{ height: height * 0.3 }}
+						duration={this.state.isCollapsed ? 300 : 500}
+					>
+						<ScrollView>
+							<Text>
+								{this.state.item
+									? this.state.item.description
+									: null}
+							</Text>
+							<View
+								style={{
+									flexDirection: "row",
+									flexWrap: "wrap",
+									justifyContent: "space-between"
+								}}
+							>
+								{GalleryImages.map(image => (
+									<View
+										key={image.id}
+										style={[styles.listItem]}
+									>
+										<Image
+											source={image.img}
+											resizeMode="cover"
+											style={{
+												marginTop: 24,
+												width: 96,
+												height: 96,
+												borderRadius: 6
+											}}
+										/>
+									</View>
+								))}
+							</View>
+						</ScrollView>
+					</Collapsible>
+				</SafeAreaView>
 				<View style={styles.panelConfirmContainer}>
 					<UiButton
 						title="Conferma"
@@ -225,7 +285,6 @@ class MapPanel extends Component {
 						}}
 					/>
 				</View>
-				{/* </GestureRecognizer> */}
 			</Animated.View>
 		);
 	}
@@ -243,15 +302,27 @@ const styles = StyleSheet.create({
 		left: 0,
 		right: 0,
 		paddingHorizontal: 36,
-		paddingTop: 12,
 		borderTopLeftRadius: 12,
 		borderTopRightRadius: 12
+		// paddingTop: 32
 
 		// height: Dimensions.get('window').height * 0.3,
 		// flex: 1,
 		// paddingTop: 24,
 		// alignItems: 'center',
 	},
+	gestureContainer: {
+		flex: 1,
+		width: width,
+		height: 32,
+		top: 0,
+		position: "relative",
+		zIndex: 3,
+		justifyContent: "center",
+		alignItems: "center"
+		// backgroundColor: "blue"
+	},
+
 	panelLeft: {
 		width: width * 0.3
 	},
@@ -300,9 +371,13 @@ const styles = StyleSheet.create({
 		width: 95
 	},
 	panelConfirmContainer: {
-		marginBottom: 60
+		marginBottom: 18
 	},
-	description: {
+	description: {},
+	gallery: {},
+	galleryContainer: {
+		flexGrow: 1,
+		alignItems: "center",
 		marginTop: 32
 	}
 });

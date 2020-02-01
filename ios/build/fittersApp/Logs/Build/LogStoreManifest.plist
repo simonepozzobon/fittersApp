@@ -6,7 +6,7 @@
 	<integer>10</integer>
 	<key>logs</key>
 	<dict>
-		<key>537C6669-4017-4D6B-A60E-F08739A79932</key>
+		<key>101FD5F7-BB8E-464B-9473-8C9716F2CD7F</key>
 		<dict>
 			<key>className</key>
 			<string>IDECommandLineBuildLog</string>
@@ -15,13 +15,13 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>537C6669-4017-4D6B-A60E-F08739A79932.xcactivitylog</string>
+			<string>101FD5F7-BB8E-464B-9473-8C9716F2CD7F.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
-				<string>W</string>
+				<string>E</string>
 			</dict>
 			<key>schemeIdentifier-containerName</key>
 			<string>fittersApp project</string>
@@ -32,13 +32,13 @@
 			<key>signature</key>
 			<string>Building workspace fittersApp with scheme fittersApp and configuration Debug</string>
 			<key>timeStartedRecording</key>
-			<real>602225934.38728297</real>
+			<real>602242615.42871499</real>
 			<key>timeStoppedRecording</key>
-			<real>602225935.80174696</real>
+			<real>602242622.09867406</real>
 			<key>title</key>
 			<string>Building workspace fittersApp with scheme fittersApp and configuration Debug</string>
 			<key>uniqueIdentifier</key>
-			<string>537C6669-4017-4D6B-A60E-F08739A79932</string>
+			<string>101FD5F7-BB8E-464B-9473-8C9716F2CD7F</string>
 		</dict>
 	</dict>
 </dict>
