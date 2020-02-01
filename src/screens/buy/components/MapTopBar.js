@@ -49,7 +49,7 @@ class MapTopBar extends Component {
 	}
 	// Component State Management
 	componentDidMount() {
-		this.show("date");
+		// this.show("date");
 	}
 
 	// Methods

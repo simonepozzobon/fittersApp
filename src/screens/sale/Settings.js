@@ -9,7 +9,9 @@ import {
 	TouchableOpacity,
 	Image,
 	Animated,
-	Picker
+	Picker,
+	ScrollView,
+	SafeAreaView
 } from "react-native";
 
 import MainTemplate from "../../presentation/MainTemplate";
@@ -106,7 +108,8 @@ class CediIngresso extends Component {
 			subscription: null,
 			selectedDates: [],
 			bounceValue: new Animated.Value(height),
-			markedDates: {}
+			markedDates: {},
+			mode: "single"
 		};
 	}
 
@@ -166,9 +169,81 @@ class CediIngresso extends Component {
 		if (markedDates.hasOwnProperty(day.dateString)) {
 			delete markedDates[day.dateString];
 		} else {
-			markedDates[day.dateString] = {
-				selected: true
-			};
+			if (this.state.mode == "multiple") {
+				let startDate = null;
+				let startDateKey = null;
+				for (const key in markedDates) {
+					if (markedDates.hasOwnProperty(key)) {
+						// delete markedDates[key].selected;
+						if (markedDates[key].hasOwnProperty("current")) {
+							startDate = markedDates[key];
+							startDateKey = key;
+						}
+					}
+				}
+
+				if (startDate == null) {
+					markedDates[day.dateString] = {
+						selected: true,
+						marked: true,
+						startingDay: true,
+						current: true,
+						color: "#FF2A00"
+					};
+				} else {
+					let endDateKey;
+
+					delete markedDates[startDateKey].current;
+					if (startDateKey < day.dateString) {
+						markedDates[day.dateString] = {
+							selected: true,
+							marked: true,
+							endingDay: true,
+							color: "#FF2A00"
+						};
+
+						endDateKey = day.dateString;
+					} else {
+						delete markedDates[startDateKey].startingDay;
+						markedDates[startDateKey].endingDay = true;
+
+						markedDates[day.dateString] = {
+							selected: true,
+							marked: true,
+							startingDay: true,
+							color: "#FF2A00"
+						};
+
+						endDateKey = startDateKey;
+						startDateKey = day.dateString;
+					}
+
+					startDateKey = moment(startDateKey, "YYYY-MM-DD");
+					endDateKey = moment(endDateKey, "YYYY-MM-DD").subtract(
+						1,
+						"days"
+					);
+					while (startDateKey < endDateKey) {
+						startDateKey.add(1, "days");
+
+						let currentKey = moment(startDateKey)
+							.format("YYYY-MM-DD")
+							.toString();
+
+						markedDates[currentKey] = {
+							selected: true,
+							marked: true,
+							color: "#FF2A00"
+						};
+					}
+
+					this.setState({ mode: "single" });
+				}
+			} else {
+				markedDates[day.dateString] = {
+					selected: true
+				};
+			}
 		}
 
 		for (const key in markedDates) {
@@ -186,6 +261,16 @@ class CediIngresso extends Component {
 		});
 	}
 
+	multipleDaysSelect(day) {
+		this.setState({
+			mode: "multiple"
+		});
+
+		setTimeout(() => {
+			this.daySelect(day);
+		}, 1);
+	}
+
 	// Render
 	render() {
 		// Dynamic styles
@@ -200,94 +285,114 @@ class CediIngresso extends Component {
 
 		// Component
 		return (
-			<MainTemplate onPressTimes="userSelection" hasContainer={true}>
+			<MainTemplate
+				onPressTimes="userSelection"
+				hasContainer={true}
+				fixedView={true}
+			>
 				<View style={[styles.container, { paddingBottom: 24 }]}>
 					<UiBreadcrumb title="Indietro" onPress="back" />
 				</View>
-				<View style={styles.container}>
-					<UiPageTitle title="Cedi Ingresso" />
-				</View>
-				<View style={{ marginTop: 24 }}>
-					<TouchableOpacity
-						activeOpacity={0.7}
-						onPress={this._toggleSubView.bind(this)}
-						style={styles.selector}
+				<SafeAreaView style={styles.scrollContainer}>
+					<ScrollView
+						contentContainerStyle={styles.content}
+						showsVerticalScrollIndicator={false}
+						centerContent={true}
 					>
-						<Text style={styles.selectorText}>
-							{this.state.subscriptionTxt}
-						</Text>
-						<Image
-							source={arrowDown}
-							resizeMode="contain"
-							style={{
-								width: 15,
-								height: 15
+						<View style={styles.container}>
+							<UiPageTitle title="Cedi Ingresso" />
+						</View>
+						<View style={{ marginTop: 24 }}>
+							<TouchableOpacity
+								activeOpacity={0.7}
+								onPress={this._toggleSubView.bind(this)}
+								style={styles.selector}
+							>
+								<Text style={styles.selectorText}>
+									{this.state.subscriptionTxt}
+								</Text>
+								<Image
+									source={arrowDown}
+									resizeMode="contain"
+									style={{
+										width: 15,
+										height: 15
+									}}
+								/>
+							</TouchableOpacity>
+						</View>
+						<View style={[styles.calendar, { marginTop: 24 }]}>
+							<Calendar
+								style={{
+									width: width * 0.8,
+									borderColor: "#252525",
+									borderWidth: 0.5,
+									borderRadius: 12
+								}}
+								theme={{
+									backgroundColor: "transparent",
+									calendarBackground: "transparent",
+									arrowColor: "#252525",
+									textSectionTitleColor: "#252525",
+									monthTextColor: "#252525",
+									indicatorColor: "#252525",
+									todayTextColor: "rgba(255, 42, 0, 0.5)",
+									textDayHeaderFontSize: 10,
+									textDayFontWeight: "400",
+									dayTextColor: "#252525",
+									textDisabledColor: "rgba(37,37,37, 0.1)",
+
+									dotColor: "blue",
+									selectedDotColor: "blue",
+									selectedDayBackgroundColor: "#FF2A00",
+									selectedDayTextColor: "white",
+
+									indicatorColor: "blue"
+								}}
+								// current={this.state.startDate}
+								minDate={this.state.startDate}
+								markedDates={this.state.markedDates}
+								// maxDate={"2012-05-30"}
+								onDayPress={this.daySelect.bind(this)}
+								onDayLongPress={this.multipleDaysSelect.bind(
+									this
+								)}
+								monthFormat={"MMMM - yyyy"}
+								markingType={"period"}
+								// onMonthChange={month => {
+								// 	console.log("month changed", month);
+								// }}
+								// hideExtraDays={true}
+								firstDay={1}
+								// onPressArrowLeft={substractMonth =>
+								// 	substractMonth()
+								// }
+								// onPressArrowRight={addMonth => addMonth()}
+							/>
+						</View>
+						<View style={{ marginTop: 24 }}>
+							<Text style={styles.label}>Stai cedendo:</Text>
+							<Text style={styles.value}>
+								{this.state.subscription}
+							</Text>
+						</View>
+						<View style={{ marginTop: 24 }}>
+							<Text style={styles.label}>Per i giorni:</Text>
+							{this.state.selectedDates.map(date => (
+								<Text key={date} style={styles.value}>
+									{date}
+								</Text>
+							))}
+						</View>
+						<UiButton
+							title="Cedi Ingresso"
+							fullWidth="0.8"
+							onPress={() => {
+								this.goTo("saleCompleted");
 							}}
 						/>
-					</TouchableOpacity>
-				</View>
-				<View style={[styles.calendar, { marginTop: 24 }]}>
-					<Calendar
-						style={{
-							width: width * 0.8,
-							borderColor: "#252525",
-							borderWidth: 0.5,
-							borderRadius: 12
-						}}
-						theme={{
-							backgroundColor: "transparent",
-							calendarBackground: "transparent",
-							arrowColor: "#252525",
-							textSectionTitleColor: "#252525",
-							monthTextColor: "#252525",
-							indicatorColor: "#252525",
-							todayTextColor: "rgba(255, 42, 0, 0.5)",
-							textDayHeaderFontSize: 10,
-							textDayFontWeight: "400",
-							dayTextColor: "#252525",
-							textDisabledColor: "rgba(37,37,37, 0.1)",
-
-							dotColor: "#ffffff",
-							selectedDotColor: "blue",
-							selectedDayBackgroundColor: "#FF2A00",
-							selectedDayTextColor: "white"
-						}}
-						// current={this.state.startDate}
-						minDate={this.state.startDate}
-						markedDates={this.state.markedDates}
-						// maxDate={"2012-05-30"}
-						onDayPress={this.daySelect.bind(this)}
-						monthFormat={"MMMM - yyyy"}
-						// onMonthChange={month => {
-						// 	console.log("month changed", month);
-						// }}
-						// hideExtraDays={true}
-						firstDay={1}
-						// onPressArrowLeft={substractMonth =>
-						// 	substractMonth()
-						// }
-						// onPressArrowRight={addMonth => addMonth()}
-					/>
-				</View>
-				<View style={{ marginTop: 24 }}>
-					<Text style={styles.label}>Stai cedendo:</Text>
-					<Text style={styles.value}>{this.state.subscription}</Text>
-				</View>
-				<View style={{ marginTop: 24 }}>
-					<Text style={styles.label}>Per i giorni:</Text>
-					{this.state.selectedDates.map(date => (
-						<Text key={date} style={styles.value}>
-							{date}
-						</Text>
-					))}
-				</View>
-				<UiButton
-					title="Cedi Ingresso"
-					fullWidth="0.7"
-					onPress={() => {
-						this.goTo("saleCompleted");
-					}}
-				/>
+					</ScrollView>
+				</SafeAreaView>
 				<Animated.View style={[styles.subView, animationPanel]}>
 					<Picker
 						selectedValue={this.state.subscription}
@@ -371,6 +476,17 @@ const styles = StyleSheet.create({
 		bottom: 0,
 		left: 0,
 		right: 0
+	},
+	scrollContainer: {
+		width: width * 0.8
+	},
+	content: {
+		// flex: 1,
+		alignItems: "center",
+		justifyContent: "center"
+		// flexGrow: 1,
+		// height: '100%',
+		// backgroundColor: 'blue',
 	}
 });
 
