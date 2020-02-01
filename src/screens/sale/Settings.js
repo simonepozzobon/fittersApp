@@ -11,7 +11,9 @@ import {
 	Animated,
 	Picker,
 	ScrollView,
-	SafeAreaView
+	SafeAreaView,
+	Modal,
+	TouchableWithoutFeedback
 } from "react-native";
 
 import MainTemplate from "../../presentation/MainTemplate";
@@ -34,8 +36,7 @@ const arrowDown = require("../../../assets/arrow_down.png");
 const logo = require("../../../assets/brand/logo.png");
 
 const { width, height } = Dimensions.get("window");
-
-let isHidden = true;
+import _ from "lodash";
 
 const DummySubs = [
 	{
@@ -109,53 +110,15 @@ class CediIngresso extends Component {
 			selectedDates: [],
 			bounceValue: new Animated.Value(height),
 			markedDates: {},
-			mode: "single"
+			mode: "single",
+			modalVisible: false
 		};
 	}
-
-	// Component State Management
-
-	componentDidMount() {
-		// this.setState({
-		// 	screenWidth: width
-		// });
-	}
-
-	// Methods
-
 	goTo(route) {
 		this.props.navigation.navigate(route);
 	}
 
-	// onDateChange(date) {
-	// 	let hDate = moment(date).format("d MMMM YYYY");
-	// 	this.setState({
-	// 		selectedStartDate: date,
-	// 		selectedDates: hDate
-	// 	});
-	// }
-
-	_toggleSubView() {
-		let toValue = height;
-		if (!isHidden) {
-			toValue = 0;
-		}
-		console.log(toValue);
-
-		Animated.spring(this.state.bounceValue, {
-			toValue: toValue,
-			duration: 600,
-			velocity: 3,
-			tension: 2,
-			friction: 6,
-			useNativeDriver: true
-		}).start();
-
-		isHidden = !isHidden;
-	}
-
 	setSubscription(itemValue, itemIndex) {
-		console.log(itemValue);
 		this.setState({
 			subscription: itemValue,
 			subscriptionTxt: DummySubs.find(sub => sub.value == itemValue).label
@@ -241,7 +204,11 @@ class CediIngresso extends Component {
 				}
 			} else {
 				markedDates[day.dateString] = {
-					selected: true
+					selected: true,
+					marked: true,
+					startingDay: true,
+					endingDay: true,
+					color: "#FF2A00"
 				};
 			}
 		}
@@ -255,10 +222,40 @@ class CediIngresso extends Component {
 			}
 		}
 
+		selectedDates = Object.assign(
+			[],
+			_.orderBy(
+				selectedDates,
+				item => {
+					return moment(item, "DD MMMM YYYY");
+				},
+				["asc"]
+			)
+		);
+		console.log(selectedDates);
+
 		this.setState({
 			selectedDates,
 			markedDates
 		});
+	}
+
+	closeModal() {
+		this.setState({
+			modalVisible: false
+		});
+	}
+
+	show() {
+		this.setState({
+			modalVisible: false
+		});
+
+		setTimeout(() => {
+			this.setState({
+				modalVisible: true
+			});
+		}, 1);
 	}
 
 	multipleDaysSelect(day) {
@@ -271,10 +268,7 @@ class CediIngresso extends Component {
 		}, 1);
 	}
 
-	// Render
 	render() {
-		// Dynamic styles
-
 		let animationPanel = {
 			transform: [
 				{
@@ -283,7 +277,6 @@ class CediIngresso extends Component {
 			]
 		};
 
-		// Component
 		return (
 			<MainTemplate
 				onPressTimes="userSelection"
@@ -305,7 +298,7 @@ class CediIngresso extends Component {
 						<View style={{ marginTop: 24 }}>
 							<TouchableOpacity
 								activeOpacity={0.7}
-								onPress={this._toggleSubView.bind(this)}
+								onPress={this.show.bind(this)}
 								style={styles.selector}
 							>
 								<Text style={styles.selectorText}>
@@ -393,28 +386,80 @@ class CediIngresso extends Component {
 						/>
 					</ScrollView>
 				</SafeAreaView>
-				<Animated.View style={[styles.subView, animationPanel]}>
-					<Picker
-						selectedValue={this.state.subscription}
-						style={styles.subscriptionSelect}
-						onValueChange={this.setSubscription.bind(this)}
+				<View>
+					<Modal
+						visible={this.state.modalVisible}
+						presentationStyle="overFullScreen"
+						transparent={true}
+						animationType="fade"
 					>
-						{DummySubs.map(item => (
-							<Picker.Item
-								key={item.id}
-								label={item.label}
-								value={item.value}
-							/>
-						))}
-					</Picker>
-					<View style={styles.subscriptionSelectBtn}>
-						<UiButton
-							title="Conferma"
-							fullWidth="0.8"
-							onPress={this._toggleSubView.bind(this)}
-						/>
-					</View>
-				</Animated.View>
+						<TouchableWithoutFeedback
+							onPress={() => {
+								this.closeModal();
+							}}
+						>
+							<View
+								style={{
+									position: "absolute",
+									top: 0,
+									bottom: 0,
+									left: 0,
+									right: 0,
+									backgroundColor: "rgba(255, 255, 255, 0.5)"
+								}}
+							></View>
+						</TouchableWithoutFeedback>
+						<View
+							style={{
+								bottom: height * 0.3,
+								position: "absolute",
+								alignSelf: "center"
+							}}
+						>
+							<View
+								style={{
+									width: width * 0.8,
+									backgroundColor: "white",
+									padding: 32,
+									borderRadius: 12,
+									shadowColor: "rgba(0, 0, 0, 0.1)",
+									shadowOpacity: 0.6,
+									elevation: 4,
+									shadowRadius: 8,
+									shadowOffset: {
+										width: 1,
+										height: 6
+									}
+								}}
+							>
+								<Picker
+									selectedValue={this.state.subscription}
+									style={styles.subscriptionSelect}
+									onValueChange={this.setSubscription.bind(
+										this
+									)}
+								>
+									{DummySubs.map(item => (
+										<Picker.Item
+											key={item.id}
+											label={item.label}
+											value={item.value}
+										/>
+									))}
+								</Picker>
+							</View>
+							<View>
+								<UiButton
+									title="Conferma"
+									fullWidth="0.8"
+									onPress={() => {
+										this.closeModal();
+									}}
+								/>
+							</View>
+						</View>
+					</Modal>
+				</View>
 			</MainTemplate>
 		);
 	}
@@ -446,7 +491,7 @@ const styles = StyleSheet.create({
 		fontSize: 14
 	},
 	selector: {
-		width: width * 0.7,
+		width: width * 0.8,
 		borderWidth: 0.5,
 		borderColor: "#252525",
 		paddingVertical: 10,
@@ -460,11 +505,9 @@ const styles = StyleSheet.create({
 		fontSize: 12,
 		fontWeight: "700"
 	},
-	subscriptionSelect: {
-		width: width
-	},
+	subscriptionSelect: {},
 	subscriptionSelectBtn: {
-		marginBottom: 32
+		// marginBottom: 32
 	},
 	subView: {
 		zIndex: 2,
