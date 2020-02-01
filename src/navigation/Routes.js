@@ -51,7 +51,7 @@ const ProfileStack = createStackNavigator(
 	},
 	{
 		headerMode: "none",
-		initialRouteName: "subscriptions"
+		initialRouteName: "profile"
 	}
 );
 
@@ -60,10 +60,10 @@ const AppStack = createStackNavigator(
 		userSelection: Selection,
 		buy: BuyStack,
 		sale: SaleStack,
-		profile: ProfileStack
+		profileStack: ProfileStack
 	},
 	{
-		initialRouteName: "profile",
+		initialRouteName: "buy",
 		headerMode: "none"
 	}
 );

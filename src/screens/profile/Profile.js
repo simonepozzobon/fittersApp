@@ -18,8 +18,6 @@ const { width } = Dimensions.get("window");
 import ProfileData from "../../dummies/ProfileData";
 const proData = ProfileData[0];
 
-console.log(proData);
-
 export class Profile extends Component {
 	render() {
 		return (

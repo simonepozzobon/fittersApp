@@ -56,7 +56,6 @@ class MainTemplate extends Component {
 	// Render
 	render() {
 		let hasContainer;
-
 		if (this.props.hasContainer == true) {
 			hasContainer = (
 				<View style={styles.content}>
@@ -69,22 +68,26 @@ class MainTemplate extends Component {
 			);
 		}
 
-		let view = (
-			<KeyboardAwareScrollView contentContainerStyle={styles.container}>
-				<ScrollView contentContainerStyle={styles.scroll}>
-					{hasContainer}
-				</ScrollView>
-			</KeyboardAwareScrollView>
-		);
-
+		let view;
 		if (this.props.fixedView == true) {
 			view = hasContainer;
+		} else {
+			view = (
+				<KeyboardAwareScrollView
+					contentContainerStyle={styles.container}
+				>
+					<ScrollView contentContainerStyle={styles.scroll}>
+						{hasContainer}
+					</ScrollView>
+				</KeyboardAwareScrollView>
+			);
 		}
 
 		let header;
 		if (
 			typeof this.props.hasHeader == "undefined" ||
-			this.props.hasHeader == null
+			this.props.hasHeader == null ||
+			this.props.hasHeader == true
 		) {
 			header = (
 				<Header
@@ -93,6 +96,8 @@ class MainTemplate extends Component {
 					onPressTimes={this.goTo.bind(this)}
 				/>
 			);
+		} else {
+			header = null;
 		}
 
 		// Component
@@ -116,7 +121,7 @@ class MainTemplate extends Component {
 
 const drawer = StyleSheet.create({
 	container: {
-		flex: 1,
+		flex: 12,
 		backgroundColor: "#fff",
 		alignItems: "center",
 		justifyContent: "center",

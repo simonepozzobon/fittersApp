@@ -4,13 +4,12 @@ import {
 	Dimensions,
 	Image,
 	StyleSheet,
+	Easing,
 	Text,
 	View
 } from "react-native";
 
-// import GestureRecognizer, {
-// 	swipeDirections
-// } from "react-native-swipe-gestures";
+import GestureRecognizer from "react-native-swipe-gestures";
 
 import UiButton from "../../../components/UiButton";
 
@@ -21,12 +20,16 @@ class MapPanel extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			bounceValue: new Animated.Value(height * 0.3),
+			bounceValue: new Animated.Value(height),
+			heightValue: new Animated.Value(0),
 			isOpen: true,
 			item: null,
 			description: null,
-			logo: null
+			logo: null,
+			descriptionIsOpen: false
 		};
+
+		this._toggleSubView = this._toggleSubView.bind(this);
 	}
 
 	goTo(route) {
@@ -34,51 +37,53 @@ class MapPanel extends Component {
 	}
 
 	// Methods
-	_selectMarker(marker) {
-		if (this.state.isOpen == false && this.props.item == null) {
-			// console.log("primo caso");
-			this.setState({
-				item: marker
-			});
-			this._toggleSubView();
-			toValue = 0;
-		} else {
-			if (this.props.item && this.props.item.id == marker.id) {
-				// console.log("sono uguali");
+	openMarker(marker) {
+		// console.log("openMArker", this.state.isOpen, this.state.item, marker);
+
+		return new Promise((resolve, reject) => {
+			if (this.state.isOpen == true && this.state.item == null) {
+				this.setState({
+					item: marker
+				});
+				this._toggleSubView().then(() => {
+					resolve(marker);
+				});
+			} else if (this.state.item && this.state.item.id == marker.id) {
 				this._toggleSubView().then(() => {
 					this.setState({
 						item: null
 					});
+
+					resolve(marker);
 				});
-			} else if (this.props.item && this.props.item.id != marker.id) {
-				// console.log("sono diversi");
+			} else if (this.state.item && this.state.item.id != marker.id) {
 				this._toggleSubView().then(() => {
 					this.setState({
 						item: marker
 					});
 
-					this._toggleSubView();
+					if (this.state.isOpen == true) {
+						this._toggleSubView().then(() => {
+							resolve(marker);
+						});
+					} else {
+						resolve(marker);
+					}
 				});
-			} else {
-				this.setState({
-					item: marker
-				});
-				this._toggleSubView();
 			}
-		}
+		});
 	}
 
 	_toggleSubView() {
 		return new Promise((resolve, reject) => {
-			let toValue = this.state.isOpen == false ? height * 0.3 : 0;
+			let toValue = this.state.isOpen == false ? height : 0;
+			let easing = Easing.inOut(Easing.back(1));
 
-			// console.log("parte");
-			Animated.spring(this.state.bounceValue, {
+			Animated.timing(this.state.bounceValue, {
 				toValue: toValue,
-				duration: 600,
-				velocity: 3,
-				tension: 2,
-				friction: 6
+				duration: this.state.isOpen == false ? 500 : 300,
+				easing,
+				useNativeDriver: true
 			}).start(() => {
 				this.setState({
 					isOpen: !this.state.isOpen
@@ -88,9 +93,36 @@ class MapPanel extends Component {
 		});
 	}
 
+	onSwipeUp() {
+		if (this.state.descriptionIsOpen == false) {
+			Animated.spring(this.state.heightValue, {
+				toValue: height,
+				duration: 600,
+				velocity: 3,
+				tension: 2,
+				friction: 6
+			}).start(() => {
+				this.setState({ descriptionIsOpen: true });
+			});
+		}
+	}
+
 	onSwipeDown() {
 		// console.log("down");
 		// this._toggleSubView(this.props.item)
+		if (this.state.descriptionIsOpen) {
+			Animated.spring(this.state.heightValue, {
+				toValue: 0,
+				duration: 600,
+				velocity: 3,
+				tension: 2,
+				friction: 6
+			}).start(() => {
+				this.setState({ descriptionIsOpen: false });
+			});
+		} else {
+			this._toggleSubView();
+		}
 	}
 
 	// Render
@@ -104,14 +136,28 @@ class MapPanel extends Component {
 			]
 		};
 
+		let animateDescription = {
+			height: this.state.heightValue
+		};
+
+		const config = {
+			velocityThreshold: 0.3,
+			directionalOffsetThreshold: 80
+		};
+
 		// Component
 		return (
 			<Animated.View style={[styles.subView, animationPanel]}>
+				{/* <GestureRecognizer
+					config={config}
+					onSwipeUp={this.onSwipeUp.bind(this)}
+					onSwipeDown={this.onSwipeDown.bind(this)}
+				> */}
 				<View style={styles.panelTop}>
 					<View style={styles.panelLeft}>
 						<Image
 							source={
-								this.props.item ? this.props.item.logo : null
+								this.state.item ? this.state.item.logo : null
 							}
 							resizeMode="contain"
 							style={styles.panelImage}
@@ -122,8 +168,8 @@ class MapPanel extends Component {
 							<View>
 								<Text style={styles.panelLabel}>Palestra</Text>
 								<Text style={styles.panelData}>
-									{this.props.item
-										? this.props.item.title
+									{this.state.item
+										? this.state.item.title
 										: null}
 								</Text>
 							</View>
@@ -151,8 +197,8 @@ class MapPanel extends Component {
 								Indirizzo palestra
 							</Text>
 							<Text style={styles.panelData}>
-								{this.props.item
-									? this.props.item.address
+								{this.state.item
+									? this.state.item.address
 									: null}
 							</Text>
 						</View>
@@ -165,6 +211,11 @@ class MapPanel extends Component {
 						</View>
 					</View>
 				</View>
+				<Animated.View style={[styles.description, animateDescription]}>
+					<Text>
+						{this.state.item ? this.state.item.description : null}
+					</Text>
+				</Animated.View>
 				<View style={styles.panelConfirmContainer}>
 					<UiButton
 						title="Conferma"
@@ -174,6 +225,7 @@ class MapPanel extends Component {
 						}}
 					/>
 				</View>
+				{/* </GestureRecognizer> */}
 			</Animated.View>
 		);
 	}
@@ -249,6 +301,9 @@ const styles = StyleSheet.create({
 	},
 	panelConfirmContainer: {
 		marginBottom: 60
+	},
+	description: {
+		marginTop: 32
 	}
 });
 

@@ -8,7 +8,8 @@ import {
 	TextInput,
 	TouchableOpacity,
 	Image,
-	Animated
+	Animated,
+	TouchableWithoutFeedback
 } from "react-native";
 
 import MainTemplate from "../../presentation/MainTemplate";
@@ -69,15 +70,17 @@ class Home extends Component {
 			}
 		};
 		this.current = null;
+		this._selectMarker = this._selectMarker.bind(this);
+		this.setMarker = this.setMarker.bind(this);
 	}
 
 	init() {}
 
 	// Component State Management
 	componentDidMount() {
-		setTimeout(() => {
-			this._selectMarker(MarkerData[0]);
-		}, 1000);
+		// setTimeout(() => {
+		// 	this._selectMarker(MarkerData[0]);
+		// }, 1000);
 	}
 
 	componentWillUnmount() {
@@ -112,9 +115,10 @@ class Home extends Component {
 	}
 
 	_selectMarker(marker) {
-		const map = this.mapView;
+		const mapView = this.mapView;
+		const mapPanel = this.mapPanel;
 
-		let camera = map.getCamera().then(camera => {
+		let camera = mapView.getCamera().then(camera => {
 			if (marker.latlng.latitude && marker.latlng.longitude) {
 				let newCamera = {
 					...camera,
@@ -126,13 +130,22 @@ class Home extends Component {
 					}
 				};
 
-				map.animateCamera(newCamera, 1000);
-				this.setState({
-					item: marker
-				});
+				mapView.animateCamera(newCamera, 1000);
 			}
 
-			this.mapPanel._selectMarker(marker);
+			mapPanel.openMarker(marker).then(currentMarker => {
+				// console.log("caii");
+
+				this.setMarker(currentMarker);
+			});
+		});
+	}
+
+	setMarker(marker) {
+		// console.log(marker);
+
+		this.setState({
+			item: marker
 		});
 	}
 
@@ -144,7 +157,6 @@ class Home extends Component {
 		return (
 			<MainTemplate fixedView={true} onPressTimes="userSelection">
 				<View style={{ flex: 1 }}>
-					<MapTopBar />
 					<MapView
 						ref={mapView => (this.mapView = mapView)}
 						style={styles.map}
@@ -153,6 +165,7 @@ class Home extends Component {
 						showsUserLocation={true}
 						showsMyLocationButton={true}
 						showsScale={true}
+						loadingEnabled={true}
 					>
 						{MarkerData.map(marker => (
 							<Marker
@@ -160,24 +173,20 @@ class Home extends Component {
 								coordinate={marker.latlng}
 								title={marker.title}
 								description={marker.description}
+								onPress={() => this._selectMarker(marker)}
 							>
-								<TouchableOpacity
-									onPress={() => {
-										this._selectMarker(marker);
-									}}
-								>
-									<Image style={styles.pin} source={Pin} />
-								</TouchableOpacity>
+								<Image style={styles.pin} source={Pin} />
 								<Callout alphaHitTest tooltip />
 							</Marker>
 						))}
 					</MapView>
-					<MapPanel
-						item={this.state.item}
-						navigation={this.props.navigation}
-						ref={mapPanel => (this.mapPanel = mapPanel)}
-					/>
+					<MapTopBar />
 				</View>
+				<MapPanel
+					item={this.state.item}
+					navigation={this.props.navigation}
+					ref={mapPanel => (this.mapPanel = mapPanel)}
+				/>
 			</MainTemplate>
 		);
 	}
@@ -187,8 +196,7 @@ const styles = StyleSheet.create({
 	// Forms
 	map: {
 		width: width,
-		height: height,
-		flex: 1
+		height: height
 	},
 	pin: {
 		width: 36,
