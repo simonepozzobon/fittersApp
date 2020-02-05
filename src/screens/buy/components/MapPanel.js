@@ -42,12 +42,12 @@ class MapPanel extends Component {
 	}
 
 	componentDidMount() {
-		setTimeout(() => {
-			this.openMarker(MarkerData[0]);
-			// setTimeout(() => {
-			// 	this.onSwipeUp();
-			// }, 200);
-		}, 1000);
+		// setTimeout(() => {
+		// 	this.openMarker(MarkerData[0]);
+		// 	// setTimeout(() => {
+		// 	// 	this.onSwipeUp();
+		// 	// }, 200);
+		// }, 1000);
 	}
 
 	goTo(route) {

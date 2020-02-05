@@ -20,20 +20,20 @@ export class DrawerMenu extends Component {
 		super(props);
 
 		this.state = {
-			drawerPosition: new Animated.Value(width),
+			drawerPosition: new Animated.Value(-width),
 			isOpen: false,
 			panelWidth: 0
 		};
 	}
 
-	// componentDidMount() {
-	// 	setTimeout(this.openDrawer.bind(this), 500);
-	// }
+	componentDidMount() {
+		// setTimeout(this.openDrawer.bind(this), 500);
+	}
 
 	closeDrawer() {
 		if (this.state.isOpen == true) {
 			let toValue =
-				this.state.panelWidth < 1 ? width : this.state.panelWidth;
+				this.state.panelWidth < 1 ? -width : this.state.panelWidth;
 
 			Animated.timing(this.state.drawerPosition, {
 				toValue: toValue,
@@ -74,7 +74,7 @@ export class DrawerMenu extends Component {
 						let panelWidth = event.nativeEvent.layout.width;
 						// console.log(panelWidth);
 
-						this.setState({ panelWidth: panelWidth });
+						this.setState({ panelWidth: -panelWidth });
 					}}
 				>
 					<View style={styles.burgerContainer}>
@@ -142,20 +142,20 @@ const styles = StyleSheet.create({
 		justifyContent: "space-between",
 		alignItems: "flex-end",
 		zIndex: 10,
-		right: 0,
+		left: 0,
 		transform: [
 			{
-				translateX: -width
+				translateX: width
 			}
 		]
 	},
 	container: {
 		height: height,
 		justifyContent: "flex-start",
-		alignItems: "flex-end",
+		alignItems: "flex-start",
 		backgroundColor: "white",
 		paddingRight: 28,
-		paddingLeft: 48
+		paddingLeft: 28
 	},
 	content: {
 		flexDirection: "column",
@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
 	logout: {
 		flexGrow: 1,
 		marginBottom: 85,
-		justifyContent: "flex-end"
+		justifyContent: "flex-start"
 	},
 	nameTxt: {
 		fontSize: 16,
