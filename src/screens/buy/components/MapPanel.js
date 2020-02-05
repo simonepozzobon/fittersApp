@@ -42,12 +42,12 @@ class MapPanel extends Component {
 	}
 
 	componentDidMount() {
-		// setTimeout(() => {
-		// 	this.openMarker(MarkerData[0]);
-		// 	setTimeout(() => {
-		// 		this.onSwipeUp();
-		// 	}, 200);
-		// }, 1000);
+		setTimeout(() => {
+			this.openMarker(MarkerData[0]);
+			// setTimeout(() => {
+			// 	this.onSwipeUp();
+			// }, 200);
+		}, 1000);
 	}
 
 	goTo(route) {
@@ -176,7 +176,12 @@ class MapPanel extends Component {
 					config={config}
 					onSwipeUp={this.onSwipeUp.bind(this)}
 					onSwipeDown={this.onSwipeDown.bind(this)}
-					style={styles.gestureContainer}
+					style={[
+						styles.gestureContainer,
+						{
+							// backgroundColor: "blue"
+						}
+					]}
 				>
 					<TouchableWithoutFeedback
 						onPress={() => {
@@ -192,8 +197,8 @@ class MapPanel extends Component {
 							resizeMode="stretch"
 							style={{
 								marginTop: 4,
-								width: 24,
-								height: 8,
+								width: 36,
+								height: 14,
 								opacity: 0.3
 							}}
 						/>
@@ -335,7 +340,7 @@ const styles = StyleSheet.create({
 	gestureContainer: {
 		flex: 1,
 		width: width,
-		height: 32,
+		height: 48,
 		top: 0,
 		position: "relative",
 		zIndex: 3,
