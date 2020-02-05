@@ -23,6 +23,35 @@ import "moment/locale/it";
 
 moment.locale("it");
 const { width, height } = Dimensions.get("window");
+import { useDarkMode } from "react-native-dark-mode";
+
+const ModalComponent = props => {
+	const isDarkMode = useDarkMode();
+	console.log(isDarkMode);
+
+	return (
+		<View
+			style={[
+				{
+					width: width * 0.8,
+					padding: 32,
+					borderRadius: 12,
+					backgroundColor: isDarkMode ? "rgb(44, 44, 46)" : "white",
+					shadowColor: "rgba(0, 0, 0, 0.1)",
+					shadowOpacity: 0.6,
+					elevation: 4,
+					shadowRadius: 8,
+					shadowOffset: {
+						width: 1,
+						height: 6
+					}
+				}
+			]}
+		>
+			{props.children}
+		</View>
+	);
+};
 
 class MapTopBar extends Component {
 	constructor(props) {
@@ -33,7 +62,7 @@ class MapTopBar extends Component {
 			show: false,
 			dateTxt: moment().format("L"),
 			timeTxt: moment().format("HH:mm"),
-			cityTxt: "Padova",
+			cityTxt: "Milano",
 			datePickerTxt: "Scegli il giorno",
 			dateArrow: arrowDown,
 			timeArrow: arrowDown,
@@ -176,22 +205,7 @@ class MapTopBar extends Component {
 								alignSelf: "center"
 							}}
 						>
-							<View
-								style={{
-									width: width * 0.8,
-									backgroundColor: "white",
-									padding: 32,
-									borderRadius: 12,
-									shadowColor: "rgba(0, 0, 0, 0.1)",
-									shadowOpacity: 0.6,
-									elevation: 4,
-									shadowRadius: 8,
-									shadowOffset: {
-										width: 1,
-										height: 6
-									}
-								}}
-							>
+							<ModalComponent>
 								<DateTimePicker
 									value={this.state.date}
 									mode={this.state.mode}
@@ -201,7 +215,7 @@ class MapTopBar extends Component {
 										this.setDate(event, date)
 									}
 								/>
-							</View>
+							</ModalComponent>
 							<View>
 								<UiButton
 									title={this.state.datePickerTxt}
