@@ -15,12 +15,12 @@ export class DrawerMenuSingle extends Component {
 		return (
 			<TouchableOpacity onPress={() => navigate(destination)}>
 				<View style={styles.container}>
-					<Text style={styles.link}>{this.props.title}</Text>
 					<Image
 						source={this.props.src}
 						resizeMode="contain"
 						style={styles.icon}
 					/>
+					<Text style={styles.link}>{this.props.title}</Text>
 				</View>
 			</TouchableOpacity>
 		);
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
 	container: {
 		marginTop: 24,
 		flexDirection: "row",
-		justifyContent: "flex-end",
+		justifyContent: "flex-start",
 		alignItems: "center"
 	},
 	link: {
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
 		textAlign: "right"
 	},
 	icon: {
-		marginLeft: 16,
+		marginRight: 16,
 		width: 28
 	}
 });

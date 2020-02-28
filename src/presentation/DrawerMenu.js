@@ -20,20 +20,20 @@ export class DrawerMenu extends Component {
 		super(props);
 
 		this.state = {
-			drawerPosition: new Animated.Value(width),
+			drawerPosition: new Animated.Value(-width),
 			isOpen: false,
 			panelWidth: 0
 		};
 	}
 
-	// componentDidMount() {
-	// 	setTimeout(this.openDrawer.bind(this), 1000);
-	// }
+	componentDidMount() {
+		// setTimeout(this.openDrawer.bind(this), 500);
+	}
 
-	closeMenu() {
+	closeDrawer() {
 		if (this.state.isOpen == true) {
 			let toValue =
-				this.state.panelWidth < 1 ? width : this.state.panelWidth;
+				this.state.panelWidth < 1 ? -width : this.state.panelWidth;
 
 			Animated.timing(this.state.drawerPosition, {
 				toValue: toValue,
@@ -72,13 +72,13 @@ export class DrawerMenu extends Component {
 					style={styles.container}
 					onLayout={event => {
 						let panelWidth = event.nativeEvent.layout.width;
-						console.log(panelWidth);
+						// console.log(panelWidth);
 
-						this.setState({ panelWidth: panelWidth });
+						this.setState({ panelWidth: -panelWidth });
 					}}
 				>
 					<View style={styles.burgerContainer}>
-						<TouchableOpacity onPress={this.closeMenu.bind(this)}>
+						<TouchableOpacity onPress={this.closeDrawer.bind(this)}>
 							<Image
 								source={assets.burger_orange}
 								resizeMode="contain"
@@ -93,18 +93,18 @@ export class DrawerMenu extends Component {
 						<DrawerMenuSingle
 							title="Profilo"
 							src={menuIcons.profile}
-							destination="userSelection"
+							destination="profile"
 						/>
 
 						<DrawerMenuSingle
 							title="I tuoi abbonamenti"
 							src={menuIcons.abbonamenti}
-							destination="userSelection"
+							destination="subscriptions"
 						/>
 						<DrawerMenuSingle
 							title="I tuoi ingressi"
 							src={menuIcons.ingressi}
-							destination="userSelection"
+							destination="tickets"
 						/>
 						<DrawerMenuSingle
 							title="Regolamento"
@@ -122,6 +122,13 @@ export class DrawerMenu extends Component {
 							destination="userSelection"
 						/>
 					</View>
+					<View style={styles.logout}>
+						<DrawerMenuSingle
+							title="Logout"
+							src={menuIcons.invite}
+							destination="login"
+						/>
+					</View>
 				</View>
 			</Animated.View>
 		);
@@ -135,20 +142,20 @@ const styles = StyleSheet.create({
 		justifyContent: "space-between",
 		alignItems: "flex-end",
 		zIndex: 10,
-		right: 0,
+		left: 0,
 		transform: [
 			{
-				translateX: -width
+				translateX: width
 			}
 		]
 	},
 	container: {
 		height: height,
 		justifyContent: "flex-start",
-		alignItems: "flex-end",
+		alignItems: "flex-start",
 		backgroundColor: "white",
 		paddingRight: 28,
-		paddingLeft: 48
+		paddingLeft: 28
 	},
 	content: {
 		flexDirection: "column",
@@ -164,6 +171,11 @@ const styles = StyleSheet.create({
 	},
 	name: {
 		marginTop: 64
+	},
+	logout: {
+		flexGrow: 1,
+		marginBottom: 85,
+		justifyContent: "flex-start"
 	},
 	nameTxt: {
 		fontSize: 16,

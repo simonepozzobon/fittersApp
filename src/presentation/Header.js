@@ -43,6 +43,24 @@ class Header extends Component {
 			}
 		});
 
+		let content = (
+			<TouchableOpacity onPress={this.props.onPressTimes}>
+				<Image
+					source={times}
+					resizeMode="contain"
+					style={styles.times}
+				/>
+			</TouchableOpacity>
+		);
+
+		if (
+			typeof this.props.onlyBurger != "undefined" ||
+			this.props.onlyBurger != null ||
+			this.props.onlyBurger == true
+		) {
+			content = null;
+		}
+
 		// Component
 		return (
 			<View style={[styles.header, topBar.topBarHeight]}>
@@ -53,13 +71,7 @@ class Header extends Component {
 						style={styles.burger}
 					/>
 				</TouchableOpacity>
-				<TouchableOpacity onPress={this.props.onPressTimes}>
-					<Image
-						source={times}
-						resizeMode="contain"
-						style={styles.times}
-					/>
-				</TouchableOpacity>
+				{content}
 			</View>
 		);
 	}

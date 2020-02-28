@@ -93,40 +93,47 @@
 			<key>orderHint</key>
 			<integer>18</integer>
 		</dict>
-		<key>RNCMaskedView.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>41</integer>
-		</dict>
-		<key>RNDateTimePicker.xcscheme</key>
+		<key>RNCAsyncStorage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>42</integer>
 		</dict>
-		<key>RNDeviceInfo.xcscheme</key>
+		<key>RNCMaskedView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>43</integer>
 		</dict>
-		<key>RNGestureHandler.xcscheme</key>
+		<key>RNDateTimePicker.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>44</integer>
 		</dict>
-		<key>RNVectorIcons.xcscheme</key>
+		<key>RNDeviceInfo.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>45</integer>
+		</dict>
+		<key>RNGestureHandler.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>46</integer>
+		</dict>
+		<key>RNVectorIcons.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>47</integer>
 		</dict>
 		<key>React-Core.xcscheme</key>
 		<dict>
@@ -247,12 +254,19 @@
 			<key>orderHint</key>
 			<integer>40</integer>
 		</dict>
+		<key>ReactNativeDarkMode.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>41</integer>
+		</dict>
 		<key>Yoga.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>46</integer>
+			<integer>48</integer>
 		</dict>
 		<key>appcenter-analytics.xcscheme</key>
 		<dict>
@@ -278,7 +292,7 @@
 		<key>appcenter.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>47</integer>
+			<integer>49</integer>
 		</dict>
 		<key>boost-for-react-native.xcscheme</key>
 		<dict>

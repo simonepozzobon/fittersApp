@@ -4,6 +4,8 @@ import LinearGradient from "react-native-linear-gradient";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import DrawerMenu from "./DrawerMenu";
 import Header from "./Header";
+import { withNavigation, NavigationEvents } from "react-navigation";
+import UiContainer from "../components/UiContainer";
 
 const { height } = Dimensions.get("window");
 
@@ -15,38 +17,87 @@ class MainTemplate extends Component {
 
 	// Component State Management
 
-	componentDidMount() {}
+	componentDidMount() {
+		// console.log(this.props.navigation);
+		this.unmountListener = this.props.navigation.addListener(
+			"willBlur",
+			() => {
+				this.beforeUnmount();
+			}
+		);
+	}
 
 	// Methods
 	openDrawer() {
 		this.drawer.openDrawer();
 	}
 
+	beforeUnmount() {
+		if (this.drawer) {
+			this.drawer.closeDrawer();
+		}
+	}
+
+	goTo() {
+		if (typeof this.props.onPressTimes == "function") {
+			this.props.onPressTimes();
+		} else if (this.props.onPressTimes) {
+			if (this.props.onPressTimes == "back") {
+				this.props.navigation.goBack(null);
+			} else {
+				this.props.navigation.navigate(this.props.onPressTimes);
+			}
+		} else {
+			console.log("non props");
+		}
+		// this.props.onPressTimes
+	}
+
 	// Render
 	render() {
-		let view = (
-			<KeyboardAwareScrollView contentContainerStyle={styles.container}>
-				<ScrollView contentContainerStyle={styles.scroll}>
-					<View style={styles.content}>{this.props.children}</View>
-				</ScrollView>
-			</KeyboardAwareScrollView>
-		);
+		let hasContainer;
+		if (this.props.hasContainer == true) {
+			hasContainer = (
+				<View style={styles.content}>
+					<UiContainer>{this.props.children}</UiContainer>
+				</View>
+			);
+		} else {
+			hasContainer = (
+				<View style={styles.content}>{this.props.children}</View>
+			);
+		}
 
+		let view;
 		if (this.props.fixedView == true) {
-			view = <View style={styles.content}>{this.props.children}</View>;
+			view = hasContainer;
+		} else {
+			view = (
+				<KeyboardAwareScrollView
+					contentContainerStyle={styles.container}
+				>
+					<ScrollView contentContainerStyle={styles.scroll}>
+						{hasContainer}
+					</ScrollView>
+				</KeyboardAwareScrollView>
+			);
 		}
 
 		let header;
 		if (
 			typeof this.props.hasHeader == "undefined" ||
-			this.props.hasHeader == null
+			this.props.hasHeader == null ||
+			this.props.hasHeader == true
 		) {
 			header = (
 				<Header
+					onlyBurger={this.props.onlyBurger}
 					onPressBurger={this.openDrawer.bind(this)}
-					onPressTimes={this.props.onPressTimes}
+					onPressTimes={this.goTo.bind(this)}
 				/>
 			);
+		} else {
+			header = null;
 		}
 
 		// Component
@@ -70,7 +121,7 @@ class MainTemplate extends Component {
 
 const drawer = StyleSheet.create({
 	container: {
-		flex: 1,
+		flex: 12,
 		backgroundColor: "#fff",
 		alignItems: "center",
 		justifyContent: "center",
@@ -106,4 +157,4 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default MainTemplate;
+export default withNavigation(MainTemplate);

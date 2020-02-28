@@ -9,10 +9,12 @@ import {
 	TouchableOpacity,
 	Image
 } from "react-native";
+import AsyncStorage from "@react-native-community/async-storage";
 
 import MainTemplate from "../presentation/MainTemplate";
 import UiButton from "../components/UiButton";
-import SplashScreen from "react-native-splash-screen";
+import config from "../config";
+import axios from "axios";
 
 const logo = require("../../assets/brand/logo.png");
 const facebook = require("../../assets/facebook_social.png");
@@ -21,10 +23,9 @@ const google = require("../../assets/google_social.png");
 const { width, height } = Dimensions.get("window");
 
 class Login extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
-			screenWidth: 0,
 			email: "",
 			password: ""
 		};
@@ -32,18 +33,45 @@ class Login extends Component {
 
 	// Component State Management
 
-	componentDidMount() {
-		SplashScreen.hide();
-
-		this.setState({
-			screenWidth: Dimensions.get("window").width
-		});
-	}
+	componentDidMount() {}
 
 	// Methods
 	goTo(route) {
 		this.props.navigation.navigate(route);
 	}
+
+	emailSet = value => {
+		this.setState({ email: value });
+	};
+
+	passwordSet = value => {
+		this.setState({ password: value });
+	};
+
+	focusToPassword = () => {
+		this.passwordInput.focus();
+	};
+
+	attemptLogin = async () => {
+		if (this.state.email && this.state.password) {
+			let data = new FormData();
+			data.append("email", this.state.email);
+			data.append("password", this.state.password);
+
+			axios.post(`${config.api.path}/login`, data).then(response => {
+				const { data } = response;
+				if (data.success) {
+					const { token, user } = data;
+					AsyncStorage.setItem("token", token);
+					AsyncStorage.setItem("user", JSON.stringify(user));
+					AsyncStorage.setItem("email", this.state.email);
+					AsyncStorage.setItem("password", this.state.password);
+
+					this.goTo("userSelection");
+				}
+			});
+		}
+	};
 
 	// Render
 	render() {
@@ -74,23 +102,22 @@ class Login extends Component {
 					</View>
 					<View style={{ marginTop: 20 }}>
 						<TextInput
+							secureTextEntry
 							autoCorrect={false}
-							value={this.state.email}
+							value={this.state.password}
 							placeholder="password"
 							placeholderTextColor="white"
-							returnKeyType="next"
-							keyboardType="email-address"
-							onChangeText={this.emailSet}
-							onSubmitEditing={this.focusToPassword}
+							returnKeyType="send"
+							onChangeText={this.passwordSet}
+							onSubmitEditing={this.attemptLogin}
+							ref={ref => (this.passwordInput = ref)}
 							style={[styles.input]}
 						/>
 					</View>
 					<View style={{ marginTop: 20 }}>
 						<UiButton
 							title="Login"
-							onPress={() => {
-								this.goTo("userSelection");
-							}}
+							onPress={this.attemptLogin}
 							fullWidth="0.7"
 						/>
 					</View>
@@ -127,7 +154,7 @@ class Login extends Component {
 											{ marginLeft: 8 }
 										]}
 									>
-										Sign Up
+										Sign In
 									</Text>
 								</View>
 							</TouchableOpacity>
@@ -154,7 +181,7 @@ class Login extends Component {
 											{ marginLeft: 8 }
 										]}
 									>
-										Sign Up
+										Sign In
 									</Text>
 								</View>
 							</TouchableOpacity>
@@ -196,7 +223,7 @@ const styles = StyleSheet.create({
 		height: 44,
 		borderRadius: 12,
 		borderColor: "white",
-		borderWidth: 2,
+		borderWidth: 0.5,
 		paddingHorizontal: 10,
 		color: "white",
 		width: width * 0.7
