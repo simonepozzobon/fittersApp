@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { Text, View } from "react-native";
+import { connect } from "react-redux";
 import AsyncStorage from "@react-native-community/async-storage";
 import config from "../config";
 import axios from "axios";
+
+import { setUser, setToken } from "../redux/actions/UserActions";
 
 import MainTemplate from "../presentation/MainTemplate";
 
@@ -40,13 +43,27 @@ export class AuthLoading extends Component {
 				const { data } = response;
 				if (data.success) {
 					const { token, user } = data;
-					AsyncStorage.setItem("token", token);
-					AsyncStorage.setItem("user", JSON.stringify(user));
-					AsyncStorage.setItem("email", email);
-					AsyncStorage.setItem("password", password);
-					this._redirectAuthorized();
+					AsyncStorage.multiSet(
+						[
+							["token", token],
+							["user", JSON.stringify(user)],
+							["email", email],
+							["password", password]
+						],
+						() => {
+							this.props.setUser(user);
+							this.props.setToken(token);
+
+							this._redirectAuthorized();
+						}
+					);
 				} else {
-					this._redirectUnauthorized();
+					AsyncStorage.multiRemove(
+						["token", "user", "email", "password"],
+						() => {
+							this._redirectUnauthorized();
+						}
+					);
 				}
 			});
 		} else {
@@ -79,4 +96,10 @@ export class AuthLoading extends Component {
 	}
 }
 
-export default AuthLoading;
+const mapStateToProps = state => {
+	return {
+		user: state.user,
+		token: state.token
+	};
+};
+export default connect(mapStateToProps, { setUser, setToken })(AuthLoading);

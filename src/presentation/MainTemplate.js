@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { ScrollView, StyleSheet, Text, View, Dimensions } from "react-native";
-import LinearGradient from "react-native-linear-gradient";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import LinearGradient from "react-native-linear-gradient";
 import DrawerMenu from "./DrawerMenu";
 import Header from "./Header";
 import { withNavigation, NavigationEvents } from "react-navigation";
