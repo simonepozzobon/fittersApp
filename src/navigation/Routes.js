@@ -4,6 +4,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import Login from "../screens/Login";
 import Register from "../screens/Register";
 import Selection from "../screens/Selection";
+import AuthLoading from "../screens/AuthLoading";
 
 import BuyMap from "../screens/buy/Map";
 import BuyCheckout from "../screens/buy/Checkout";
@@ -63,19 +64,20 @@ const AppStack = createStackNavigator(
 		profileStack: ProfileStack
 	},
 	{
-		initialRouteName: "buy",
-		headerMode: "none"
+		headerMode: "none",
+		initialRouteName: "userSelection"
 	}
 );
 
 const AuthStack = createStackNavigator(
 	{
 		login: Login,
-		register: Register
+		register: Register,
+		loading: AuthLoading
 	},
 	{
 		headerMode: "none",
-		initialRouteName: "login"
+		initialRouteName: "loading"
 	}
 );
 

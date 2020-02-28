@@ -35,7 +35,9 @@ class Register extends Component {
 			address: "",
 			city: "",
 			email: "",
-			password: ""
+			password: "",
+			agreement: false,
+			responsability: false,
 		};
 	}
 
@@ -107,8 +109,18 @@ class Register extends Component {
 		this.passwordInput.focus()
 	}
 
+	toggleAgreement = () => {
+		let value = this.state.agreement
+		this.setState({ agreement: !value })
+	}
+
+	toggleResponsability = () => {
+		let value = this.state.responsability
+		this.setState({ responsability: !value })
+	}
+
 	attemptRegistration = () => {
-		if (this.state.name && this.state.surname && this.state.age && this.state.address && this.state.city && this.state.email && this.state.password) {
+		if (this.state.name && this.state.surname && this.state.age && this.state.address && this.state.city && this.state.email && this.state.password && this.state.responsability && this.state.agreement) {
 			let data = new FormData();
 			data.append('name', this.state.name)
 			data.append('surname', this.state.surname)
@@ -118,6 +130,7 @@ class Register extends Component {
 			data.append('email', this.state.email)
 			data.append('password', this.state.password)
 		}
+
 	}
 
 	// Render
@@ -130,6 +143,12 @@ class Register extends Component {
 			},
 			btnWhite: {
 				width: lg
+			},
+			agreement: {
+				backgroundColor: this.state.agreement ? 'white' : 'transparent'
+			},
+			responsability: {
+				backgroundColor: this.state.responsability ? 'white' : 'transparent'
 			}
 		});
 
@@ -347,11 +366,13 @@ class Register extends Component {
 								flexDirection: "row"
 							}}
 						>
-							<CheckBox
-								value={false}
-								disabled={true}
-								style={styles.checkbox}
-							></CheckBox>
+							<TouchableOpacity onPress={this.toggleAgreement}>
+								<CheckBox
+									value={this.state.agreement}
+									disabled={true}
+									style={[styles.checkbox, compStyles.agreement]}
+								></CheckBox>
+							</TouchableOpacity>
 							<View
 								style={{
 									flexDirection: "row",
@@ -374,11 +395,13 @@ class Register extends Component {
 								alignItems: "center"
 							}}
 						>
-							<CheckBox
-								value={true}
-								disabled={false}
-								style={styles.checkbox}
-							></CheckBox>
+							<TouchableOpacity onPress={this.toggleResponsability}>
+								<CheckBox
+									value={this.state.responsability}
+									disabled={false}
+									style={[styles.checkbox, compStyles.responsability]}
+								></CheckBox>
+							</TouchableOpacity>
 							<View
 								style={{
 									flexDirection: "row",

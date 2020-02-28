@@ -9,11 +9,12 @@ import {
 	TouchableOpacity,
 	Image
 } from "react-native";
+import AsyncStorage from "@react-native-community/async-storage";
 
 import MainTemplate from "../presentation/MainTemplate";
 import UiButton from "../components/UiButton";
-import config from '../config';
-import axios from 'axios';
+import config from "../config";
+import axios from "axios";
 
 const logo = require("../../assets/brand/logo.png");
 const facebook = require("../../assets/facebook_social.png");
@@ -25,7 +26,6 @@ class Login extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			screenWidth: 0,
 			email: "",
 			password: ""
 		};
@@ -33,40 +33,45 @@ class Login extends Component {
 
 	// Component State Management
 
-	componentDidMount() {
-		this.setState({
-			screenWidth: Dimensions.get("window").width
-		});
-	}
+	componentDidMount() {}
 
 	// Methods
 	goTo(route) {
 		this.props.navigation.navigate(route);
 	}
 
-	emailSet = (value) => {
+	emailSet = value => {
 		this.setState({ email: value });
-	}
+	};
 
-	passwordSet = (value) => {
+	passwordSet = value => {
 		this.setState({ password: value });
-	}
+	};
 
 	focusToPassword = () => {
-		this.passwordInput.focus()
-	}
+		this.passwordInput.focus();
+	};
 
-	attemptLogin = () => {
+	attemptLogin = async () => {
 		if (this.state.email && this.state.password) {
 			let data = new FormData();
-			data.append('email', this.state.email)
-			data.append('password', this.state.password)
+			data.append("email", this.state.email);
+			data.append("password", this.state.password);
 
 			axios.post(`${config.api.path}/login`, data).then(response => {
-				console.log(response);
-			})
+				const { data } = response;
+				if (data.success) {
+					const { token, user } = data;
+					AsyncStorage.setItem("token", token);
+					AsyncStorage.setItem("user", JSON.stringify(user));
+					AsyncStorage.setItem("email", this.state.email);
+					AsyncStorage.setItem("password", this.state.password);
+
+					this.goTo("userSelection");
+				}
+			});
 		}
-	}
+	};
 
 	// Render
 	render() {
@@ -105,16 +110,14 @@ class Login extends Component {
 							returnKeyType="send"
 							onChangeText={this.passwordSet}
 							onSubmitEditing={this.attemptLogin}
-							ref={ref => this.passwordInput = ref}
+							ref={ref => (this.passwordInput = ref)}
 							style={[styles.input]}
 						/>
 					</View>
 					<View style={{ marginTop: 20 }}>
 						<UiButton
 							title="Login"
-							onPress={() => {
-								this.goTo("userSelection");
-							}}
+							onPress={this.attemptLogin}
 							fullWidth="0.7"
 						/>
 					</View>
