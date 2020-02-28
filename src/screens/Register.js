@@ -49,7 +49,7 @@ class Register extends Component {
 			screenWidth: Dimensions.get("window").width
 		});
 
-		this.debug();
+		// this.debug();
 	}
 
 	// Methods
@@ -166,6 +166,18 @@ class Register extends Component {
 					const { data } = response;
 					console.log("response", data);
 					if (data.success) {
+						Alert.alert(
+							"Ci siamo quasi",
+							"A breve riceverai un messaggio di verifica all' account di posta da te inserito",
+							[
+								{
+									text: "Ok",
+									onPress: () => {
+										this.goTo("login");
+									}
+								}
+							]
+						);
 					} else {
 						if (data.message == "same-email") {
 							Alert.alert("Errore", "La mail è già registrata", [
@@ -512,6 +524,32 @@ class Register extends Component {
 								Create Account
 							</Text>
 						</TouchableOpacity>
+						<View
+							style={{
+								marginTop: 16,
+								flexDirection: "row",
+								justifyContent: "center"
+							}}
+						>
+							<Text style={{ color: "white" }}>
+								Already have an account?
+							</Text>
+							<TouchableOpacity
+								style={{ paddingLeft: 10 }}
+								onPress={() => {
+									this.goTo("login");
+								}}
+							>
+								<Text
+									style={{
+										color: "white",
+										fontWeight: "bold"
+									}}
+								>
+									Sign In
+								</Text>
+							</TouchableOpacity>
+						</View>
 					</View>
 				</View>
 			</MainTemplate>
