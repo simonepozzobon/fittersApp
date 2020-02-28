@@ -77,7 +77,7 @@ const AuthStack = createStackNavigator(
 	},
 	{
 		headerMode: "none",
-		initialRouteName: "loading"
+		initialRouteName: "register"
 	}
 );
 
