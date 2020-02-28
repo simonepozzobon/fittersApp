@@ -9,6 +9,8 @@ import {
 	TouchableOpacity,
 	Image
 } from "react-native";
+import axios from 'axios';
+import config from '../config';
 
 // @ts-ignore
 import CheckBox from "@react-native-community/checkbox";
@@ -27,6 +29,11 @@ class Register extends Component {
 		super(props);
 		this.state = {
 			screenWidth: 0,
+			name: "",
+			surname: "",
+			age: "",
+			address: "",
+			city: "",
 			email: "",
 			password: ""
 		};
@@ -46,6 +53,71 @@ class Register extends Component {
 	 */
 	goTo(route) {
 		this.props.navigation.navigate(route);
+	}
+
+	nameSet = (value) => {
+		this.setState({ name: value })
+	}
+
+	surnameSet = (value) => {
+		this.setState({ surname: value })
+	}
+
+	ageSet = (value) => {
+		this.setState({ age: value })
+	}
+
+	addressSet = (value) => {
+		this.setState({ address: value })
+	}
+
+	citySet = (value) => {
+		this.setState({ city: value })
+	}
+
+	emailSet = (value) => {
+		this.setState({ email: value })
+	}
+
+	passwordSet = (value) => {
+		this.setState({ password: value })
+	}
+
+	focusToSurname = () => {
+		this.surnameInput.focus()
+	}
+
+	focusToAge = () => {
+		this.ageInput.focus()
+	}
+
+	focusToAddress = () => {
+		this.addressInput.focus()
+	}
+
+	focusToCity = () => {
+		this.cityInput.focus()
+	}
+
+	focusToEmail = () => {
+		this.emailInput.focus()
+	}
+
+	focusToPassword = () => {
+		this.passwordInput.focus()
+	}
+
+	attemptRegistration = () => {
+		if (this.state.name && this.state.surname && this.state.age && this.state.address && this.state.city && this.state.email && this.state.password) {
+			let data = new FormData();
+			data.append('name', this.state.name)
+			data.append('surname', this.state.surname)
+			data.append('age', this.state.age)
+			data.append('address', this.state.address)
+			data.append('city', this.state.city)
+			data.append('email', this.state.email)
+			data.append('password', this.state.password)
+		}
 	}
 
 	// Render
@@ -155,14 +227,13 @@ class Register extends Component {
 				>
 					<View>
 						<TextInput
-							autoCorrect={false}
-							value={this.state.email}
+							value={this.state.name}
 							placeholder="Name"
 							placeholderTextColor="white"
 							returnKeyType="next"
-							keyboardType="email-address"
-							onChangeText={this.emailSet}
-							onSubmitEditing={this.focusToPassword}
+							keyboardType="default"
+							onChangeText={this.nameSet}
+							onSubmitEditing={this.focusToSurname}
 							style={[compStyles.formInput, styles.input]}
 						/>
 					</View>
@@ -172,15 +243,15 @@ class Register extends Component {
 						}}
 					>
 						<TextInput
-							autoCorrect={false}
-							value={this.state.email}
+							value={this.state.surname}
 							placeholder="Surname"
 							placeholderTextColor="white"
 							returnKeyType="next"
-							keyboardType="email-address"
-							onChangeText={this.emailSet}
-							onSubmitEditing={this.focusToPassword}
+							keyboardType="default"
+							onChangeText={this.surnameSet}
+							onSubmitEditing={this.focusToAge}
 							style={[compStyles.formInput, styles.input]}
+							ref={ref => this.surnameInput = ref}
 						/>
 					</View>
 					<View
@@ -189,15 +260,15 @@ class Register extends Component {
 						}}
 					>
 						<TextInput
-							autoCorrect={false}
-							value={this.state.email}
+							value={this.state.age}
 							placeholder="Age"
 							placeholderTextColor="white"
 							returnKeyType="next"
-							keyboardType="email-address"
-							onChangeText={this.emailSet}
-							onSubmitEditing={this.focusToPassword}
+							keyboardType="number-pad"
+							onChangeText={this.ageSet}
+							onSubmitEditing={this.focusToAddress}
 							style={[compStyles.formInput, styles.input]}
+							ref={ref => this.ageInput = ref}
 						/>
 					</View>
 					<View
@@ -206,15 +277,15 @@ class Register extends Component {
 						}}
 					>
 						<TextInput
-							autoCorrect={false}
-							value={this.state.email}
+							value={this.state.address}
 							placeholder="Indirizzo"
 							placeholderTextColor="white"
 							returnKeyType="next"
-							keyboardType="email-address"
-							onChangeText={this.emailSet}
-							onSubmitEditing={this.focusToPassword}
+							keyboardType="default"
+							onChangeText={this.addressSet}
+							onSubmitEditing={this.focusToCity}
 							style={[compStyles.formInput, styles.input]}
+							ref={ref => this.addressInput = ref}
 						/>
 					</View>
 					<View
@@ -223,15 +294,15 @@ class Register extends Component {
 						}}
 					>
 						<TextInput
-							autoCorrect={false}
-							value={this.state.email}
+							value={this.state.city}
 							placeholder="Città"
 							placeholderTextColor="white"
 							returnKeyType="next"
-							keyboardType="email-address"
-							onChangeText={this.emailSet}
-							onSubmitEditing={this.focusToPassword}
+							keyboardType="default"
+							onChangeText={this.citySet}
+							onSubmitEditing={this.focusToEmail}
 							style={[compStyles.formInput, styles.input]}
+							ref={ref => this.cityInput = ref}
 						/>
 					</View>
 					<View
@@ -240,7 +311,6 @@ class Register extends Component {
 						}}
 					>
 						<TextInput
-							autoCorrect={false}
 							value={this.state.email}
 							placeholder="Email"
 							placeholderTextColor="white"
@@ -249,6 +319,7 @@ class Register extends Component {
 							onChangeText={this.emailSet}
 							onSubmitEditing={this.focusToPassword}
 							style={[compStyles.formInput, styles.input]}
+							ref={ref => this.emailInput = ref}
 						/>
 					</View>
 					<View
@@ -257,15 +328,17 @@ class Register extends Component {
 						}}
 					>
 						<TextInput
+							secureTextEntry
 							autoCorrect={false}
 							value={this.state.email}
 							placeholder="Password"
 							placeholderTextColor="white"
-							returnKeyType="next"
-							keyboardType="email-address"
-							onChangeText={this.emailSet}
-							onSubmitEditing={this.focusToPassword}
+							returnKeyType="send"
+							keyboardType="default"
+							onChangeText={this.passwordSet}
+							onSubmitEditing={this.attemptRegistration}
 							style={[compStyles.formInput, styles.input]}
+							ref={ref => this.passwordInput = ref}
 						/>
 					</View>
 					<View style={styles.checkboxes}>
@@ -330,7 +403,7 @@ class Register extends Component {
 						<TouchableOpacity
 							style={[styles.btnWhite, compStyles.btnWhite]}
 							onPress={() => {
-								this.goTo("register");
+								this.attemptRegistration()
 							}}
 						>
 							<Text style={styles.btnWhiteText}>

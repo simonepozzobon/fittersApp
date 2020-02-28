@@ -9,11 +9,9 @@
 import "react-native-gesture-handler";
 
 import React, { Component } from "react";
-import { Text, View } from "react-native";
-import MainTemplate from "./src/presentation/MainTemplate";
 import AppContainer from "./src/navigation/Routes";
-import Header from "./src/presentation/Header";
 import SplashScreen from "react-native-splash-screen";
+import axios from 'axios'
 
 export class App extends Component {
 	componentDidMount() {

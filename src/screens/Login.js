@@ -12,7 +12,8 @@ import {
 
 import MainTemplate from "../presentation/MainTemplate";
 import UiButton from "../components/UiButton";
-import SplashScreen from "react-native-splash-screen";
+import config from '../config';
+import axios from 'axios';
 
 const logo = require("../../assets/brand/logo.png");
 const facebook = require("../../assets/facebook_social.png");
@@ -33,8 +34,6 @@ class Login extends Component {
 	// Component State Management
 
 	componentDidMount() {
-		SplashScreen.hide();
-
 		this.setState({
 			screenWidth: Dimensions.get("window").width
 		});
@@ -43,6 +42,30 @@ class Login extends Component {
 	// Methods
 	goTo(route) {
 		this.props.navigation.navigate(route);
+	}
+
+	emailSet = (value) => {
+		this.setState({ email: value });
+	}
+
+	passwordSet = (value) => {
+		this.setState({ password: value });
+	}
+
+	focusToPassword = () => {
+		this.passwordInput.focus()
+	}
+
+	attemptLogin = () => {
+		if (this.state.email && this.state.password) {
+			let data = new FormData();
+			data.append('email', this.state.email)
+			data.append('password', this.state.password)
+
+			axios.post(`${config.api.path}/login`, data).then(response => {
+				console.log(response);
+			})
+		}
 	}
 
 	// Render
@@ -74,14 +97,15 @@ class Login extends Component {
 					</View>
 					<View style={{ marginTop: 20 }}>
 						<TextInput
+							secureTextEntry
 							autoCorrect={false}
-							value={this.state.email}
+							value={this.state.password}
 							placeholder="password"
 							placeholderTextColor="white"
-							returnKeyType="next"
-							keyboardType="email-address"
-							onChangeText={this.emailSet}
-							onSubmitEditing={this.focusToPassword}
+							returnKeyType="send"
+							onChangeText={this.passwordSet}
+							onSubmitEditing={this.attemptLogin}
+							ref={ref => this.passwordInput = ref}
 							style={[styles.input]}
 						/>
 					</View>
@@ -127,7 +151,7 @@ class Login extends Component {
 											{ marginLeft: 8 }
 										]}
 									>
-										Sign Up
+										Sign In
 									</Text>
 								</View>
 							</TouchableOpacity>
@@ -154,7 +178,7 @@ class Login extends Component {
 											{ marginLeft: 8 }
 										]}
 									>
-										Sign Up
+										Sign In
 									</Text>
 								</View>
 							</TouchableOpacity>
