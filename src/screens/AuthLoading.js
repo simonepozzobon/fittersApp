@@ -26,7 +26,7 @@ export class AuthLoading extends Component {
 				password = store[1][1];
 
 			if (err) {
-				console.error(err);
+				console.log("errore", err);
 			} else {
 				this._attemptLogin(email, password);
 			}
@@ -38,9 +38,9 @@ export class AuthLoading extends Component {
 			let data = new FormData();
 			data.append("email", email);
 			data.append("password", password);
-
 			axios.post(`${config.api.path}/login`, data).then(response => {
 				const { data } = response;
+				console.log(data);
 				if (data.success) {
 					const { token, user } = data;
 					AsyncStorage.multiSet(
@@ -76,7 +76,8 @@ export class AuthLoading extends Component {
 	};
 
 	_redirectAuthorized = () => {
-		this.goTo("userSelection");
+		// this.goTo("userSelection");
+		this.goTo("profile");
 	};
 
 	render() {
