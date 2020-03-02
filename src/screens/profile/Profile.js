@@ -7,11 +7,13 @@ import {
 	SafeAreaView,
 	ScrollView
 } from "react-native";
+import { connect } from "react-redux";
 import MainTemplate from "../../presentation/MainTemplate";
 import UiButton from "../../components/UiButton";
 import UiBreadcrumb from "../../components/UiBreadcrumb";
 import UiSectionTitle from "../../components/UiSectionTitle";
 import DataGroup from "./components/DataGroup";
+import config from "../../config";
 
 const { width } = Dimensions.get("window");
 
@@ -19,6 +21,56 @@ import ProfileData from "../../dummies/ProfileData";
 const proData = ProfileData[0];
 
 export class Profile extends Component {
+	constructor(props) {
+		super(props);
+	}
+
+	goTo = route => {
+		this.props.navigation.navigate(route);
+	};
+
+	uppercase = string => {
+		if (string && string.length > 2) {
+			return string.charAt(0).toUpperCase() + string.slice(1);
+		} else if (string) {
+			return string;
+		} else {
+			return "Nessun Valore";
+		}
+	};
+
+	get user() {
+		return this.props.user.user;
+	}
+
+	get details() {
+		return this.user.details[0];
+	}
+
+	get name() {
+		return this.uppercase(this.user.name);
+	}
+
+	get surname() {
+		return this.uppercase(this.user.surname);
+	}
+
+	get email() {
+		return this.user.email;
+	}
+
+	get age() {
+		return this.details.age;
+	}
+
+	get address() {
+		return this.uppercase(this.details.address);
+	}
+
+	get city() {
+		return this.uppercase(this.details.city);
+	}
+
 	render() {
 		return (
 			<MainTemplate
@@ -41,30 +93,29 @@ export class Profile extends Component {
 						</View>
 						<View style={styles.container}>
 							<View>
-								<Text>{proData.name}</Text>
-								<Text>{proData.surname}</Text>
+								<Text>{this.name}</Text>
+								<Text>{this.surname}</Text>
 							</View>
-							<DataGroup
-								label="indirizzo"
-								value={proData.address}
-							/>
-							<DataGroup
+							<DataGroup label="indirizzo" value={this.address} />
+							{/* <DataGroup
 								label="codice postale"
 								value={proData.postal_code}
-							/>
-							<DataGroup label="città" value={proData.city} />
-							<DataGroup label="paese" value={proData.country} />
+							/> */}
+							<DataGroup label="città" value={this.city} />
+							{/* <DataGroup label="paese" value={proData.country} /> */}
 							<DataGroup
 								label="data di nascita"
-								value={proData.birth}
+								value={this.age}
 							/>
-							<DataGroup label="telefono" value={proData.phone} />
-							<DataGroup label="email" value={proData.mail} />
+							{/* <DataGroup label="telefono" value={proData.phone} /> */}
+							<DataGroup label="email" value={this.email} />
 							<View>
 								<UiButton
 									title="Modifica profilo"
 									fullWidth="0.8"
-									onPress={() => {}}
+									onPress={() => {
+										this.goTo("profileEdit");
+									}}
 								/>
 							</View>
 						</View>
@@ -88,4 +139,10 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default Profile;
+const mapStateToProps = state => {
+	return {
+		user: state.user,
+		token: state.token
+	};
+};
+export default connect(mapStateToProps)(Profile);

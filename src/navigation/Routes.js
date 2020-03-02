@@ -14,10 +14,14 @@ import SaleSettings from "../screens/sale/Settings";
 import SalesCompleted from "../screens/sale/Completed";
 
 import Profile from "../screens/profile/Profile";
+import ProfileEdit from "../screens/profile/ProfileEdit";
+
 import Terms from "../screens/profile/Terms";
 import Payment from "../screens/profile/Payment";
 import Tickets from "../screens/profile/Tickets";
-import Subscriptions from "../screens/profile/Subscriptions";
+
+import Subscriptions from "../screens/profile/subscriptions/Subscriptions";
+import addSubscription from "../screens/profile/subscriptions/AddSubscription";
 
 const BuyStack = createStackNavigator(
 	{
@@ -42,11 +46,33 @@ const SaleStack = createStackNavigator(
 	}
 );
 
+const SubscriptionStack = createStackNavigator(
+	{
+		subscriptionHome: Subscriptions,
+		addSubscription: addSubscription
+	},
+	{
+		initialRouteName: "subscriptionHome",
+		headerMode: "none"
+	}
+);
+
 const ProfileStack = createStackNavigator(
 	{
-		profile: Profile,
+		profileHome: Profile,
+		profileEdit: ProfileEdit
+	},
+	{
+		initialRouteName: "profileHome",
+		headerMode: "none"
+	}
+);
+
+const DrawerStack = createStackNavigator(
+	{
+		profile: ProfileStack,
 		tickets: Tickets,
-		subscriptions: Subscriptions,
+		subscriptions: SubscriptionStack,
 		terms: Terms,
 		payment: Payment
 	},
@@ -61,7 +87,7 @@ const AppStack = createStackNavigator(
 		userSelection: Selection,
 		buy: BuyStack,
 		sale: SaleStack,
-		profileStack: ProfileStack
+		drawerStack: DrawerStack
 	},
 	{
 		headerMode: "none",

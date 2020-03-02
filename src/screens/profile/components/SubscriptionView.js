@@ -4,9 +4,19 @@ import { View } from "react-native-animatable";
 import DataGroup from "./DataGroup";
 
 export class SubscriptionView extends Component {
+	constructor(props) {
+		super(props);
+	}
 	render() {
 		return (
-			<View style={styles.container}>
+			<View
+				style={[
+					styles.container,
+					{
+						marginTop: 12
+					}
+				]}
+			>
 				<View
 					style={{
 						paddingVertical: 16
@@ -15,17 +25,23 @@ export class SubscriptionView extends Component {
 					<DataGroup
 						hasMargin={false}
 						label="palestra"
-						value="Get Fit"
+						value={this.props.name}
 					/>
 					<DataGroup
 						label="indirizzo palestra"
-						value="Via Genova, 3 12345 Milano"
+						value={this.props.address}
 					/>
-					<DataGroup label="tipo di abbonamento" value="Gold" />
-					<DataGroup label="numero abbonamento" value="DX 25489" />
+					<DataGroup
+						label="tipo di abbonamento"
+						value={this.props.type}
+					/>
+					<DataGroup
+						label="numero abbonamento"
+						value={this.props.number}
+					/>
 					<DataGroup
 						label="scadenza abbonamento"
-						value="10/10/2020"
+						value={this.props.deadline}
 					/>
 				</View>
 				<View style={styles.bigBar}></View>

@@ -7,10 +7,11 @@ import {
 	Dimensions,
 	TextInput,
 	TouchableOpacity,
-	Image
+	Image,
+	Alert
 } from "react-native";
-import axios from 'axios';
-import config from '../config';
+import axios from "axios";
+import config from "../config";
 
 // @ts-ignore
 import CheckBox from "@react-native-community/checkbox";
@@ -37,7 +38,7 @@ class Register extends Component {
 			email: "",
 			password: "",
 			agreement: false,
-			responsability: false,
+			responsability: false
 		};
 	}
 
@@ -47,9 +48,28 @@ class Register extends Component {
 		this.setState({
 			screenWidth: Dimensions.get("window").width
 		});
+
+		// this.debug();
 	}
 
 	// Methods
+
+	debug = () => {
+		setTimeout(() => {
+			this.setState({
+				name: "Simone",
+				surname: "Pozzobon",
+				age: "30",
+				address: "Via Puccini, 10",
+				city: "Salzano",
+				email: "info@simonepozzobon.com",
+				password: "password",
+				agreement: true,
+				responsability: true
+			});
+		}, 500);
+	};
+
 	/**
 	 * @param {string} route
 	 */
@@ -57,81 +77,142 @@ class Register extends Component {
 		this.props.navigation.navigate(route);
 	}
 
-	nameSet = (value) => {
-		this.setState({ name: value })
-	}
+	nameSet = value => {
+		this.setState({ name: value });
+	};
 
-	surnameSet = (value) => {
-		this.setState({ surname: value })
-	}
+	surnameSet = value => {
+		this.setState({ surname: value });
+	};
 
-	ageSet = (value) => {
-		this.setState({ age: value })
-	}
+	ageSet = value => {
+		this.setState({ age: value });
+	};
 
-	addressSet = (value) => {
-		this.setState({ address: value })
-	}
+	addressSet = value => {
+		this.setState({ address: value });
+	};
 
-	citySet = (value) => {
-		this.setState({ city: value })
-	}
+	citySet = value => {
+		this.setState({ city: value });
+	};
 
-	emailSet = (value) => {
-		this.setState({ email: value })
-	}
+	emailSet = value => {
+		this.setState({ email: value });
+	};
 
-	passwordSet = (value) => {
-		this.setState({ password: value })
-	}
+	passwordSet = value => {
+		this.setState({ password: value });
+	};
 
 	focusToSurname = () => {
-		this.surnameInput.focus()
-	}
+		this.surnameInput.focus();
+	};
 
 	focusToAge = () => {
-		this.ageInput.focus()
-	}
+		this.ageInput.focus();
+	};
 
 	focusToAddress = () => {
-		this.addressInput.focus()
-	}
+		this.addressInput.focus();
+	};
 
 	focusToCity = () => {
-		this.cityInput.focus()
-	}
+		this.cityInput.focus();
+	};
 
 	focusToEmail = () => {
-		this.emailInput.focus()
-	}
+		this.emailInput.focus();
+	};
 
 	focusToPassword = () => {
-		this.passwordInput.focus()
-	}
+		this.passwordInput.focus();
+	};
 
 	toggleAgreement = () => {
-		let value = this.state.agreement
-		this.setState({ agreement: !value })
-	}
+		let value = this.state.agreement;
+		this.setState({ agreement: !value });
+	};
 
 	toggleResponsability = () => {
-		let value = this.state.responsability
-		this.setState({ responsability: !value })
-	}
+		let value = this.state.responsability;
+		this.setState({ responsability: !value });
+	};
 
 	attemptRegistration = () => {
-		if (this.state.name && this.state.surname && this.state.age && this.state.address && this.state.city && this.state.email && this.state.password && this.state.responsability && this.state.agreement) {
+		if (
+			this.state.name &&
+			this.state.surname &&
+			this.state.age &&
+			this.state.address &&
+			this.state.city &&
+			this.state.email &&
+			this.state.password &&
+			this.state.responsability &&
+			this.state.agreement
+		) {
 			let data = new FormData();
-			data.append('name', this.state.name)
-			data.append('surname', this.state.surname)
-			data.append('age', this.state.age)
-			data.append('address', this.state.address)
-			data.append('city', this.state.city)
-			data.append('email', this.state.email)
-			data.append('password', this.state.password)
-		}
+			data.append("name", this.state.name);
+			data.append("surname", this.state.surname);
+			data.append("age", this.state.age);
+			data.append("address", this.state.address);
+			data.append("city", this.state.city);
+			data.append("email", this.state.email);
+			data.append("password", this.state.password);
 
-	}
+			axios
+				.post(`${config.api.path}/register`, data)
+				.then(response => {
+					const { data } = response;
+					console.log("response", data);
+					if (data.success) {
+						Alert.alert(
+							"Ci siamo quasi",
+							"A breve riceverai un messaggio di verifica all' account di posta da te inserito",
+							[
+								{
+									text: "Ok",
+									onPress: () => {
+										this.goTo("login");
+									}
+								}
+							]
+						);
+					} else {
+						if (data.message == "same-email") {
+							Alert.alert("Errore", "La mail è già registrata", [
+								{
+									text: "OK",
+									onPress: () => {
+										this.setState({
+											password: null,
+											email: null
+										});
+									}
+								}
+							]);
+						}
+					}
+				})
+				.catch(err => {
+					console.log(err);
+				});
+		}
+	};
+
+	_resetForm = () => {
+		this.setState({
+			name: null,
+			surname: null,
+			age: null,
+			address: null,
+			city: null,
+			email: null,
+			password: null,
+			agreement: false,
+			responsability: false
+		});
+	};
 
 	// Render
 	render() {
@@ -145,10 +226,12 @@ class Register extends Component {
 				width: lg
 			},
 			agreement: {
-				backgroundColor: this.state.agreement ? 'white' : 'transparent'
+				backgroundColor: this.state.agreement ? "white" : "transparent"
 			},
 			responsability: {
-				backgroundColor: this.state.responsability ? 'white' : 'transparent'
+				backgroundColor: this.state.responsability
+					? "white"
+					: "transparent"
 			}
 		});
 
@@ -270,7 +353,7 @@ class Register extends Component {
 							onChangeText={this.surnameSet}
 							onSubmitEditing={this.focusToAge}
 							style={[compStyles.formInput, styles.input]}
-							ref={ref => this.surnameInput = ref}
+							ref={ref => (this.surnameInput = ref)}
 						/>
 					</View>
 					<View
@@ -287,7 +370,7 @@ class Register extends Component {
 							onChangeText={this.ageSet}
 							onSubmitEditing={this.focusToAddress}
 							style={[compStyles.formInput, styles.input]}
-							ref={ref => this.ageInput = ref}
+							ref={ref => (this.ageInput = ref)}
 						/>
 					</View>
 					<View
@@ -304,7 +387,7 @@ class Register extends Component {
 							onChangeText={this.addressSet}
 							onSubmitEditing={this.focusToCity}
 							style={[compStyles.formInput, styles.input]}
-							ref={ref => this.addressInput = ref}
+							ref={ref => (this.addressInput = ref)}
 						/>
 					</View>
 					<View
@@ -321,7 +404,7 @@ class Register extends Component {
 							onChangeText={this.citySet}
 							onSubmitEditing={this.focusToEmail}
 							style={[compStyles.formInput, styles.input]}
-							ref={ref => this.cityInput = ref}
+							ref={ref => (this.cityInput = ref)}
 						/>
 					</View>
 					<View
@@ -338,7 +421,7 @@ class Register extends Component {
 							onChangeText={this.emailSet}
 							onSubmitEditing={this.focusToPassword}
 							style={[compStyles.formInput, styles.input]}
-							ref={ref => this.emailInput = ref}
+							ref={ref => (this.emailInput = ref)}
 						/>
 					</View>
 					<View
@@ -349,15 +432,15 @@ class Register extends Component {
 						<TextInput
 							secureTextEntry
 							autoCorrect={false}
-							value={this.state.email}
+							value={this.state.password}
 							placeholder="Password"
 							placeholderTextColor="white"
-							returnKeyType="send"
+							returnKeyType="next"
 							keyboardType="default"
 							onChangeText={this.passwordSet}
-							onSubmitEditing={this.attemptRegistration}
+							// onSubmitEditing={this.attemptRegistration}
 							style={[compStyles.formInput, styles.input]}
-							ref={ref => this.passwordInput = ref}
+							ref={ref => (this.passwordInput = ref)}
 						/>
 					</View>
 					<View style={styles.checkboxes}>
@@ -370,7 +453,10 @@ class Register extends Component {
 								<CheckBox
 									value={this.state.agreement}
 									disabled={true}
-									style={[styles.checkbox, compStyles.agreement]}
+									style={[
+										styles.checkbox,
+										compStyles.agreement
+									]}
 								></CheckBox>
 							</TouchableOpacity>
 							<View
@@ -395,11 +481,16 @@ class Register extends Component {
 								alignItems: "center"
 							}}
 						>
-							<TouchableOpacity onPress={this.toggleResponsability}>
+							<TouchableOpacity
+								onPress={this.toggleResponsability}
+							>
 								<CheckBox
 									value={this.state.responsability}
 									disabled={false}
-									style={[styles.checkbox, compStyles.responsability]}
+									style={[
+										styles.checkbox,
+										compStyles.responsability
+									]}
 								></CheckBox>
 							</TouchableOpacity>
 							<View
@@ -426,13 +517,39 @@ class Register extends Component {
 						<TouchableOpacity
 							style={[styles.btnWhite, compStyles.btnWhite]}
 							onPress={() => {
-								this.attemptRegistration()
+								this.attemptRegistration();
 							}}
 						>
 							<Text style={styles.btnWhiteText}>
 								Create Account
 							</Text>
 						</TouchableOpacity>
+						<View
+							style={{
+								marginTop: 16,
+								flexDirection: "row",
+								justifyContent: "center"
+							}}
+						>
+							<Text style={{ color: "white" }}>
+								Already have an account?
+							</Text>
+							<TouchableOpacity
+								style={{ paddingLeft: 10 }}
+								onPress={() => {
+									this.goTo("login");
+								}}
+							>
+								<Text
+									style={{
+										color: "white",
+										fontWeight: "bold"
+									}}
+								>
+									Sign In
+								</Text>
+							</TouchableOpacity>
+						</View>
 					</View>
 				</View>
 			</MainTemplate>

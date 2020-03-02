@@ -8,17 +8,19 @@ import {
 	Dimensions,
 	Easing
 } from "react-native";
+import { connect } from "react-redux";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import DrawerMenuSingle from "./DrawerMenuSingle";
+import { setUser, setToken } from "../redux/actions/UserActions";
+
 import menuIcons from "../../assets/ui";
 import assets from "../../assets";
-import { TouchableOpacity } from "react-native-gesture-handler";
 
 const { width, height } = Dimensions.get("window");
 
 export class DrawerMenu extends Component {
 	constructor(props) {
 		super(props);
-
 		this.state = {
 			drawerPosition: new Animated.Value(-width),
 			isOpen: false,
@@ -29,6 +31,19 @@ export class DrawerMenu extends Component {
 	componentDidMount() {
 		// setTimeout(this.openDrawer.bind(this), 500);
 	}
+
+	_getUserName = () => {
+		const { user } = this.props.user;
+		if (user && user.hasOwnProperty("name")) {
+			return (
+				<Text style={styles.nameTxt}>
+					{user.name.charAt(0).toUpperCase() + user.name.slice(1)}
+				</Text>
+			);
+		} else {
+			return <Text style={styles.nameTxt}>No Name</Text>;
+		}
+	};
 
 	closeDrawer() {
 		if (this.state.isOpen == true) {
@@ -86,9 +101,7 @@ export class DrawerMenu extends Component {
 							/>
 						</TouchableOpacity>
 					</View>
-					<View style={styles.name}>
-						<Text style={styles.nameTxt}>Paolo Vendramini</Text>
-					</View>
+					<View style={styles.name}>{this._getUserName()}</View>
 					<View style={styles.content}>
 						<DrawerMenuSingle
 							title="Profilo"
@@ -184,4 +197,24 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default DrawerMenu;
+const mapPropsToState = state => {
+	return {
+		user: state.user,
+		token: state.token
+	};
+};
+
+export default connect(
+	mapPropsToState,
+	{ setUser, setToken },
+	(stateProps, dispatchProps, ownProps) => {
+		return {
+			...ownProps,
+			...stateProps,
+			...dispatchProps
+		};
+	},
+	{
+		forwardRef: true
+	}
+)(DrawerMenu);
