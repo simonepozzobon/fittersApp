@@ -15,6 +15,10 @@ import SubscriptionView from "./components/SubscriptionView";
 const { width } = Dimensions.get("window");
 
 export class Subscriptions extends Component {
+	goTo = route => {
+		this.props.navigation.navigate(route);
+	};
+
 	render() {
 		return (
 			<MainTemplate
@@ -41,7 +45,9 @@ export class Subscriptions extends Component {
 								<UiButton
 									title="Aggiungi abbonamento"
 									fullWidth="0.8"
-									onPress={() => {}}
+									onPress={() => {
+										this.goTo("addSubscription");
+									}}
 								/>
 							</View>
 						</View>

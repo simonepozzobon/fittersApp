@@ -18,6 +18,7 @@ import Terms from "../screens/profile/Terms";
 import Payment from "../screens/profile/Payment";
 import Tickets from "../screens/profile/Tickets";
 import Subscriptions from "../screens/profile/Subscriptions";
+import addSubscription from "../screens/profile/subscriptions/AddSubscription";
 
 const BuyStack = createStackNavigator(
 	{
@@ -42,11 +43,22 @@ const SaleStack = createStackNavigator(
 	}
 );
 
+const SubscriptionStack = createStackNavigator(
+	{
+		subscriptionHome: Subscriptions,
+		addSubscription: addSubscription
+	},
+	{
+		initialRouteName: "subscriptionHome",
+		headerMode: "none"
+	}
+);
+
 const ProfileStack = createStackNavigator(
 	{
 		profile: Profile,
 		tickets: Tickets,
-		subscriptions: Subscriptions,
+		subscriptions: SubscriptionStack,
 		terms: Terms,
 		payment: Payment
 	},
