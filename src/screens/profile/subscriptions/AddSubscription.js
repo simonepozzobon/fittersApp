@@ -5,10 +5,17 @@ import {
 	StyleSheet,
 	Dimensions,
 	SafeAreaView,
-	ScrollView
+	ScrollView,
+	Alert
 } from "react-native";
+import AsyncStorage from "@react-native-community/async-storage";
 import { TextInput } from "react-native-gesture-handler";
+import { connect } from "react-redux";
 import axios from "axios";
+
+import { setUser, setToken } from "../../../redux/actions/UserActions";
+import config from "../../../config";
+
 import MainTemplate from "../../../presentation/MainTemplate";
 import UiBreadcrumb from "../../../components/UiBreadcrumb";
 import UiSectionTitle from "../../../components/UiSectionTitle";
@@ -28,6 +35,27 @@ export class AddSubscription extends Component {
 			subDeadline: null
 		};
 	}
+
+	componentDidMount() {
+		// this.debug();
+		// console.log(this.props.token);
+	}
+
+	debug = () => {
+		setTimeout(() => {
+			this.setState({
+				name: "Prova",
+				address: "Via Molino delle Armi, 18",
+				subType: "gold",
+				subNumber: "483598439834938",
+				subDeadline: "20/10/2020"
+			});
+		}, 500);
+	};
+
+	goTo = route => {
+		this.props.navigation.navigate(route);
+	};
 
 	setName = value => {
 		this.setState({ name: value });
@@ -73,7 +101,57 @@ export class AddSubscription extends Component {
 			data.append("number", this.state.subNumber);
 			data.append("deadline", this.state.subDeadline);
 
-			axios;
+			axios({
+				method: "post",
+				url: `${config.api.path}/profile/subscriptions/create`,
+				headers: {
+					Authorization: `Bearer ${this.props.token}`
+				},
+				data: data
+			})
+				.then(response => {
+					const { data } = response;
+
+					if (data.success) {
+						AsyncStorage.set(
+							"user",
+							JSON.stringify(data.user),
+							() => {
+								this.props.setUser(data.user);
+
+								Alert.alert(
+									"Abbonamento aggiunto",
+									"Troverai il nuovo abbonamento nel tuo profilo",
+									[
+										{
+											text: "Ok",
+											onPress: () => {
+												this.goTo("subscriptionHome");
+											}
+										}
+									]
+								);
+							}
+						);
+					}
+					console.log(response.data);
+				})
+				.catch(err => {
+					Alert.alert(
+						"Errore",
+						"C'è stato un errore nel salvataggio, riprova.",
+						[
+							{
+								text: "Ok",
+								onPress: () => {
+									this._resetForm();
+								}
+							}
+						]
+					);
+				});
+		} else {
+			Alert.alert("Errore", "Compila tutti i campi");
 		}
 	};
 
@@ -240,4 +318,21 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default AddSubscription;
+const mapPropsToState = state => {
+	return {
+		...state.user,
+		...state.token
+	};
+};
+
+export default connect(
+	mapPropsToState,
+	{ setUser, setToken },
+	(stateProps, dispatchProps, ownProps) => {
+		return {
+			...ownProps,
+			...stateProps,
+			...dispatchProps
+		};
+	}
+)(AddSubscription);

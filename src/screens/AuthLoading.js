@@ -40,7 +40,7 @@ export class AuthLoading extends Component {
 			data.append("password", password);
 			axios.post(`${config.api.path}/login`, data).then(response => {
 				const { data } = response;
-				console.log(data);
+				// console.log(data);
 				if (data.success) {
 					const { token, user } = data;
 					AsyncStorage.multiSet(
@@ -77,7 +77,7 @@ export class AuthLoading extends Component {
 
 	_redirectAuthorized = () => {
 		// this.goTo("userSelection");
-		this.goTo("addSubscription");
+		this.goTo("subscriptionHome");
 	};
 
 	render() {

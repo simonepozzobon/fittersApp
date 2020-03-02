@@ -5,8 +5,13 @@ import {
 	StyleSheet,
 	Dimensions,
 	SafeAreaView,
-	ScrollView
+	ScrollView,
+	Alert
 } from "react-native";
+import AsyncStorage from "@react-native-community/async-storage";
+import { connect } from "react-redux";
+import { setUser, setToken } from "../../redux/actions/UserActions";
+
 import MainTemplate from "../../presentation/MainTemplate";
 import UiButton from "../../components/UiButton";
 import UiBreadcrumb from "../../components/UiBreadcrumb";
@@ -15,6 +20,14 @@ import SubscriptionView from "./components/SubscriptionView";
 const { width } = Dimensions.get("window");
 
 export class Subscriptions extends Component {
+	constructor(props) {
+		super(props);
+	}
+
+	componentDidMount() {
+		// Alert.alert("ciao");
+	}
+
 	goTo = route => {
 		this.props.navigation.navigate(route);
 	};
@@ -40,7 +53,17 @@ export class Subscriptions extends Component {
 							<UiSectionTitle title="I tuoi abbonamenti" />
 						</View>
 						<View style={styles.container}>
-							<SubscriptionView />
+							{this.props.user.subscriptions.map((sub, i) => (
+								<SubscriptionView
+									key={sub.id}
+									hasMargin={i > 0 ? true : false}
+									name={sub.name}
+									address={sub.address}
+									type={sub.type}
+									number={sub.number}
+									deadline={sub.deadline}
+								/>
+							))}
 							<View>
 								<UiButton
 									title="Aggiungi abbonamento"
@@ -71,4 +94,21 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default Subscriptions;
+const mapPropsToState = state => {
+	return {
+		...state.user,
+		...state.token
+	};
+};
+
+export default connect(
+	mapPropsToState,
+	{ setUser, setToken },
+	(stateProps, dispatchProps, ownProps) => {
+		return {
+			...ownProps,
+			...stateProps,
+			...dispatchProps
+		};
+	}
+)(Subscriptions);
