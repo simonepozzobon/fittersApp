@@ -10,13 +10,13 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-community/async-storage";
 import { connect } from "react-redux";
-import { setUser, setToken } from "../../redux/actions/UserActions";
+import { setUser, setToken } from "../../../redux/actions/UserActions";
 
-import MainTemplate from "../../presentation/MainTemplate";
-import UiButton from "../../components/UiButton";
-import UiBreadcrumb from "../../components/UiBreadcrumb";
-import UiSectionTitle from "../../components/UiSectionTitle";
-import SubscriptionView from "./components/SubscriptionView";
+import MainTemplate from "../../../presentation/MainTemplate";
+import UiButton from "../../../components/UiButton";
+import UiBreadcrumb from "../../../components/UiBreadcrumb";
+import UiSectionTitle from "../../../components/UiSectionTitle";
+import SubscriptionView from "../components/SubscriptionView";
 const { width } = Dimensions.get("window");
 
 export class Subscriptions extends Component {

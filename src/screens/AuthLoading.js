@@ -77,7 +77,7 @@ export class AuthLoading extends Component {
 
 	_redirectAuthorized = () => {
 		// this.goTo("userSelection");
-		this.goTo("subscriptionHome");
+		this.goTo("profileEdit");
 	};
 
 	render() {

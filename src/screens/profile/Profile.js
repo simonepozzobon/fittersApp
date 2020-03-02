@@ -25,6 +25,10 @@ export class Profile extends Component {
 		super(props);
 	}
 
+	goTo = route => {
+		this.props.navigation.navigate(route);
+	};
+
 	uppercase = string => {
 		if (string && string.length > 2) {
 			return string.charAt(0).toUpperCase() + string.slice(1);
@@ -109,7 +113,9 @@ export class Profile extends Component {
 								<UiButton
 									title="Modifica profilo"
 									fullWidth="0.8"
-									onPress={() => {}}
+									onPress={() => {
+										this.goTo("profileEdit");
+									}}
 								/>
 							</View>
 						</View>

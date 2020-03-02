@@ -8,8 +8,8 @@ import {
 	ScrollView,
 	Alert
 } from "react-native";
-import AsyncStorage from "@react-native-community/async-storage";
 import { TextInput } from "react-native-gesture-handler";
+import AsyncStorage from "@react-native-community/async-storage";
 import { connect } from "react-redux";
 import axios from "axios";
 
@@ -58,19 +58,29 @@ export class AddSubscription extends Component {
 	};
 
 	setName = value => {
-		this.setState({ name: value });
+		this.setState({
+			name: value
+		});
 	};
 	setAddress = value => {
-		this.setState({ address: value });
+		this.setState({
+			address: value
+		});
 	};
 	setSubType = value => {
-		this.setState({ subType: value });
+		this.setState({
+			subType: value
+		});
 	};
 	setSubNumber = value => {
-		this.setState({ subNumber: value });
+		this.setState({
+			subNumber: value
+		});
 	};
 	setSubDeadline = value => {
-		this.setState({ subDeadline: value });
+		this.setState({
+			subDeadline: value
+		});
 	};
 
 	focusToAddress = () => {
@@ -111,9 +121,10 @@ export class AddSubscription extends Component {
 			})
 				.then(response => {
 					const { data } = response;
+					// console.log(response.data);
 
 					if (data.success) {
-						AsyncStorage.set(
+						AsyncStorage.setItem(
 							"user",
 							JSON.stringify(data.user),
 							() => {
@@ -134,7 +145,6 @@ export class AddSubscription extends Component {
 							}
 						);
 					}
-					console.log(response.data);
 				})
 				.catch(err => {
 					Alert.alert(
@@ -327,7 +337,10 @@ const mapPropsToState = state => {
 
 export default connect(
 	mapPropsToState,
-	{ setUser, setToken },
+	{
+		setUser,
+		setToken
+	},
 	(stateProps, dispatchProps, ownProps) => {
 		return {
 			...ownProps,
