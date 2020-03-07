@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../node_modules/@react-native-community/async-storage/android/@react-native-community_async-storage.iml" filepath="$PROJECT_DIR$/../node_modules/@react-native-community/async-storage/android/@react-native-community_async-storage.iml" group="fittersApp/@react-native-community_async-storage" />
+      <module fileurl="file://$PROJECT_DIR$/../node_modules/@react-native-community/checkbox/android/@react-native-community_checkbox.iml" filepath="$PROJECT_DIR$/../node_modules/@react-native-community/checkbox/android/@react-native-community_checkbox.iml" group="fittersApp/@react-native-community_checkbox" />
+      <module fileurl="file://$PROJECT_DIR$/../node_modules/@react-native-community/datetimepicker/android/@react-native-community_datetimepicker.iml" filepath="$PROJECT_DIR$/../node_modules/@react-native-community/datetimepicker/android/@react-native-community_datetimepicker.iml" group="fittersApp/@react-native-community_datetimepicker" />
+      <module fileurl="file://$PROJECT_DIR$/../node_modules/@react-native-community/geolocation/android/@react-native-community_geolocation.iml" filepath="$PROJECT_DIR$/../node_modules/@react-native-community/geolocation/android/@react-native-community_geolocation.iml" group="fittersApp/@react-native-community_geolocation" />
+      <module fileurl="file://$PROJECT_DIR$/../node_modules/@react-native-community/masked-view/android/@react-native-community_masked-view.iml" filepath="$PROJECT_DIR$/../node_modules/@react-native-community/masked-view/android/@react-native-community_masked-view.iml" group="fittersApp/@react-native-community_masked-view" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="fittersApp/app" />
+      <module fileurl="file://$PROJECT_DIR$/fittersApp.iml" filepath="$PROJECT_DIR$/fittersApp.iml" group="fittersApp" />
+      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-dark-mode/android/react-native-dark-mode.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-dark-mode/android/react-native-dark-mode.iml" group="fittersApp/react-native-dark-mode" />
+      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-device-info/android/react-native-device-info.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-device-info/android/react-native-device-info.iml" group="fittersApp/react-native-device-info" />
+      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-geolocation-service/android/react-native-geolocation-service.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-geolocation-service/android/react-native-geolocation-service.iml" group="fittersApp/react-native-geolocation-service" />
+      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-gesture-handler/android/react-native-gesture-handler.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-gesture-handler/android/react-native-gesture-handler.iml" group="fittersApp/react-native-gesture-handler" />
+      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-linear-gradient/android/react-native-linear-gradient.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-linear-gradient/android/react-native-linear-gradient.iml" group="fittersApp/react-native-linear-gradient" />
+      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-maps/lib/android/react-native-maps.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-maps/lib/android/react-native-maps.iml" group="fittersApp/react-native-maps" />
+      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-reanimated/android/react-native-reanimated.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-reanimated/android/react-native-reanimated.iml" group="fittersApp/react-native-reanimated" />
+      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-safe-area-context/android/react-native-safe-area-context.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-safe-area-context/android/react-native-safe-area-context.iml" group="fittersApp/react-native-safe-area-context" />
+      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-screens/android/react-native-screens.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-screens/android/react-native-screens.iml" group="fittersApp/react-native-screens" />
+      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-splash-screen/android/react-native-splash-screen.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-splash-screen/android/react-native-splash-screen.iml" group="fittersApp/react-native-splash-screen" />
+      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-vector-icons/android/react-native-vector-icons.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-vector-icons/android/react-native-vector-icons.iml" group="fittersApp/react-native-vector-icons" />
+    </modules>
+  </component>
+</project>
